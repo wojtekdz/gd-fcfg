@@ -1,0 +1,105 @@
+# ##########
+# PRODUCTIONS FOR VERBS
+# ##########
+
+#[TODO] BASE FORMS - VBASE, NBASE, ABASE
+
+#verbs: substantive, copular, intransitive, monotransitive, ditransitive, impersonal/passive?
+#what about "sentential verbs" thuirt thu gu bheil thu tinn, or "dative verbs" thoir seo dhan a' bhalach
+#[Q] how to resolve the clausal complement? [A] AN sBar, COMPPHRASE, S', SUBCLAUSE ETC.
+
+#[TOWRITE] VERB FORMS WILL NEED TO BE DIFFERENT PART OF SPEECH BECAUSE THEY HAVE DIFFERENT FEATURE STRUCTURES - EXPLAIN THIS IN THESIS
+#VI [TENSE=?T, SUBCAT=?S, +/-POL, +/-INTERROG]
+#VD [TENSE=?t, SUBCAT=?s, +/-LEN]
+
+#[TOWRITE] HANDLING REDUPLICATION AS MULTIWORDS, SAME AS H- AND N- ARTICLES, IF IT IS AN ARTIFACT OF THE CATEGORY 
+DO -> "do" | "do_dh'"
+#[TOWRITE] THE ROLE OF CAGR
+CHA[CAGR=neu] -> "cha"
+CHA[CAGR=v] -> "chan"
+CHA[CAGR=neu, +INTERROG] -> "nach"
+
+#[TODO] ADD NACH
+VI[TENSE=?t, SUBCAT=?s, +POL, +INTERROG] -> AN VD[TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG] -> CHA VD[TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, +INTERROG] -> NACH VD[TENSE=?t, SUBCAT=?s]
+
+
+#[Q] SHOULD IRREGULAR VERBS OR SUBSTANTIVE TO BE BE DIFFERENT PARTS OF SPEECH AS WELL?
+#SUBSTANTIVE TO BE...
+VD[TENSE=pres, SUBCAT=subs, +POL, +INTERROG] -> "a_bheil"
+VI[TENSE=pres, SUBCAT=subs, +POL, -INTERROG] -> "tha"
+VD[TENSE=pres, SUBCAT=subs, -POL, -INTERROG] -> "eil"
+
+#SUBSTANTIVE to be PAST TENSE
+#POLARITY IS UNDERSPECIFIED FOR cha robh AND nach robh AND an robh
+VD[TENSE=past, SUBCAT=subs] -> "robh"
+VI[TENSE=past, SUBCAT=subs] -> "bha"
+#SUPPLETIVE FORMS SO NOT DERIVED FROM EACH OTHER
+
+#[Q] SHOULD THE COPULA BE A DIFFERENT PART OF SPEECH?
+VI[TENSE=pres, SUBCAT=cop, +POL, -INTERROG] -> "'s" | "is"
+#[Q] THESE WOULD EITHER HAVE TO BE ZERO-VALUE OR THE COPULAR SENTENCE WOULD HAVE TO HAVE A SEPARATE PARADIGM
+
+#[Q] CONSIDER HOW TO DERIVE PARTICLES AND COPULAS FROM CBASE(?) FORMS
+VI[TENSE=pres, SUBCAT=cop, -POL, -INTERROG] -> "chan"
+VI[TENSE=pres, SUBCAT=cop, +POL, +INTERROG] -> "an"
+VI[TENSE=pres, SUBCAT=cop, -POL, +INTERROG] -> "nach"
+
+VI[TENSE=past, SUBCAT=cop, +POL, -INTERROG] -> "bu" | "b'"
+VI[TENSE=past, SUBCAT=cop, -POL, -INTERROG] -> "cha_bu" | "cha_b'"
+VI[TENSE=past, SUBCAT=cop, +POL, +INTERROG] -> "am_bu" | "am_b'"
+VI[TENSE=past, SUBCAT=cop, -POL, +INTERROG] -> "nach_bu" | "nach_b'"
+
+#is mise Wojtek
+#'S e oileanach a tha annam
+
+
+#------------------OUTPUT-PARADIGM---------------
+#FUTURE INDEPENDENT
+VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "caochailidh" | "ataidh" | "nochdaidh" | "falbhaidh"
+
+#FUTURE DEPENDENT
+VD[TENSE=fut, SUBCAT=intr] -> "at" | "nochd" | "falbh"
+VD[TENSE=fut, SUBCAT=intr, -LEN] -> "caochail"
+VD[TENSE=fut, SUBCAT=intr, +LEN] -> "chaochail"
+
+#PAST INDEPENDENT
+#[LEN] UNDERSPECIFIED INTENTIONALLY
+#[TOWRITE] [POL] AND [INTERROG] NEED TO BE OVERTLY SPECIFIED BECAUSE THEY PASS THESE PROPERTIES UP THE TREE
+VI[TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "chaochail" | "dh'at" | "nochd" | "dh'fhalbh"
+
+#PAST DEPENDENT
+#[Q] WHAT ABOUT IRREGULARS WHICH DO NOT HAVE - PUTTING ALL [DO]-ENABLED SUBCATs HERE
+#[TODO] IRREGULARS AND SUBSTANTIVE
+VD[TENSE=past, SUBCAT=intr] -> DO VI[TENSE=past, SUBCAT=intr] | DO VI[TENSE=past, SUBCAT=monotr] | DO VI[TENSE=past, SUBCAT=ditr] | DO VI[TENSE=past, SUBCAT=imp]
+
+#CONDITIONAL INDEPENDENT
+#[Q] HARDCODE THE LENITION AND DH'
+VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "chaochladh" | "dh'atadh" | "nochdadh" | "dh'fhalbhadh"
+#[Q] ONLY IMPORTANT FOR SEMANTICS?
+VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG, PERS=1, NUM=sg] -> "chaochlainn" | "dh'atainn" | "nochdainn" | "dh'fhalbhinn"
+#[Q] THIS FORM NEEDS TO BE MARKED FOR PERSON: CHAOCHAILINN ETC
+#[Q] ALTERNATIVE FOR -MID VS SIBH FOR 1PL
+
+#THIS IS GETTING COMPLEX
+VD[TENSE=cond, SUBCAT=intr] -> "atadh" | "nochdadh"
+VD[TENSE=cond, SUBCAT=intr, -LEN] -> "caochladh" | "falbhadh"
+VD[TENSE=cond, SUBCAT=intr, +LEN] -> "chaochladh" | "fhalbhadh"
+#[TODO] INCLUDE THIS IN THESIS - NOTE ON NON-ORTHOGRAPHIC LENITION, FOR THE PURPOSES OF SPEACH SYNTESIS AND A CARRY OVER FROM SYNTAX INTO PHONOLOGY, YOU WOULD HAVE TO LENITE ALL LENITABLE CONSONANST, ORTHOGRAPHY OR NOT
+
+#[Q] WHAT ABOUT VERBAL NOUNS - ARE THEY NOUNS (CASE, GENDER) OR VERBS (...) - SO PROBABLY NOUNS USED IN CERTAIN SPECIAL CONSTRUCTIONS TO COMPLEMENT THE VERBAL SENSE
+VN -> "atadh" | "nochdadh"
+VN[-LEN] -> "caochladh" | "falbh"
+VN[+LEN] -> "chaochladh" | "fhalbh" 
+
+#CONDITIONAL DEPENDENT
+#------------------------------------------------
+
+### REGULAR ###
+V -> 'X'
+
+#[TODO] REMEMBER ABOUT SUNCOPATING WORDS -il- -in(n)- -ir- AS WELL AS ORDINARY IRREGULARS
+#[Q] MAYBE WRITE A SYNCOPATING FUNCTION TO GET THESE ROOTS? IF NOT - ACKNOWLEDGE IN THESIS AND MOVE ON
+### IRREGULAR ###
+V -> 'X'

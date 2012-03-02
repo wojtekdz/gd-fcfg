@@ -1,0 +1,17 @@
+Tha mi gu math
+Chan eil mi gu math
+Ciamar a tha mi gu math?
+Ciamar a tha mi?
+
+#ANALYSE THIS APPROACH VS NLTK SLASH CATEGORIES
+#Tha
+#Tha ?
+#Ciamar a tha thu?
+#Ciamar a tha?
+
+#[Q] THE PROBLEM PROBLEM WITH THE PP RECURSION HERE!
+Tha cù ann!
+
+#TEST DATIVE
+#Tha cù air a' bhòrd.
+#THIS WORKS AS A SINGLE PREDICATE - WHAT ABOUT tha cù ann air a' bhòrd?

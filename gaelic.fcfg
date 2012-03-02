@@ -1,0 +1,199 @@
+### ADJECTIVES ###
+A[SYL=mono] -> "beag" | "glic" | "òg" | "mòr" | "blàth"
+A[SYL=multi] -> "cudromach" | "spòrsail"
+POSSADJ[CAGR=neu, +LEN] -> "mo" | "do"
+POSSADJ[CAGR=vf, +LEN] -> "m'" | "d'"
+POSSADJ[LEN=?l] -> "a"
+POSSADJ[CAGR=v, -LEN] -> "a_h-"
+POSSADJ[CAGR=neu] -> "ar" | "ur" | "an"
+POSSADJ[CAGR=lab] -> "am"
+POSSADJ[CAGR=v] -> "ar_n-" | "ur_n-" | "an_n-"
+AMOD[-LEN] -> 'beagan'
+AMOD[+LEN] -> 'glè'
+AP[CASE=?cs, GEN=?g, LEN=?l] -> ABASE[CASE=?cs, GEN=?g, LEN=?l]
+AP -> AMOD[LEN=?l] ABASE[LEN=?l]
+NAS -> "nas"
+AS -> "as"
+NABU[CAGR=neu, +LEN] -> "na_bu"
+NABU[CAGR=vf, +LEN] -> "na_b'"
+ABU[CAGR=neu, +LEN] -> "a_bu"
+ABU[CAGR=vf, +LEN] -> "a_b'"
+ABASE[CASE=nom, GEN=masc, -LEN] -> "beag" | "glic" | "cudromach" 
+ABASE[CASE=nom, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach"
+ABASE[CASE=dat, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach"
+ABASE[CASE=gen, GEN=masc, +LEN] -> "bhig" | "ghlic" | "chudromaich"
+ABASE[CASE=nom, GEN=fem, +LEN] -> "bheag" | "ghlic" | "chudromach"
+ABASE[CASE=dat, GEN=fem, +LEN] -> "bhig" | "ghlic" | "chudromaich"
+ABASE[CASE=gen, GEN=fem, -LEN] -> "bige" | "glice" | "cudromaich" | "spòrsaile"
+ABASE[CASE=?cs, GEN=pl] -> "beaga" | "glice" | "cudromach" | "spòrsail"
+ABASE[CASE=?cs, GEN=pl, +LEN] -> "bheaga" | "ghlice" | "chudromach" | "spòrsail"
+ACOMP -> "lugha" | "fhliche" | "àirde"
+ACOMP[-LEN] -> "glice" | "cudromaiche" | "teotha" | "motha"
+ACOMP[+LEN] -> "ghlice" | "chudromaiche" |"theotha" | "mhotha"
+REL[TENSE=present, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=future, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=past, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+REL[TENSE=conditional, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+A[DEG=pos] -> "teth" | "mòr"
+A[DEG=compsup] -> "teotha" | "motha" 
+### OTHER ###
+ABASE -> "gu_math" | "gu_doigheil" | "gu_dona"
+ADV[SUBCAT='path'] -> "sìos" | "suas" | "a-steach" | "a-mach"
+ADV[SUBCAT='time'] -> "an-uiridh"
+ADV[SUBCAT='place'] -> "ann" | "shìos" | "shuas"
+PP -> P[CASE=?cs] NP[CASE=?cs]
+PP -> PP
+P[CASE=nom] -> "seach" | "eadar"
+P[CASE=dat] -> "aig" | "air" | "às"
+P[CASE=gen] -> "chun" | "thar" | "rè"
+P[CASE=dat, -DEF] -> "ann_an"
+P[CASE=dat, +DEF] -> "anns"
+P[CASE=dat, -DEF, +LEN] -> "ro" 
+P[CASE=dat, +DEF] -> "ron"
+PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
+PP[PREP=air] -> "orm" | "ort" | "air" | "oirre" | "oirnn" | "oirbh" | "orra"
+PP[PREP=do] -> "dhomh" | "dhut" | "dha" | "dhi" | "dhuinn" | "dhuibh" | "dhaibh"
+PP[PREP=le] -> "leam" | "leat" | "leis" | "leatha" | "leinn" | "leibh" | "leotha"
+PP[PREP=ri] -> "rium" | "riut" | "ris" | "rithe" | "ruinn" | "ruibh" | "riutha"
+PP[PREP=ann] -> "annam" | "annad" | "ann" | "innte" | "annainn" | "annaibh" | "annta"
+PP[PREP=bho] -> "bhuam" | "bhuat" | "bhuaidhe" | "bhuaidhpe" | "bhuainn" | "bhuaibh" | "bhuapa"
+PP[PREP=de] -> "dhiom" | "dhiot" | "dheth" | "dhith" | "dhinn" | "dhibh" | "dhiubh"
+PP[PREP=fo] -> "fodham" | "fodhad" | "fodha" | "foidhpe" | "fodhainn" | "fodhaibh" | "fodhpa"
+PP[PREP=ro] -> "romham" | "romhat" | "roimhe" | "roimpe" | "romhainn" | "romhaibh" | "rompa"
+PP[PREP=tro] -> "tromham" | "tromhad" | "troimhe" | "troimpe" | "tromhainn" | "tromhaibh" | "trompa"
+PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
+PP -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
+N[PREP=air] -> "faisg" | "seachad"
+N[PREP=ri] -> "còmhla" | "coltach"
+PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr] 
+PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr]
+### PRODUCTIONS ###
+% start ROOT
+ROOT -> S[-INTERROG, POL=?p] FS 
+ROOT -> S[+INTERROG, POL=?p] QM
+ROOT -> CIAMAR QREL QM
+FS -> "." | "!"
+QM -> "?"
+CIAMAR -> "ciamar"
+AREL[+POL] -> "a"
+AREL[-POL] -> "nach"
+REL -> AREL[POL=?p] S[POL=?p,-INTERROG]
+QREL -> AREL[+POL] VI[SUBCAT=subs, +POL, -INTERROG] NP[CASE=nom]
+AN -> "an"
+S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=?s]
+S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=intr] NP[CASE=nom]
+S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs] NP[CASE=nom] PRED 
+PRED[TYPE=ap] -> AP
+PRED[TYPE=pp] -> PP
+PRED[TYPE=np] -> NP
+### VERBS ###
+V -> 'X'
+DO -> "do" | "do_dh'"
+CHA[CAGR=neu] -> "cha"
+CHA[CAGR=v] -> "chan"
+CHA[CAGR=neu, +INTERROG] -> "nach"
+VI[TENSE=?t, SUBCAT=?s, +POL, +INTERROG] -> AN VD[TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG] -> CHA VD[TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, +INTERROG] -> NACH VD[TENSE=?t, SUBCAT=?s]
+VD[TENSE=pres, SUBCAT=subs, +POL, +INTERROG] -> "a_bheil"
+VI[TENSE=pres, SUBCAT=subs, +POL, -INTERROG] -> "tha"
+VD[TENSE=pres, SUBCAT=subs, -POL, -INTERROG] -> "eil"
+VD[TENSE=past, SUBCAT=subs] -> "robh"
+VI[TENSE=past, SUBCAT=subs] -> "bha"
+VI[TENSE=pres, SUBCAT=cop, +POL, -INTERROG] -> "'s" | "is"
+VI[TENSE=pres, SUBCAT=cop, -POL, -INTERROG] -> "chan"
+VI[TENSE=pres, SUBCAT=cop, +POL, +INTERROG] -> "an"
+VI[TENSE=pres, SUBCAT=cop, -POL, +INTERROG] -> "nach"
+VI[TENSE=past, SUBCAT=cop, +POL, -INTERROG] -> "bu" | "b'"
+VI[TENSE=past, SUBCAT=cop, -POL, -INTERROG] -> "cha_bu" | "cha_b'"
+VI[TENSE=past, SUBCAT=cop, +POL, +INTERROG] -> "am_bu" | "am_b'"
+VI[TENSE=past, SUBCAT=cop, -POL, +INTERROG] -> "nach_bu" | "nach_b'"
+VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "caochailidh" | "ataidh" | "nochdaidh" | "falbhaidh"
+VD[TENSE=fut, SUBCAT=intr] -> "at" | "nochd" | "falbh"
+VD[TENSE=fut, SUBCAT=intr, -LEN] -> "caochail"
+VD[TENSE=fut, SUBCAT=intr, +LEN] -> "chaochail"
+VI[TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "chaochail" | "dh'at" | "nochd" | "dh'fhalbh"
+VD[TENSE=past, SUBCAT=intr] -> DO VI[TENSE=past, SUBCAT=intr] | DO VI[TENSE=past, SUBCAT=monotr] | DO VI[TENSE=past, SUBCAT=ditr] | DO VI[TENSE=past, SUBCAT=imp]
+VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "chaochladh" | "dh'atadh" | "nochdadh" | "dh'fhalbhadh"
+VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG, PERS=1, NUM=sg] -> "chaochlainn" | "dh'atainn" | "nochdainn" | "dh'fhalbhinn"
+VD[TENSE=cond, SUBCAT=intr] -> "atadh" | "nochdadh"
+VD[TENSE=cond, SUBCAT=intr, -LEN] -> "caochladh" | "falbhadh"
+VD[TENSE=cond, SUBCAT=intr, +LEN] -> "chaochladh" | "fhalbhadh"
+VN -> "atadh" | "nochdadh"
+VN[-LEN] -> "caochladh" | "falbh"
+VN[+LEN] -> "chaochladh" | "fhalbh" 
+V -> 'X'
+### NOUNS ###
+N -> 'X'
+NP[CASE=?cs] -> N[CASE=?cs]
+NP -> N[CASE=?cs, GEN=?g] AP[CASE=?cs, GEN=?g]
+NP -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] 
+NP -> DET[CASE=?cs, GEN=?g] N[CASE=?cs, GEN=?g] DEMO
+NP -> DET[CASE=?cs, GEN=?g] N[CASE=?cs, GEN=?g] AdjP[CASE=?cs, GEN=?g]
+NP -> DET[CASE=?cs, GEN=?g] N[CASE=?cs, GEN=?g] AdjP[CASE=?cs, GEN=?g] DEMO
+NP[CASE=gen] -> N NP[CASE=gen] | P[CASE=gen] NP[CASE=gen]
+NP[CASE=dat] -> P[CASE=dat] NP[CASE=dat]
+NP[CASE=voc] -> VOCPART N[CASE=voc] | N[CASE=voc]
+VOCPART -> "a"
+NPROP[GEN=fem] -> "eilidh"
+NPROP[CASE=nom, GEN=fem] -> "eilidh"
+NPROP[CASE=nom, GEN=masc] -> "mìcheal"
+NPROP[CASE=gen, GEN=fem] -> "eilidh"
+NPROP[CASE=gen, GEN=masc] -> "mìcheal"
+NPROP[CASE=nom, GEN=fem] -> "eilidh"
+NPROP[CASE=nom, GEN=masc] -> "mìcheal"
+N[CASE=voc, GEN=masc] -> "bhalaich"
+N[CASE=voc, GEN=masc] -> "ghille"
+N[CASE=voc, GEN=fem] -> "chlanna"
+N[CASE=voc, GEN=pl] -> "bhalaichibh"
+N[CASE=voc, GEN=pl] -> "fhearibh"
+N[CASE=voc, GEN=pl] -> "mhnathan"
+N[CASE=nom, GEN=pl] -> "dhaoine-uaisle"
+NP -> N | PRON | PROP
+DET[CAGR=?c, LEN=?l] -> POSSADJ[CAGR=?c, LEN=?l]
+DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] -> Art[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l]
+ART[CAGR=neu, CASE=nom, GEN=masc, -LEN] -> "an"
+ART[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "am"
+ART[CAGR=v, CASE=nom, GEN=masc, -LEN] -> "an_t-"
+ART[CAGR=neu, CASE=nom, GEN=fem, +LEN] -> "a'"
+ART[CAGR=dent, CASE=nom, GEN=fem, -LEN] -> "an"
+ART[CAGR=vf, CASE=nom, GEN=fem, -LEN] -> "an"
+ART[CAGR=neu, CASE=dat, GEN=fem, +LEN] -> "a'"
+ART[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "a'"
+ART[CAGR=s, CASE=dat, GEN=fem] -> "an_t-"
+ART[CAGR=s, CASE=dat, GEN=masc] -> "an_t-"
+ART[CAGR=neu, CASE=gen, GEN=masc] -> "a'"
+ART[CAGR=vf, CASE=nom, GEN=fem] -> "a'"
+ART[CAGR=vf, CASE=dat, GEN=?g] -> "a'"
+ART[CAGR=vf, CASE=gen, GEN=masc] -> "a'"
+ART[CASE=gen, GEN=masc] -> "na"
+ART[CAGR=neu,CASE=nom, GEN=?g] -> "na"
+ART[CAGR=neu,CASE=dat, GEN=?g] -> "na"
+ART[CAGR=v,CASE=nom, GEN=?g] -> "na_h-"
+ART[CAGR=v,CASE=dat, GEN=?g] -> "na_h-"
+ART[CAGR=neu, CASE=gen, GEN=?g] -> "nan" 
+ART[CAGR=lab, CASE=gen, GEN=?g] -> "nam"
+DEMO -> "seo" | "sin" | "siud" | "ud"
+PRON[FORM=onesg] -> "mi" | "mise"
+PRON[FORM=twosg] -> "thu" | "thusa"
+PRON[FORM=threesgmasc] -> "e" | "esan"
+PRON[FORM=threesgfem] -> "i" | "ise"
+PRON[FORM=onepl] -> "sinn" | "sinne"
+PRON[FORM=twopl] -> "sibh" | "sibhse"
+PRON[FORM=threepl] -> "iad" | "iadsan"
+N[CASE=nom, GEN=masc] -> "cù"
+N[CASE=dat, GEN=masc] -> "cù"
+N[CASE=nom, GEN=masc, +LEN] -> "chù"
+N[CASE=dat, GEN=masc, +LEN] -> "chù"
+N[CASE=gen, GEN=masc]-> "coin"
+N[CASE=gen, GEN=masc, +LEN]-> "choin"
+N[CASE=nom, GEN=pl]-> "coin"
+N[CASE=dat, GEN=pl]-> "coin"
+N[CASE=gen, GEN=pl]-> "con"
+N[CASE=nom, GEN=fem] -> "bò"
+N[CASE=dat, GEN=fem] -> "bò" | "boin"
+N[CASE=gen, GEN=fem]-> "bà"
+N[CASE=nom, GEN=pl]-> "bà"
+N[CASE=dat, GEN=pl]-> "bà"
+N[CASE=gen, GEN=pl]-> "bò"
+N -> 'X'

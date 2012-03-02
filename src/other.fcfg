@@ -1,0 +1,95 @@
+#[TODO] KEEP DICTIONARIES, BUT CONVERT THEM TO LISTS AND SORT THEM BEFORE WRITING
+
+# ##########
+# OTHER LEXICAL PRODUCTIONS
+# ##########
+
+#[TODO] Ciamar_a introduces a relative clause, think whether introduce a an S[+REL]
+#QWord[FORM=independent] -> "ciamar_a" | "ciamar" | "dè"
+#QWord[FORM=dependent] -> "càit_a" | "am" | "an"
+
+#[TODO] HOW DOES THIS FIT INTO THE ADJECTIVE SYSTEM NOW? I THINK THIS SHOULD BE REWRITTEN TO ALLOW FOR NORMAL FORMATION OF ADVERBS?
+#THINGS TO THINK ABOUT:
+# - overlap with PPs? so are adverbs another type of PP?
+ABASE -> "gu_math" | "gu_doigheil" | "gu_dona"
+#PATH ADVERBS
+ADV[SUBCAT='path'] -> "sìos" | "suas" | "a-steach" | "a-mach"
+ADV[SUBCAT='time'] -> "an-uiridh"
+#"ann" is a prep in this case, not an adverb - this is a question of semantics
+ADV[SUBCAT='place'] -> "shìos" | "shuas"
+
+### PREPOSITIONS
+#[TODO] TEST THIS, AND add DEF=?d
+PP -> P[CASE=?cs] NP[CASE=?cs]
+PP -> PP
+
+## SIMPLE ACCUSATIVE
+P[CASE=nom] -> "seach" | "eadar"
+#[TOWRITE] LEAVING OUT LENITING EADAR AS A VERY RARE CASE
+
+## SIMPLE DATIVE
+#[TOWRITE] PREPOSITIONS NEED TO ENFORCE CASE
+#DO NOT LENITE OR CHANGE FORM WHEN DEFINITE
+#[TODO] EVERY PREPOSITION NEEDS TO HAVE A PFORM FEATURE (INCLUDING THE SIMPLE ONES) THAT WILL TRANSFER ONTO PPs
+P[CASE=dat] -> "aig" | "air" | "às"
+
+## SIMPLE GENITIVE
+P[CASE=gen] -> "chun" | "thar" | "rè"
+
+P[CASE=dat, -DEF] -> "ann_an"
+P[CASE=dat, +DEF] -> "anns"
+
+#NEEDS THE FOLLOWING WORD LENITED! SO N[CASE=dat, LEN+]
+P[CASE=dat, -DEF, +LEN] -> "ro" 
+
+#NEEDS THE FOLLOWING WORD LENITED UNLESS IT'S A D- (OR S- BUT THAT'S ANOTHER ISSUE)... 
+#JUST SAYING N[CASE=dat] WILL NOT LENITE THE LEN
+P[CASE=dat, +DEF] -> "ron"
+
+### INFLECTED PREPOSITIONS
+
+#[TODO] MIX THESE UP SO THAT THEY AGREE IN GENDER AND PERSON WITH PRONOUNS - or perhaps not needed
+#ACCORDING TO PATTERN: PRON[FORM=1_sg] -> "mi" | "mise"
+#[TOWRITE] not added [+/- EMPH] because it's semantic
+#[TOWRITE] THESE FUNCION AS PPs, WHICH IS NOT THE WAY THEY ARE DESCRIBED IN TRADITIONAL PEGAGOGICAL GRAMMARS
+
+PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
+PP[PREP=air] -> "orm" | "ort" | "air" | "oirre" | "oirnn" | "oirbh" | "orra"
+PP[PREP=do] -> "dhomh" | "dhut" | "dha" | "dhi" | "dhuinn" | "dhuibh" | "dhaibh"
+PP[PREP=le] -> "leam" | "leat" | "leis" | "leatha" | "leinn" | "leibh" | "leotha"
+
+PP[PREP=ri] -> "rium" | "riut" | "ris" | "rithe" | "ruinn" | "ruibh" | "riutha"
+PP[PREP=ann] -> "annam" | "annad" | "ann" | "innte" | "annainn" | "annaibh" | "annta"
+PP[PREP=bho] -> "bhuam" | "bhuat" | "bhuaidhe" | "bhuaidhpe" | "bhuainn" | "bhuaibh" | "bhuapa"
+PP[PREP=de] -> "dhiom" | "dhiot" | "dheth" | "dhith" | "dhinn" | "dhibh" | "dhiubh"
+
+PP[PREP=fo] -> "fodham" | "fodhad" | "fodha" | "foidhpe" | "fodhainn" | "fodhaibh" | "fodhpa"
+PP[PREP=ro] -> "romham" | "romhat" | "roimhe" | "roimpe" | "romhainn" | "romhaibh" | "rompa"
+PP[PREP=tro] -> "tromham" | "tromhad" | "troimhe" | "troimpe" | "tromhainn" | "tromhaibh" | "trompa"
+PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
+
+PP -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
+
+### COMPOUND PREPOSITIONS
+## P-FINAL
+#[TOWRITE] CANNOT USE PREP=?p AS THIS WOULD ALLOW NOUNS
+N[PREP=air] -> "faisg" | "seachad"
+N[PREP=ri] -> "còmhla" | "coltach"
+
+#e.g còmhla rium
+#[TODO] GET RID OF THIS N - SOMETIMES A
+PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr] 
+PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr]
+
+## N-FINAL
+#[TODO] implement automatic extraction of multiwords first - to many spaces
+#[TOWRITE] describe multiword process in thesis
+#[Q] how to analyze these 4 cases?
+#POSSESIVE ADJECTIVES IN CLEAR FORM air beulaibh, air cùl, air son, mu choinneamh, ri taobh, os cionn, mu dheidhinn
+#VOWEL TWIST, GOOD POSSESIVE ADJECTIVES SHOULD RESOLVE THIS: as aonais
+#NA: an aghaidh, an dèidh
+#GA: a dh'ionnsaigh 
+
+#WHAT TO DO WITH THESE? NEEDED FOR DIRECT OBJECT PRONOUNS WITH VNs, SOME COMPOUND Ps, AND IN tha mi nam thidsear
+#[TODO] aig + mo = gam+L
+#[TODO] ann am + mo = nam+L
