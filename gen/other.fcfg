@@ -1,0 +1,31 @@
+### STATIC ###
+ABASE -> "gu_math" | "gu_doigheil" | "gu_dona"
+ADV[SUBCAT='path'] -> "sìos" | "suas" | "a-steach" | "a-mach"
+ADV[SUBCAT='time'] -> "an-uiridh"
+ADV[SUBCAT='place'] -> "shìos" | "shuas"
+PP -> P[CASE=?cs] NP[CASE=?cs]
+PP -> PP
+P[CASE=nom] -> "seach" | "eadar"
+P[CASE=dat] -> "aig" | "air" | "às"
+P[CASE=gen] -> "chun" | "thar" | "rè"
+P[CASE=dat, -DEF] -> "ann_an"
+P[CASE=dat, +DEF] -> "anns"
+P[CASE=dat, -DEF, +LEN] -> "ro" 
+P[CASE=dat, +DEF] -> "ron"
+PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
+PP[PREP=air] -> "orm" | "ort" | "air" | "oirre" | "oirnn" | "oirbh" | "orra"
+PP[PREP=do] -> "dhomh" | "dhut" | "dha" | "dhi" | "dhuinn" | "dhuibh" | "dhaibh"
+PP[PREP=le] -> "leam" | "leat" | "leis" | "leatha" | "leinn" | "leibh" | "leotha"
+PP[PREP=ri] -> "rium" | "riut" | "ris" | "rithe" | "ruinn" | "ruibh" | "riutha"
+PP[PREP=ann] -> "annam" | "annad" | "ann" | "innte" | "annainn" | "annaibh" | "annta"
+PP[PREP=bho] -> "bhuam" | "bhuat" | "bhuaidhe" | "bhuaidhpe" | "bhuainn" | "bhuaibh" | "bhuapa"
+PP[PREP=de] -> "dhiom" | "dhiot" | "dheth" | "dhith" | "dhinn" | "dhibh" | "dhiubh"
+PP[PREP=fo] -> "fodham" | "fodhad" | "fodha" | "foidhpe" | "fodhainn" | "fodhaibh" | "fodhpa"
+PP[PREP=ro] -> "romham" | "romhat" | "roimhe" | "roimpe" | "romhainn" | "romhaibh" | "rompa"
+PP[PREP=tro] -> "tromham" | "tromhad" | "troimhe" | "troimpe" | "tromhainn" | "tromhaibh" | "trompa"
+PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
+PP -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
+N[PREP=air] -> "faisg" | "seachad"
+N[PREP=ri] -> "còmhla" | "coltach"
+PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr] 
+PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr]

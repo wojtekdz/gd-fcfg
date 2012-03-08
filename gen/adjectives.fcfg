@@ -1,0 +1,40 @@
+### REGULAR ###
+A[SYL=mono] -> "beag" | "glic" | "òg" | "mòr" | "blàth"
+A[SYL=multi] -> "cudromach" | "spòrsail"
+### STATIC ###
+POSSADJ[CAGR=neu, +LEN] -> "mo" | "do"
+POSSADJ[CAGR=vf, +LEN] -> "m'" | "d'"
+POSSADJ[LEN=?l] -> "a"
+POSSADJ[CAGR=v, -LEN] -> "a_h-"
+POSSADJ[CAGR=neu] -> "ar" | "ur" | "an"
+POSSADJ[CAGR=lab] -> "am"
+POSSADJ[CAGR=v] -> "ar_n-" | "ur_n-" | "an_n-"
+AMOD[-LEN] -> 'beagan'
+AMOD[+LEN] -> 'glè'
+AP[CASE=?cs, GEN=?g, LEN=?l] -> ABASE[CASE=?cs, GEN=?g, LEN=?l]
+AP -> AMOD[LEN=?l] ABASE[LEN=?l]
+NAS -> "nas"
+AS -> "as"
+NABU[CAGR=neu, +LEN] -> "na_bu"
+NABU[CAGR=vf, +LEN] -> "na_b'"
+ABU[CAGR=neu, +LEN] -> "a_bu"
+ABU[CAGR=vf, +LEN] -> "a_b'"
+ABASE[CASE=nom, GEN=masc, -LEN] -> "beag" | "glic" | "cudromach" 
+ABASE[CASE=nom, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach"
+ABASE[CASE=dat, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach"
+ABASE[CASE=gen, GEN=masc, +LEN] -> "bhig" | "ghlic" | "chudromaich"
+ABASE[CASE=nom, GEN=fem, +LEN] -> "bheag" | "ghlic" | "chudromach"
+ABASE[CASE=dat, GEN=fem, +LEN] -> "bhig" | "ghlic" | "chudromaich"
+ABASE[CASE=gen, GEN=fem, -LEN] -> "bige" | "glice" | "cudromaich" | "spòrsaile"
+ABASE[CASE=?cs, GEN=pl] -> "beaga" | "glice" | "cudromach" | "spòrsail"
+ABASE[CASE=?cs, GEN=pl, +LEN] -> "bheaga" | "ghlice" | "chudromach" | "spòrsail"
+ACOMP -> "lugha" | "fhliche" | "àirde"
+ACOMP[-LEN] -> "glice" | "cudromaiche" | "teotha" | "motha"
+ACOMP[+LEN] -> "ghlice" | "chudromaiche" |"theotha" | "mhotha"
+REL[TENSE=present, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=future, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=past, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+REL[TENSE=conditional, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+### IRREGULAR ###
+A[DEG=pos] -> "teth" | "mòr"
+A[DEG=compsup] -> "teotha" | "motha" 

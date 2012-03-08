@@ -1,0 +1,39 @@
+### REGULAR ###
+V -> 'X'
+### STATIC ###
+DO -> "do" | "do_dh'"
+CHA[CAGR=neu] -> "cha"
+CHA[CAGR=v] -> "chan"
+CHA[CAGR=neu, +INTERROG] -> "nach"
+VI[TENSE=?t, SUBCAT=?s, +POL, +INTERROG] -> AN VD[TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG] -> CHA VD[TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, +INTERROG] -> NACH VD[TENSE=?t, SUBCAT=?s]
+VD[TENSE=pres, SUBCAT=subs, +POL, +INTERROG] -> "a_bheil"
+VI[TENSE=pres, SUBCAT=subs, +POL, -INTERROG] -> "tha"
+VD[TENSE=pres, SUBCAT=subs, -POL, -INTERROG] -> "eil"
+VD[TENSE=past, SUBCAT=subs] -> "robh"
+VI[TENSE=past, SUBCAT=subs] -> "bha"
+VI[TENSE=pres, SUBCAT=cop, +POL, -INTERROG] -> "'s" | "is"
+VI[TENSE=pres, SUBCAT=cop, -POL, -INTERROG] -> "chan"
+VI[TENSE=pres, SUBCAT=cop, +POL, +INTERROG] -> "an"
+VI[TENSE=pres, SUBCAT=cop, -POL, +INTERROG] -> "nach"
+VI[TENSE=past, SUBCAT=cop, +POL, -INTERROG] -> "bu" | "b'"
+VI[TENSE=past, SUBCAT=cop, -POL, -INTERROG] -> "cha_bu" | "cha_b'"
+VI[TENSE=past, SUBCAT=cop, +POL, +INTERROG] -> "am_bu" | "am_b'"
+VI[TENSE=past, SUBCAT=cop, -POL, +INTERROG] -> "nach_bu" | "nach_b'"
+VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "caochailidh" | "ataidh" | "nochdaidh" | "falbhaidh"
+VD[TENSE=fut, SUBCAT=intr] -> "at" | "nochd" | "falbh"
+VD[TENSE=fut, SUBCAT=intr, -LEN] -> "caochail"
+VD[TENSE=fut, SUBCAT=intr, +LEN] -> "chaochail"
+VI[TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "chaochail" | "dh'at" | "nochd" | "dh'fhalbh"
+VD[TENSE=past, SUBCAT=intr] -> DO VI[TENSE=past, SUBCAT=intr] | DO VI[TENSE=past, SUBCAT=monotr] | DO VI[TENSE=past, SUBCAT=ditr] | DO VI[TENSE=past, SUBCAT=imp]
+VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "chaochladh" | "dh'atadh" | "nochdadh" | "dh'fhalbhadh"
+VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG, PERS=1, NUM=sg] -> "chaochlainn" | "dh'atainn" | "nochdainn" | "dh'fhalbhinn"
+VD[TENSE=cond, SUBCAT=intr] -> "atadh" | "nochdadh"
+VD[TENSE=cond, SUBCAT=intr, -LEN] -> "caochladh" | "falbhadh"
+VD[TENSE=cond, SUBCAT=intr, +LEN] -> "chaochladh" | "fhalbhadh"
+VN -> "atadh" | "nochdadh"
+VN[-LEN] -> "caochladh" | "falbh"
+VN[+LEN] -> "chaochladh" | "fhalbh" 
+### IRREGULAR ###
+V -> 'X'

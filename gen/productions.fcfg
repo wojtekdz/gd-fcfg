@@ -1,0 +1,19 @@
+### STATIC ###
+% start ROOT
+ROOT -> S[-INTERROG, POL=?p] FS 
+ROOT -> S[+INTERROG, POL=?p] QM
+ROOT -> CIAMAR QREL QM
+FS -> "." | "!"
+QM -> "?"
+CIAMAR -> "ciamar"
+AREL[+POL] -> "a"
+AREL[-POL] -> "nach"
+REL -> AREL[POL=?p] S[POL=?p,-INTERROG]
+QREL -> AREL[+POL] VI[SUBCAT=subs, +POL, -INTERROG] NP[CASE=nom]
+AN -> "an"
+S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=?s]
+S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=intr] NP[CASE=nom]
+S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs] NP[CASE=nom] PRED 
+PRED[TYPE=ap] -> AP
+PRED[TYPE=pp] -> PP
+PRED[TYPE=np] -> NP
