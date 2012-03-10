@@ -16,6 +16,7 @@ import nltk.grammar
 import nltk.data
 import nltk.draw
 import gaelicProc
+import codecs
 from gaelicProc import *
 
 def parseNow():
@@ -25,25 +26,23 @@ def parseNow():
     Returns: none, prints out list of trees
 
     """
+    #[TODO] TRY AND FIX THIS WHEN THESIS IS IN: THIS ATTEMPTS TO CREATE A FEATURE GRAMMAR IN UTF8 - BUT IS GIVING PARSE ERRORS IN NLTK.GRAMMAR
+    #grammar = nltk.grammar.parse_fcfg(codecs.open('gaelic.fcfg', 'rb', encoding='utf8').read())
 
+    #THIS WORKS BUT WITHOUT THE UTF8 ENCODING
     grammar = nltk.data.load('file:gaelic.fcfg')
     cp = nltk.FeatureChartParser(grammar)
 
-    #[DEL] to check how these things line up
-    print grammar
+    #print grammar
 
     sentences = gaelicProc.preprocessSentences('sentences.txt')
-
 
     for sentence in sentences:
         print '\n' + gaelicProc.postprocessSentences(sentence) #print out reverted orthographic form of the sentence
         trees = cp.nbest_parse(sentence.split())
-        if not trees: print 'CHA GHABH AN ROSGRANN PARSADH'
+        if not trees: print 'CHA GHABH AN ROSGRANN PARSADH.'
         else:
             for tree in trees:
-                #[TODO] how to print a Tree in utf8?
-                #THIS DOES NOT WORK BECAUSE IT CAN ONLY ENCODE A STRING: print unicode(tree, 'utf8')
-                #THIS DOES NOT WORK BECAUSE Tree OBJECT DON'T HAVE A METHOD ENCODE: print tree.encode('utf8')
                 print tree
                 #print tree.draw()
 

@@ -1,0 +1,32 @@
+### CLAUSES/PHRASES
+ROOT
+FS
+QM
+S[+/-INTERROG, +/- POL]
+
+### QWORDS
+QCIAMAR
+QCO
+QDE
+QCAIT
+
+### VERBS
+VI [TENSE=?t, SUBCAT=?s, +/-POL, +/- INTERROG]
+VD [TENSE=?t, SUBCAT=?s, +/-LEN]
+
+### NOUNS
+
+
+### ADJECTIVES
+AMOD[-/+LEN] #Adjectival Modifier
+APOS[CASE=?c, GEN=?g, +/-LEN] #Positive Degree of Adjective
+ACOMP[+/-LEN] #Comparative/Superlative Degree of Adjective
+NAS # [?]
+AS # [?]
+NABU[+/-CONTR, +LEN] #[?]
+ABU[+/-CONTR, +LEN] #[?]
+
+### THE REST
+
+#FEATURE: CAGR - CONTACT AGREEMENT
+CAGR=neu|vf|v|lab|h|dent|bheil

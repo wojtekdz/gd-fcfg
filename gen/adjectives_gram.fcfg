@@ -1,0 +1,18 @@
+### STATIC ###
+POSSADJ[CAGR=neu, +LEN] -> "mo" | "do"
+POSSADJ[CAGR=vf, +LEN] -> "m'" | "d'"
+POSSADJ[LEN=?l] -> "a"
+POSSADJ[CAGR=v, -LEN] -> "a_h-"
+POSSADJ[CAGR=neu] -> "ar" | "ur" | "an"
+POSSADJ[CAGR=lab] -> "am"
+POSSADJ[CAGR=v] -> "ar_n-" | "ur_n-" | "an_n-"
+AMOD[-LEN] -> 'beagan'
+AMOD[+LEN] -> 'glè'
+AP[CASE=?cs, GEN=?g, LEN=?l] -> ABASE[CASE=?cs, GEN=?g, LEN=?l]
+AP -> AMOD[LEN=?l] ABASE[LEN=?l]
+NAS -> "nas"
+AS -> "as"
+NABU[CAGR=neu, +LEN] -> "na_bu"
+NABU[CAGR=vf, +LEN] -> "na_b'"
+ABU[CAGR=neu, +LEN] -> "a_bu"
+ABU[CAGR=vf, +LEN] -> "a_b'"

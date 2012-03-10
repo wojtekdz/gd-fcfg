@@ -1,10 +1,11 @@
 ### STATIC ###
-ABASE -> "gu_math" | "gu_doigheil" | "gu_dona"
-ADV[SUBCAT='path'] -> "sìos" | "suas" | "a-steach" | "a-mach"
-ADV[SUBCAT='time'] -> "an-uiridh"
-ADV[SUBCAT='place'] -> "shìos" | "shuas"
+GU -> "gu"
+ADV[TYPE=pp] -> GU ABASE[CASE=nom, -LEN]
+PRED[TYPE=ap] -> "gu_math" | "gu_doigheil"
+ADV[TYPE=path] -> "sìos" | "suas" | "a-steach" | "a-mach"
+ADV[TYPE=place] -> "shìos" | "shuas" | "a-staigh" | "a-muigh"
+ADV[TYPE=time] -> "an-uiridh" | "an-diugh" | "an-dè"
 PP -> P[CASE=?cs] NP[CASE=?cs]
-PP -> PP
 P[CASE=nom] -> "seach" | "eadar"
 P[CASE=dat] -> "aig" | "air" | "às"
 P[CASE=gen] -> "chun" | "thar" | "rè"
@@ -24,7 +25,7 @@ PP[PREP=fo] -> "fodham" | "fodhad" | "fodha" | "foidhpe" | "fodhainn" | "fodhaib
 PP[PREP=ro] -> "romham" | "romhat" | "roimhe" | "roimpe" | "romhainn" | "romhaibh" | "rompa"
 PP[PREP=tro] -> "tromham" | "tromhad" | "troimhe" | "troimpe" | "tromhainn" | "tromhaibh" | "trompa"
 PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
-PP -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
+PP[PREP=mu] -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
 N[PREP=air] -> "faisg" | "seachad"
 N[PREP=ri] -> "còmhla" | "coltach"
 PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr] 

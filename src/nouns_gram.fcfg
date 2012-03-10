@@ -1,0 +1,115 @@
+# ##########
+# PRODUCTIONS FOR NOUNS
+# ##########
+
+### BASIC NPs
+
+#JUST A SINGLE INDEFINITE NOUN, IT WILL NEVER LENITE ON ITS OWN
+#[Q] do chù?
+NP[CAGR=?c, CASE=?cs, -LEN, -DEF] -> N[CAGR=?c, CASE=?cs]
+
+#INDEFINITE NOUN + ADJECTIVE
+#[Q] does this NP need LEN=?l or will it always be -LEN?
+NP[CAGR=?c, CASE=?cs, LEN=?l, -DEF] -> N[CAGR=?c, CASE=?cs, GEN=?g] AP[CAGR=?c, CASE=?cs, GEN=?g]
+
+#BASIC DEFINITE NOUN ...AND WITH DEMONSTRATIVE ...AND AS AN aig-POSSESIVE PHRASE
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] 
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] DEMO
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] PP[PREP=aig]
+
+#BASIC DEFINITE NOUN + ADJECTIVE ...AND WITH DEMONSTRATIVE ...AND AS AN aig-POSSESIVE PHRASE
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] AP[CASE=?cs, GEN=?g]
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] AP[CASE=?cs, GEN=?g] DEMO
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] AP[CASE=?cs, GEN=?g] PP[PREP=aig]
+
+#CASE-SPECIFIC NPs
+#[TODO] ONLY dat OR nom AS FIRST NOUN?
+NP[CASE=gen, +DEF] -> N[LEN=?l, CAGR=?c] NP[CASE=gen] | P[CASE=gen] NP[CASE=gen]
+NP[CASE=dat] -> P[CASE=dat, LEN=?l] NP[CASE=dat, LEN=?l]
+
+#ALTERNATIVES FOR NPs
+#[TODO] PRONOUNS AS NPs... LET ME DWELL ON THAT IDEA...
+NP[CAGR=?c, CASE=?cs] -> PRON | PROP[CAGR=?c, CASE=?cs]
+
+### VOCATIVE CASE
+
+#[TOWRITE] LEAVING OUT plurals in the vocative case, with the exception of a few hard-coded frequently occurring
+#[TODO] implement vocative in wider phrase structure
+#IS VOCATIVE CASE A CASE? OR IS IT AN INTERJECTION? IT IS!
+#[TODO] TREAT THEM AS VOC, BECAUSE THEY DON'T COMBINE WITH VERBS, NOUNS, AND GENERALLY DON'T PARTICIPATE IN THE SYNTAX
+#JUST SAY THAT IT CAN BE AT THE BEGINNING OR AT THE END OF AN S, AND THAT'S IT. - KIND OF LIKE "TRUE" ADVERBS
+S -> S VOC | VOC S
+VOC -> VOCPART VOC | VOC
+VOCPART -> "a"
+VOC -> "bhalaich" | "ghille" | "chlanna" | "bhalaichibh" | "fhearibh" | "mhnathan" | "dhaoine-uaisle"
+
+###PROPER NOUNS
+#[TOWRITE] LEAVE PROPER NOUNS OUT AS NPs AND SAY WHY
+#if noun is slender or ends in a vowel, and is unlenitable - it does not inflect
+NP[GEN=fem] -> "eilidh"
+NP[CASE=nom, GEN=fem] -> "eilidh"
+NP[CASE=nom, GEN=masc] -> "mìcheal"
+
+NP[CASE=gen, GEN=fem] -> "eilidh"
+NP[CASE=gen, GEN=masc] -> "mìcheal"
+
+NP[CASE=nom, GEN=fem] -> "eilidh"
+NP[CASE=nom, GEN=masc] -> "mìcheal"
+
+#[TODO] INDICATE THAT FOR HOMORGANIC BLOCKING IS NOT EASY WITH THE CURRENT PARSER, DEMONSTRATE THE PROBLEM, OFFER SOLUTIONS BASED ON PREPROCESSING
+
+### DETERMINERS
+#[TODO] IMPLEMENT GEN=pl here as well, this will simplify things
+#[Q] DO THE FEATURE VARIABLES NEED TO BE SPECIFIED ON BOTH SIDES OF THE PRODUCTION IN THIS CASE?
+
+DET[CAGR=?c, LEN=?l] -> POSSADJ[CAGR=?c, LEN=?l]
+DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] -> ART[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l]
+
+#[TOWRITE] LEN1 AND LEN2 FROM CARNE IS NOT THE BEST SOLUTION FOR MY SYSTEM?
+
+### NOMINATIVE SINGULAR
+#[TOWRITE] REALLY GOOD THAT GAELIC ALWAYS HAS THE HYPHENS WITH THESE ARTICLE PREFIXES
+ART[CAGR=neu, CASE=nom, GEN=masc, -LEN] -> "an"
+ART[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "am"
+ART[CAGR=v, CASE=nom, GEN=masc, -LEN] -> "an_t-"
+#[Q][TODO] AGR ON +LEN OR SIMPLY FROM THE CASE/GENDER AGR?
+ART[CAGR=neu, CASE=nom, GEN=fem, +LEN] -> "a'"
+ART[CAGR=dent, CASE=nom, GEN=fem, -LEN] -> "an"
+ART[CAGR=vf, CASE=nom, GEN=fem, -LEN] -> "an"
+
+### DATIVE SINGULAR
+#[Q] THIS IS NOT GOOD - IT WILL GIVE ME A SEPARATE VALID TREE WITH A FEM ARTICLE, 
+#AND WITH A MASC ARTICLE, REGARDLESS OF THE GENDER OF THE NOUN? WOULD NEED GEN=?g BUT THEN WOULD MATCH SINGULAR ARTICLES WITH PLURAL 
+ART[CAGR=neu, CASE=dat, GEN=fem, +LEN] -> "a'"
+ART[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "a'"
+ART[CAGR=s, CASE=dat, GEN=fem] -> "an_t-"
+ART[CAGR=s, CASE=dat, GEN=masc] -> "an_t-"
+
+ART[CAGR=neu, CASE=gen, GEN=masc] -> "a'"
+
+ART[CAGR=vf, CASE=nom, GEN=fem] -> "a'"
+ART[CAGR=vf, CASE=dat, GEN=?g] -> "a'"
+ART[CAGR=vf, CASE=gen, GEN=masc] -> "a'"
+
+ART[CASE=gen, GEN=masc] -> "na"
+
+#[Q] THIS IS A PROBLEM IT WILL LICENCE 'na' WITH masc.sg. NOUNS AS WELL?
+ART[CAGR=neu,CASE=nom, GEN=?g] -> "na"
+ART[CAGR=neu,CASE=dat, GEN=?g] -> "na"
+ART[CAGR=v,CASE=nom, GEN=?g] -> "na_h-"
+ART[CAGR=v,CASE=dat, GEN=?g] -> "na_h-"
+
+ART[CAGR=neu, CASE=gen, GEN=pl] -> "nan" 
+ART[CAGR=lab, CASE=gen, GEN=pl] -> "nam"
+
+DEMO -> "seo" | "sin" | "siud" | "ud"
+
+#OTHER NOMINALS
+
+PRON -> "mi" | "mise"
+PRON -> "thu" | "thusa"
+PRON -> "e" | "esan"
+PRON -> "i" | "ise"
+PRON -> "sinn" | "sinne"
+PRON -> "sibh" | "sibhse"
+PRON -> "iad" | "iadsan"

@@ -1,31 +1,30 @@
-#[TODO] KEEP DICTIONARIES, BUT CONVERT THEM TO LISTS AND SORT THEM BEFORE WRITING
-
 # ##########
-# OTHER LEXICAL PRODUCTIONS
+# OTHER PRODUCTIONS
 # ##########
 
-#[TODO] Ciamar_a introduces a relative clause, think whether introduce a an S[+REL]
-#QWord[FORM=independent] -> "ciamar_a" | "ciamar" | "dè"
-#QWord[FORM=dependent] -> "càit_a" | "am" | "an"
+### ADVERBS
 
-#[TODO] HOW DOES THIS FIT INTO THE ADJECTIVE SYSTEM NOW? I THINK THIS SHOULD BE REWRITTEN TO ALLOW FOR NORMAL FORMATION OF ADVERBS?
-#THINGS TO THINK ABOUT:
-# - overlap with PPs? so are adverbs another type of PP?
-ABASE -> "gu_math" | "gu_doigheil" | "gu_dona"
-#PATH ADVERBS
-ADV[SUBCAT='path'] -> "sìos" | "suas" | "a-steach" | "a-mach"
-ADV[SUBCAT='time'] -> "an-uiridh"
-#"ann" is a prep in this case, not an adverb - this is a question of semantics
-ADV[SUBCAT='place'] -> "shìos" | "shuas"
+#[TODO] HOW TO INTERGRATE ADV INTO PHRASE STRUCTURE?
+
+GU -> "gu"
+ADV[TYPE=pp] -> GU ABASE[CASE=nom, -LEN]
+
+#DIRECT PREDS SO THEY CAN COMBING WITH SUBSTANTIVE TO BE
+PRED[TYPE=ap] -> "gu_math" | "gu_doigheil"
+
+ADV[TYPE=path] -> "sìos" | "suas" | "a-steach" | "a-mach"
+ADV[TYPE=place] -> "shìos" | "shuas" | "a-staigh" | "a-muigh"
+
+#[TODO] how to resolve tense on adverbs?
+ADV[TYPE=time] -> "an-uiridh" | "an-diugh" | "an-dè"
+
 
 ### PREPOSITIONS
 #[TODO] TEST THIS, AND add DEF=?d
 PP -> P[CASE=?cs] NP[CASE=?cs]
-PP -> PP
 
 ## SIMPLE ACCUSATIVE
 P[CASE=nom] -> "seach" | "eadar"
-#[TOWRITE] LEAVING OUT LENITING EADAR AS A VERY RARE CASE
 
 ## SIMPLE DATIVE
 #[TOWRITE] PREPOSITIONS NEED TO ENFORCE CASE
@@ -46,29 +45,20 @@ P[CASE=dat, -DEF, +LEN] -> "ro"
 #JUST SAYING N[CASE=dat] WILL NOT LENITE THE LEN
 P[CASE=dat, +DEF] -> "ron"
 
-### INFLECTED PREPOSITIONS
-
-#[TODO] MIX THESE UP SO THAT THEY AGREE IN GENDER AND PERSON WITH PRONOUNS - or perhaps not needed
-#ACCORDING TO PATTERN: PRON[FORM=1_sg] -> "mi" | "mise"
-#[TOWRITE] not added [+/- EMPH] because it's semantic
-#[TOWRITE] THESE FUNCION AS PPs, WHICH IS NOT THE WAY THEY ARE DESCRIBED IN TRADITIONAL PEGAGOGICAL GRAMMARS
-
+### PREPOSITIONAL PRONOUNS
 PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
 PP[PREP=air] -> "orm" | "ort" | "air" | "oirre" | "oirnn" | "oirbh" | "orra"
 PP[PREP=do] -> "dhomh" | "dhut" | "dha" | "dhi" | "dhuinn" | "dhuibh" | "dhaibh"
 PP[PREP=le] -> "leam" | "leat" | "leis" | "leatha" | "leinn" | "leibh" | "leotha"
-
 PP[PREP=ri] -> "rium" | "riut" | "ris" | "rithe" | "ruinn" | "ruibh" | "riutha"
 PP[PREP=ann] -> "annam" | "annad" | "ann" | "innte" | "annainn" | "annaibh" | "annta"
 PP[PREP=bho] -> "bhuam" | "bhuat" | "bhuaidhe" | "bhuaidhpe" | "bhuainn" | "bhuaibh" | "bhuapa"
 PP[PREP=de] -> "dhiom" | "dhiot" | "dheth" | "dhith" | "dhinn" | "dhibh" | "dhiubh"
-
 PP[PREP=fo] -> "fodham" | "fodhad" | "fodha" | "foidhpe" | "fodhainn" | "fodhaibh" | "fodhpa"
 PP[PREP=ro] -> "romham" | "romhat" | "roimhe" | "roimpe" | "romhainn" | "romhaibh" | "rompa"
 PP[PREP=tro] -> "tromham" | "tromhad" | "troimhe" | "troimpe" | "tromhainn" | "tromhaibh" | "trompa"
 PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
-
-PP -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
+PP[PREP=mu] -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
 
 ### COMPOUND PREPOSITIONS
 ## P-FINAL

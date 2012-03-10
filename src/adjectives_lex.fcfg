@@ -1,0 +1,52 @@
+#DESIRED OUTPUT FOR ATTRIBUTIVE ADJECTIVES AND HIGHER DEGREES
+
+#ABASE[-LEN] -> "beag" | "glic" | "cudromach" | "teth" | "mòr"
+#ABASE[+LEN] -> "bheag" | "ghlic" | "chudromach" | "theth" | "mhòr"
+#IF IT DOES NOT LENITE, IT NEEDS TO BE UNDERSPECIFIED
+#ABASE -> "spòrsail"
+
+#------------------OUTPUT-PARADIGM---------------
+#[TODO] REVISE THIS AGAIN BEFORE CODING UP ADJECTIVE BUILD FUNCTION
+#[TOWRITE] WHY DO I NEED TO OVERTLY SPECIFY LEN HERE? IF YOU CAN SAY "AN CÙ GLÈ MHÒR" YOU DO NEED IT, OTHERWISE THE ONLY ADJ THAT CAN +/-LEN IS MASC.SING.DAT.
+#[TODO] YOU COULD DERIVE SOME FORMS FROM ABASE - MAYBE HAVE A +/-SLEN FEATURE
+
+#[TODO] UNLENITABLES GO INTO:
+#ABASE with LEN underspecified
+#ABASE[CASE=?cs, GEN=pl] with final vowel
+#ACOMP with LEN underspecified
+
+ABASE -> "sgìth"
+ABASE[-LEN] -> "dona"
+ABASE[+LEN] -> "dhona"
+
+ABASE[CASE=nom, GEN=masc, -LEN] -> "beag" | "glic" | "cudromach" | "mòr"
+#[Q] WHY DOES THIS NEED TO BE IN? I CAN'T SEE A REASON FOR IT AND IT'S GIVING ME INCORRECT PARSES...
+#[ANS] AN CÙ GLÈ MHÒR
+#ABASE[CASE=nom, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
+
+ABASE[CASE=dat, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
+ABASE[CASE=gen, GEN=masc, +LEN] -> "bhig" | "ghlic" | "chudromaich" | "mhòir"
+
+ABASE[CASE=nom, GEN=fem, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
+ABASE[CASE=dat, GEN=fem, +LEN] -> "bhig" | "ghlic" | "chudromaich" | "mhòir"
+#NON-LENITED ADJECTIVES ONLY NEED TO APPEAR HERE IN ADDITION TO AN UNDERSPECIFIED ABASE
+ABASE[CASE=gen, GEN=fem, -LEN] -> "bige" | "glice" | "cudromaich" | "spòrsaile" | "mòire"
+
+#[TODO] ACCOUNT FOR THE SLENDERIZATION OF THE ADJECTIVE IN THE GEN.PL. - acknowledge, move on, or sort another A[+SLEN_FIN]?
+ABASE[CASE=?cs, GEN=pl] -> "beaga" | "glice" | "cudromach" | "spòrsail" | "sgìthe" | "mòra"
+ABASE[CASE=?cs, GEN=pl, +LEN] -> "bheaga" | "ghlice" | "chudromach" | "spòrsail" | "mhòra"
+
+#BOTH F- INITIALS and UNLENITABLES HAVE LENITION UNDERSPECIFIED
+ACOMP -> "lugha" | "fhliche" | "àirde" | "sgìthe"
+ACOMP[-LEN] -> "glice" | "cudromaiche" | "teotha" | "motha" | "miosa"
+ACOMP[+LEN] -> "ghlice" | "chudromaiche" |"theotha" | "mhotha" | "mhiosa"
+#-------------------------------------------------
+
+#NAx AND Ax FORMS WOULD NEED TO BE SPLIT FOR SEMANTIC REASONS
+#RELTYPE IS THERE TO ELIMINATE NORMAL RELATIVE PHRASES E.G. THA MI A RINN THU vs THA MI NAS GLICE
+#[Q] HOW DOES THIS COMPARE TO REGULAR RELATIVE PHRASES?
+REL[TENSE=present, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=future, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
+
+REL[TENSE=past, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+REL[TENSE=conditional, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]

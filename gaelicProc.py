@@ -17,7 +17,7 @@ import codecs
 import gaelicOps
 
 prespace_tokens = ["!", ".", "?"] #these strings will be preprocessed to separate them as tokens with a space BEFORE them
-postspace_tokens = ["do dh'", "de dh'", "n-", "h-", "t-"] #and these with a space AFTER them
+postspace_tokens = ["n-", "h-", "t-"] #and these with a space AFTER them
 
 def stripList(lst):
     """Remove comments, blank lines etc. from a list of productions read from a file
@@ -25,7 +25,7 @@ def stripList(lst):
     """
     lst_stripped = []
     for item in lst:
-        if not(item.startswith('#') or item.startswith('\n') or len(item) == 0): #or item.startswith('\xef')
+        if not(item.startswith('#') or item.startswith('\r\n') or item.startswith('\n') or len(item) == 0): #the \r\n is for non-Win filesystems
             lst_stripped = lst_stripped + [item]
     return lst_stripped
 
@@ -106,29 +106,16 @@ def buildAdjectives(productions):
         Returns: a larger list of more forms
     """
     print "Processing adjectives..."
+    #input pattern
+
     #[Q] does this pseudocode seem reasonable?
     #create a 'productions' dictionary with items {a_*}:{productions list}
-    a_len = 'A[+LEN] ->'
-    a_nom_masc = 'A[CASE=nom, GEN=masc]'
-    a_dat_masc = 'A[CASE=dat, GEN=masc]'
-    a_gen_masc = 'A[CASE=gen, GEN=masc]'
-    a_nom_fem = 'A[CASE=nom, GEN=fem]'
-    a_dat_fem = 'A[CASE=dat, GEN=fem]'
-    a_gen_fem = 'A[CASE=gen, GEN=fem]'
-    a_all_pl = 'A[CASE=?c, GEN=pl]'
 
     #detect the two different list elements: monosyllabic, multisyllabic (according to SYL variable) see regular_adjectives.fcfg - certainly move this to compileGrammar(), and pass mono as T/F, with the argument being a string
     #split the strings into an 'adjectives' list according to " | " - abstract this to a function later on
     #for adjective in adjectives:
 
-        #productions['a_nom_masc'] =
-        #productions['a_dat_masc'] =
-        #productions['a_gen_masc'] =
-        #productions['a_nom_fem'] =
-        #productions['a_dat_fem'] =
-        #productions['a_gen_fem'] =
-        #productions['a_all_pl'] =
-        #if mono - addFinalVowel(adjective) in productions['a_gen_masc'], productions['a_gen_fem'], productions['a_all_pl']
+    #if mono - addFinalVowel(adjective) in productions['a_gen_masc'], productions['a_gen_fem'], productions['a_all_pl']
     #concatenate lists into strings with the " | " separator - abstract this to a function later on
     #return the list
 
@@ -200,7 +187,7 @@ def generateMultiwords():
     grammar = stripList(grammar)
     multiwords = []
 
-    multiword_token = re.compile(ur'[\w|\\\\|-]*_[\w|\\\\|-]*', re.UNICODE) #[TODO] there's something wrong with the number of escapes and Rs and Us in this, but it seems to work
+    multiword_token = re.compile(u"[\w\-']*_[\w\-']*", re.UNICODE) #[TODO] there's something wrong with the number of escapes and Rs and Us in this, but it seems to work
     for line in grammar:
         match = multiword_token.findall(line)
         if match:
@@ -213,8 +200,9 @@ def generateMultiwords():
         print>>fw, word #each list item on new line
     fw.close()
 
-    print 'Extracted multiwords: '
-    print multiwords #[DEL] just here for a quick check in the interpreter
+    #just here for a quick check in the interpreter
+    #print 'Extracted multiwords: '
+    #print multiwords
 
 
 #[TODO] REFACTOR THE REWRITING RULES TO BE REVERSIBLE
@@ -230,9 +218,7 @@ def preprocessSentences(file_name):
     sentences - list of lowercased strings, with . and ? separated with spaces
 
     """
-    f1 = open(file_name , 'r') #read in the default encoding
-    # [DEL] the line below reads the file in in utf8, see corresponding line 265
-    #f1 = codecs.open(file_name , 'r', encoding='utf8')
+    f1 = open(file_name , 'r') #read in the default encoding, UTF8 does not work with grammars loaded using nltk.data.load()
     raw_sentences = f1.readlines()
     f1.close()
 
@@ -240,16 +226,15 @@ def preprocessSentences(file_name):
 
     raw_sentences = stripList(raw_sentences) #remove comments, line breaks etc.
 
-    print 'before preprocessing: ' #[DEL] this is the line which outputs preprocessed sentences to check if the spaces match up
-    print raw_sentences
+    #outputs sentences before preprocessing to check if the spaces match up
+    #print 'before preprocessing: '
+    #print raw_sentences
 
     for line in raw_sentences:
             #lowercase, delete line breaks, separate QMs and FSs with space so they get treated by the parser as words
-			
-            line = line.rstrip('\r\n').lower()
 
-            #for token in spaced_token:
-            #line = line.replace('.', ' .').replace('?', ' ?').rstrip('!')
+            #[BUG] ON SOME PC PYTHON SHELLS THIS SHIFTS THE BYTES IN THE STRING AND MISMATCHES IN THE GRAMMAR, THE SOLUTION WOULD BE TO READ THE GRAMMAR IN IN UTF8, OR CHANGE THE ENCODING OF ALL THE FILES
+            line = line.strip('\r\n').lower()
 
             #[TODO] NOT VERY PRETTY BUT QUICK, BEST DO THIS WITH REGEX
             #separate tokens with spaces
@@ -264,9 +249,7 @@ def preprocessSentences(file_name):
                 line = line + ' .'
 
             #link multiword tokens with underscores
-            f2 = codecs.open('multiwords.txt' , 'r')
-            #[DEL] see corresponding line 232
-            #f2 = codecs.open('multiwords.txt' , 'r', encoding='utf8')
+            f2 = codecs.open('multiwords.txt' , 'r') #read in the default encoding, to match the encoding of the sentence file
             multiwords = f2.readlines()
             f2.close()
             for word in multiwords:
@@ -275,8 +258,11 @@ def preprocessSentences(file_name):
                     wordUnderscored = word.replace(' ', '_')
                     line = line.replace(word, wordUnderscored)
             sentences.append(line)
-    print 'preprocessed: ' #[DEL] this is the line which outputs preprocessed sentences to check if the spaces match up
-    print sentences
+
+    #this is the line which outputs preprocessed sentences to check if the spaces match up
+    #print 'preprocessed: '
+    #print sentences
+
     return sentences
 #END preprocessSentences()
 

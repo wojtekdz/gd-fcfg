@@ -1,7 +1,39 @@
-Tha mi gu math
-Chan eil mi gu math
-Ciamar a tha mi gu math?
-Ciamar a tha mi?
+#HAVE NON-SENSICAL SENTENCES TO ILUSTRATE THE SYNTAX
+
+#Tha an cù agam ann
+
+Tha fios agam
+
+#Tha am bò agam air a' bhòrd
+#Tha a' bò agam air a' bhòrd
+
+#Tha bòrd ann
+#Tha bòrd nam bò ann
+#Tha bòrd nan bò ann
+
+#Tha cù mòr ann anns a' choille
+#Tha cù mòr ann sa choille
+
+#Tha an cù mòr aice
+
+
+#THIS IS THE NEXT CHALLENGE
+#[TOWRITE] A DISCONTINUOUS DEPENDENCY, GAELIC HAS LOTS OF THESE, BUU THEY ARE VERY DIFFICULT TO DEAL IN A FCFG
+#Tha fios agam gu bheil fios agad
+#I.E. THA FIOS GU BHEIL FHIOS AGAD AGAM... - another example, 'S toil leam snàmh -> 'S [NP toil snàmh] leam...
+
+#GO WITH THIS AS 
+#Thuirt mi gu bheil...
+
+#NEXT
+#Tha mi a' dol dhachaigh
+
+# OK - Tha cù agam
+
+#Tha mi gu math
+#Chan eil mi gu math
+#Ciamar a tha mi gu math?
+#Ciamar a tha mi?
 
 #ANALYSE THIS APPROACH VS NLTK SLASH CATEGORIES
 #Tha
@@ -10,7 +42,7 @@ Ciamar a tha mi?
 #Ciamar a tha?
 
 #[Q] THE PROBLEM PROBLEM WITH THE PP RECURSION HERE!
-Tha cù ann!
+#Tha cù ann!
 
 #TEST DATIVE
 #Tha cù air a' bhòrd.

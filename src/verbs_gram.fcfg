@@ -1,0 +1,56 @@
+# ##########
+# PRODUCTIONS FOR VERBS
+# ##########
+
+#[TODO] CONSIDER BASE FORMS - VBASE, NBASE, ABASE
+
+#[Q] what about "sentential verbs" thuirt thu gu bheil thu tinn, or "dative verbs" thoir seo dhan a' bhalach
+#[TODO] how to resolve the clausal complement? [A] AN sBar, COMPPHRASE, S', SUBCLAUSE ETC.
+
+#[TOWRITE] VERB FORMS WILL NEED TO BE DIFFERENT PART OF SPEECH BECAUSE THEY HAVE DIFFERENT FEATURE STRUCTURES - EXPLAIN THIS IN THESIS
+#VI [TENSE=?T, SUBCAT=?S, +/-POL, +/-INTERROG]
+#VD [TENSE=?t, SUBCAT=?s, +/-LEN]
+
+#[TOWRITE] HANDLING REDUPLICATION AS MULTIWORDS, SAME AS H- AND N- ARTICLES, IF IT IS AN ARTIFACT OF THE CATEGORY 
+DO -> "do"
+#[TOWRITE] THE ROLE OF CAGR
+#CAGR=bheil is quite specific, but also write about feature structures, and how they could be used to construct more complex CAGRs - for example phonological and syntactic agreement
+QAN[CAGR=neu] -> "an"
+QAN[CAGR=bheil] -> "a"
+
+CHA[CAGR=neu] -> "cha"
+CHA[CAGR=v] -> "chan"
+
+NACH[CAGR=neu] -> "nach"
+
+VI[TENSE=?t, SUBCAT=?s, +POL, +INTERROG] -> QAN[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG] -> CHA[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, +INTERROG] -> NACH[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s]
+
+#[Q] SHOULD IRREGULAR VERBS OR SUBSTANTIVE TO BE BE DIFFERENT PARTS OF SPEECH AS WELL?
+#SUBSTANTIVE TO BE...
+VD[CAGR=bheil, TENSE=pres, SUBCAT=subs, +POL, +INTERROG] -> "bheil"
+#[TOWRITE] DO VIs need CAGR? do they agree with anything?
+VI[TENSE=pres, SUBCAT=subs, +POL, -INTERROG] -> "tha"
+#[TOWRITE] little glitch here, eil can be both interrog (with nach) and not (with chan) - what passes the feature up? the S is ok!
+VD[CAGR=v, TENSE=pres, SUBCAT=subs, -POL, -INTERROG] -> "eil"
+
+#SUBSTANTIVE to be PAST TENSE
+#POLARITY IS UNDERSPECIFIED FOR cha robh AND nach robh AND an robh
+VD[TENSE=past, SUBCAT=subs] -> "robh"
+VI[TENSE=past, SUBCAT=subs] -> "bha"
+#SUPPLETIVE FORMS SO NOT DERIVED FROM EACH OTHER
+
+#[Q] SHOULD THE COPULA BE A DIFFERENT PART OF SPEECH?
+VI[TENSE=pres, SUBCAT=cop, +POL, -INTERROG] -> "'s" | "is"
+#[Q] THESE WOULD EITHER HAVE TO BE ZERO-VALUE OR THE COPULAR SENTENCE WOULD HAVE TO HAVE A SEPARATE PARADIGM
+
+#[Q] CONSIDER HOW TO DERIVE PARTICLES AND COPULAS FROM CBASE(?) FORMS
+VI[TENSE=pres, SUBCAT=cop, -POL, -INTERROG] -> "chan"
+VI[TENSE=pres, SUBCAT=cop, +POL, +INTERROG] -> "an"
+VI[TENSE=pres, SUBCAT=cop, -POL, +INTERROG] -> "nach"
+
+VI[TENSE=past, SUBCAT=cop, +POL, -INTERROG] -> "bu" | "b'"
+VI[TENSE=past, SUBCAT=cop, -POL, -INTERROG] -> "cha_bu" | "cha_b'"
+VI[TENSE=past, SUBCAT=cop, +POL, +INTERROG] -> "am_bu" | "am_b'"
+VI[TENSE=past, SUBCAT=cop, -POL, +INTERROG] -> "nach_bu" | "nach_b'"
