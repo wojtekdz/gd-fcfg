@@ -2,18 +2,19 @@
 ABASE -> "sgìth"
 ABASE[-LEN] -> "dona"
 ABASE[+LEN] -> "dhona"
-ABASE[CASE=nom, GEN=masc, -LEN] -> "beag" | "glic" | "cudromach" | "mòr"
-ABASE[CASE=dat, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
-ABASE[CASE=gen, GEN=masc, +LEN] -> "bhig" | "ghlic" | "chudromaich" | "mhòir"
-ABASE[CASE=nom, GEN=fem, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
-ABASE[CASE=dat, GEN=fem, +LEN] -> "bhig" | "ghlic" | "chudromaich" | "mhòir"
-ABASE[CASE=gen, GEN=fem, -LEN] -> "bige" | "glice" | "cudromaich" | "spòrsaile" | "mòire"
+ABASE[CASE=rad, GEN=masc, -LEN] -> "beag" | "glic" | "cudromach" | "mòr"
+ABASE[CASE=rad, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
+ABASE[CASE=prep, GEN=masc, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
+ABASE[CASE=poss, GEN=masc, +LEN] -> "bhig" | "ghlic" | "chudromaich" | "mhòir"
+ABASE[CASE=rad, GEN=fem, +LEN] -> "bheag" | "ghlic" | "chudromach" | "mhòr"
+ABASE[CASE=prep, GEN=fem, +LEN] -> "bhig" | "ghlic" | "chudromaich" | "mhòir"
+ABASE[CASE=poss, GEN=fem, -LEN] -> "bige" | "glice" | "cudromaich" | "spòrsaile" | "mòire"
 ABASE[CASE=?cs, GEN=pl] -> "beaga" | "glice" | "cudromach" | "spòrsail" | "sgìthe" | "mòra"
 ABASE[CASE=?cs, GEN=pl, +LEN] -> "bheaga" | "ghlice" | "chudromach" | "spòrsail" | "mhòra"
 ACOMP -> "lugha" | "fhliche" | "àirde" | "sgìthe"
 ACOMP[-LEN] -> "glice" | "cudromaiche" | "teotha" | "motha" | "miosa"
 ACOMP[+LEN] -> "ghlice" | "chudromaiche" |"theotha" | "mhotha" | "mhiosa"
-REL[TENSE=present, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
-REL[TENSE=future, RELTYPE=adj] -> NAS ACOMP | AS ACOMP
-REL[TENSE=past, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
-REL[TENSE=conditional, RELTYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+REL[TENSE=present, TYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=future, TYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=past, TYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+REL[TENSE=conditional, TYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]

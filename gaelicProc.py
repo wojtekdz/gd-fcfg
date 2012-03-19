@@ -18,6 +18,14 @@ import gaelicOps
 
 prespace_tokens = ["!", ".", "?"] #these strings will be preprocessed to separate them as tokens with a space BEFORE them
 postspace_tokens = ["n-", "h-", "t-"] #and these with a space AFTER them
+def filterOrthography(sent):
+    print "filtering..."
+    return False
+    #[TODO] WRITE FUNCTIONS FOR THE LENIENT TOLERATION OF EMPTY AREL, DELENITED BUT INCLUDE DELENITED VERSION DIRECTLY IN THE PRODUCTIONS
+    #TWO SOLUTIONS
+    #REL -> S[+POL] BUT NOT GOOD BECAUSE WILL LICENCE NON-QUESTION RELATIVE PHRASES WITHOUT AREL
+    #PREPROCESS SENTENCES TO FILL IN IMPORTANT SYNTACTIC MARKERS OMMITED IN SPEECH AND THUS SPELLING, BUT LIKELY PROBLEMS WITH CONTEXT: WOULD WORK FOR dè -> dè a BUT MORE DIFFICULT WITH a athair vs a h-athair
+
 
 def stripList(lst):
     """Remove comments, blank lines etc. from a list of productions read from a file
@@ -71,6 +79,8 @@ def getGenerationSources(filepath):
     productions = dict(zip(production_names, productions))
 
     return productions
+
+#        raise RootFormsError, "Unable to generate from give roots, please check the CSV pattern in the root file"
 
 def saveGeneratedOutput(productions, file):
     """Serializes dictionary and writes it to file
@@ -144,7 +154,9 @@ def compileGrammar():
 
     #take data from source files (src) generate forms and save individually as generated sections (gen)
     for file in files:
+        print filename
         temp = getGenerationSources(path_src + file)
+        print temp
         saveGeneratedOutput(temp, path_gen + file)
 
     #[TODO] INSERT PROCESSING FUNCTIONS

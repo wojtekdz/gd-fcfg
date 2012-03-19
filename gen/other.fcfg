@@ -1,18 +1,18 @@
 ### STATIC ###
-GU -> "gu"
-ADV[TYPE=pp] -> GU ABASE[CASE=nom, -LEN]
-PRED[TYPE=ap] -> "gu_math" | "gu_doigheil"
+ADVGU -> "gu"
+ADV[TYPE=pp] -> ADVGU ABASE[CASE=rad, -LEN]
+ARG[TYPE=ap] -> "gu_math" | "gu_doigheil"
 ADV[TYPE=path] -> "sìos" | "suas" | "a-steach" | "a-mach"
 ADV[TYPE=place] -> "shìos" | "shuas" | "a-staigh" | "a-muigh"
 ADV[TYPE=time] -> "an-uiridh" | "an-diugh" | "an-dè"
 PP -> P[CASE=?cs] NP[CASE=?cs]
-P[CASE=nom] -> "seach" | "eadar"
-P[CASE=dat] -> "aig" | "air" | "às"
-P[CASE=gen] -> "chun" | "thar" | "rè"
-P[CASE=dat, -DEF] -> "ann_an"
-P[CASE=dat, +DEF] -> "anns"
-P[CASE=dat, -DEF, +LEN] -> "ro" 
-P[CASE=dat, +DEF] -> "ron"
+P[CASE=rad] -> "seach" | "eadar"
+P[CASE=prep] -> "aig" | "air" | "às"
+P[CASE=poss] -> "chun" | "thar" | "rè"
+P[CASE=prep, -DEF] -> "ann_an"
+P[CASE=prep, +DEF] -> "anns"
+P[CASE=prep, -DEF, +LEN] -> "ro" 
+P[CASE=prep, +DEF] -> "ron"
 PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
 PP[PREP=air] -> "orm" | "ort" | "air" | "oirre" | "oirnn" | "oirbh" | "orra"
 PP[PREP=do] -> "dhomh" | "dhut" | "dha" | "dhi" | "dhuinn" | "dhuibh" | "dhaibh"
@@ -28,5 +28,5 @@ PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
 PP[PREP=mu] -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
 N[PREP=air] -> "faisg" | "seachad"
 N[PREP=ri] -> "còmhla" | "coltach"
-PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr] 
-PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr]
+PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr] 
+PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr]

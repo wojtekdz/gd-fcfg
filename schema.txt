@@ -1,32 +1,100 @@
-### CLAUSES/PHRASES
-ROOT
-FS
-QM
-S[+/-INTERROG, +/- POL]
-
-### QWORDS
-QCIAMAR
-QCO
-QDE
-QCAIT
-
+###SHARED FEATURE VALUES
+  CAGR ?c
+    neu			#neutral value
+	vf			#vowels or f-
+	v			#vowels only
+	lab			#labials
+	h			#???
+	dent		#dentals
+	bheil		#special for QAN with "bheil"
+  GEN ?g
+    masc		
+	fem			
+	pl			
+  CASE ?cs
+	rad			#radical
+	prep		#prepositional
+	poss		#possesive
+  TENSE ?t
+	past
+	fut			#future
+	cond		#conditional
+  SUBCAT ?s
+    subs		#the substantive to be
+	-			#avalent: this is where impersonal and synthetic forms could connect
+    NP			#univalent
+	NP, PP		#bivalent
+	[todo]
+	NP, PP|S
+	[todo]		#trivalent
+	
+	
+### HIGH LEVEL PRODUCTIONS
+ROOT			#start of tree
+  TYPE ?tp
+    sent		#sentence, positive or negative
+    polQ		#polar question, i.e. having a positive or negative answer
+    relQ		#constituent question using a relative clause, for example with ciamar, cò or dè
+    nonrelQ		#constituent question not using a relative clause, for example with càit
+FS				#terminal symbol full stop, indicating sentence
+QM				#terminal symbol question mark, indicating question
+S				#clause
+  INTERROG +/-	#interrogative mood
+  POL +/-		#polarity
+REL				#relative clause
+  POL +/-
+  TYPE ?tp
+    adj			#adjectival relative phrases
+  TENSE ?t
+AREL			#relative particle
+  POL +/-		
+ARG			#arguments
+  TYPE ?tp			
+	ciamar
+	cait
+	co
+	de
+	ap			#adjective phrase
+	np			#noun phrase
+	pp			#prepositional phrase
+	clause
+	
 ### VERBS
-VI [TENSE=?t, SUBCAT=?s, +/-POL, +/- INTERROG]
-VD [TENSE=?t, SUBCAT=?s, +/-LEN]
+VI 
+  INTERROG +/- 
+  POL +/-
+  TENSE ?t
+  SUBCAT ?s
+  DEP +/-		#heads a dependent clause
+
+VD 
+  LEN +/-
+  TENSE ?t
+  SUBCAT ?s
 
 ### NOUNS
-
+VNP				#verbal noun
 
 ### ADJECTIVES
-AMOD[-/+LEN] #Adjectival Modifier
-APOS[CASE=?c, GEN=?g, +/-LEN] #Positive Degree of Adjective
-ACOMP[+/-LEN] #Comparative/Superlative Degree of Adjective
-NAS # [?]
-AS # [?]
-NABU[+/-CONTR, +LEN] #[?]
-ABU[+/-CONTR, +LEN] #[?]
+APOSS			#possesive adjectives
+  CAGR
+  LEN +/-
+APRE			#preposed adjectives
+AMOD			#adjectival modifiers e.g. intensifiers
+  LEN +/-
+ABASE			#basic adjective from i.e. positive degree
+  CASE ?cs
+  GEN ?g
+  LEN +/- 
+ACOMP
+  LEN +/- 		#comparative/superlative degree of adjective
+NAS, AS 		#adjectival relative phrase "particles" - present/future tense
+NABU, ABU 		#adjectival relative phrase "particles" - past/conditional tense
+	CAGR ?c
+	LEN +/-
 
-### THE REST
 
-#FEATURE: CAGR - CONTACT AGREEMENT
-CAGR=neu|vf|v|lab|h|dent|bheil
+### OTHER PRODUCTIONS
+ADV
+
+

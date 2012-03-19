@@ -82,7 +82,6 @@ def slenderize(word):
     pre_vowel = word[last_vowel_index-1]
 
     if (hasFinalVowel(word) or quality == 'slender'):
-        print 'does not slenderize'
         return word
     elif (quality == 'broad'):
         if last_vowel == 'a' and pre_vowel == 'e':

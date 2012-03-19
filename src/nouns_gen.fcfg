@@ -1,9 +1,0 @@
-# ##########
-# ROOTS FOR NOUN GENERATION
-# ##########
-
-### GENERATE ###
-
-# nom.sg. - gen.sg. - nom.pl - (gen.pl)
-N[GEN=masc] -> "tùs" | "tùis" | "tùsan"
-N[GEN=fem] -> "cailleach" | "caillich" | "cailleachan"

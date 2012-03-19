@@ -6,44 +6,45 @@
 
 #[TODO] HOW TO INTERGRATE ADV INTO PHRASE STRUCTURE?
 
-GU -> "gu"
-ADV[TYPE=pp] -> GU ABASE[CASE=nom, -LEN]
+ADVGU -> "gu"
+ADV[TYPE=pp] -> ADVGU ABASE[CASE=rad, -LEN]
 
 #DIRECT PREDS SO THEY CAN COMBING WITH SUBSTANTIVE TO BE
-PRED[TYPE=ap] -> "gu_math" | "gu_doigheil"
+ARG[TYPE=ap] -> "gu_math" | "gu_doigheil"
 
+#[TODO] COMBINE THESE DIRECTLY IN THE VALENCY OF THE VERBS - ONLY SOME VERBS PERMIT THEM?
+#[TOWRITE] LEAVE THIS OUT - BUT ACKNOWLEDGE IN THESIS
 ADV[TYPE=path] -> "sìos" | "suas" | "a-steach" | "a-mach"
 ADV[TYPE=place] -> "shìos" | "shuas" | "a-staigh" | "a-muigh"
 
 #[TODO] how to resolve tense on adverbs?
 ADV[TYPE=time] -> "an-uiridh" | "an-diugh" | "an-dè"
 
-
 ### PREPOSITIONS
 #[TODO] TEST THIS, AND add DEF=?d
 PP -> P[CASE=?cs] NP[CASE=?cs]
 
 ## SIMPLE ACCUSATIVE
-P[CASE=nom] -> "seach" | "eadar"
+P[CASE=rad] -> "seach" | "eadar"
 
 ## SIMPLE DATIVE
 #[TOWRITE] PREPOSITIONS NEED TO ENFORCE CASE
 #DO NOT LENITE OR CHANGE FORM WHEN DEFINITE
 #[TODO] EVERY PREPOSITION NEEDS TO HAVE A PFORM FEATURE (INCLUDING THE SIMPLE ONES) THAT WILL TRANSFER ONTO PPs
-P[CASE=dat] -> "aig" | "air" | "às"
+P[CASE=prep] -> "aig" | "air" | "às"
 
 ## SIMPLE GENITIVE
-P[CASE=gen] -> "chun" | "thar" | "rè"
+P[CASE=poss] -> "chun" | "thar" | "rè"
 
-P[CASE=dat, -DEF] -> "ann_an"
-P[CASE=dat, +DEF] -> "anns"
+P[CASE=prep, -DEF] -> "ann_an"
+P[CASE=prep, +DEF] -> "anns"
 
-#NEEDS THE FOLLOWING WORD LENITED! SO N[CASE=dat, LEN+]
-P[CASE=dat, -DEF, +LEN] -> "ro" 
+#NEEDS THE FOLLOWING WORD LENITED! SO N[CASE=prep, LEN+]
+P[CASE=prep, -DEF, +LEN] -> "ro" 
 
 #NEEDS THE FOLLOWING WORD LENITED UNLESS IT'S A D- (OR S- BUT THAT'S ANOTHER ISSUE)... 
-#JUST SAYING N[CASE=dat] WILL NOT LENITE THE LEN
-P[CASE=dat, +DEF] -> "ron"
+#JUST SAYING N[CASE=prep] WILL NOT LENITE THE LEN
+P[CASE=prep, +DEF] -> "ron"
 
 ### PREPOSITIONAL PRONOUNS
 PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
@@ -68,8 +69,8 @@ N[PREP=ri] -> "còmhla" | "coltach"
 
 #e.g còmhla rium
 #[TODO] GET RID OF THIS N - SOMETIMES A
-PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr] 
-PP[CASE=dat] -> N[PREP=?pr] PP[PREP=?pr]
+PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr] 
+PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr]
 
 ## N-FINAL
 #[TODO] implement automatic extraction of multiwords first - to many spaces

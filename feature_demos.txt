@@ -21,112 +21,19 @@ Tha mi gu math
 Tha mi gu dona
 Tha mi gu cudromach
 
-#####
-#NOUNS
-
-
 ### [TODO] CAGR SHOWCASE OF AGREEMENT WITH ARTICLES of DIFFERENT NOUN INITIAL CLASSES
 
-## CÙ - CAGR=neu, MASC, IRREG 
-N[CAGR=neu, CASE=nom, GEN=masc, -LEN] -> "cù"
-N[CAGR=neu, CASE=nom, GEN=masc, +LEN] -> "chù"
+### BIVALENT EXAMPLE WITH CLAUSAL COMPLEMENT
+A bheil thu mòr?
+Chunnaic mi thu 
+Chunnaic mi gu bheil thu mòr.
+Chunnaic mi nach eil thu mòr.
 
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "cù"
-N[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "chù"
+### INTERCEPTING ARG DIRECTLY AT THE HIGHEST LEVEL
+#[TOWRITE] BOTH CIAMAR AND CÙ ARE ARGUMENTS? SLASH ANY ARGUMENT BUT NOT AN N?
+Ciamar a tha thu?
+Cù a tha thu?
 
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "coin"
-N[CAGR=neu, CASE=gen, GEN=masc, +LEN]-> "choin"
-
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "coin"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "choin"
-
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "coin"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "choin"
-
-N[CAGR=neu, CASE=gen, GEN=pl, -LEN]-> "con"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "con"
-
-## BÒRD - CAGR=lab, MASC, VOWEL CHANGE
-N[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "bòrd"
-N[CAGR=neu, CASE=nom, GEN=masc, +LEN] -> "bhòrd"
-
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "bòrd"
-N[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "bhòrd"
-
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "bùird"
-N[CAGR=neu, CASE=gen, GEN=masc, +LEN]-> "bhùird"
-
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "bùird"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "bhùird"
-
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "bùird"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "bhùird"
-
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "bòrd"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "bhòrd"
-
-## FIOS - A MIX OF CAGR: lab/vf/do
-#[TOWRITE] COMP=sent ON NOUNS IS DROPPED FOR NOT BECAUSE OF DISCONTINUOUS DEPENDENCY
-N[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "fios"
-N[CAGR=vf, CASE=nom, GEN=masc, +LEN] -> "fhios"
-N[CAGR=do, CASE=nom, GEN=masc, +LEN] -> "dh'fhios"
-
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "fios"
-N[CAGR=vf, CASE=dat, GEN=masc, +LEN] -> "fhios"
-N[CAGR=do, CASE=dat, GEN=masc, +LEN] -> "dh'fhios"
-
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "fiosa"
-N[CAGR=vf, CASE=gen, GEN=masc, +LEN]-> "fhiosa"
-
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "fiosan"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "fhiosan"
-N[CAGR=do, CASE=nom, GEN=pl, +LEN]-> "dh'fhiosan"
-
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "fiosan"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "fhiosan"
-N[CAGR=do, CASE=dat, GEN=pl, +LEN]-> "dh'fhiosan"
-
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "fiosan"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "fhiosan"
-
-## FIOS - A MIX OF CAGR: lab/vf/do
-#[TOWRITE] COMP=sent ON NOUNS IS DROPPED FOR NOT BECAUSE OF DISCONTINUOUS DEPENDENCY
-N[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "fìon"
-N[CAGR=vf, CASE=nom, GEN=masc, +LEN] -> "fhìon"
-N[CAGR=do, CASE=nom, GEN=masc, +LEN] -> "dh'fhìon"
-
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "fìon"
-N[CAGR=vf, CASE=dat, GEN=masc, +LEN] -> "fhìon"
-N[CAGR=do, CASE=dat, GEN=masc, +LEN] -> "dh'fhìon"
-
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "fìona"
-N[CAGR=vf, CASE=gen, GEN=masc, +LEN]-> "fhìona"
-
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "fìontan"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "fhìontan"
-N[CAGR=do, CASE=nom, GEN=pl, +LEN]-> "dh'fhìontan"
-
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "fìontan"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "fhìontan"
-N[CAGR=do, CASE=dat, GEN=pl, +LEN]-> "dh'fhìontan"
-
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "fìontan"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "fhìontan"
-
-## BÒ - IRREG
-N[CAGR=neu, CASE=nom, GEN=fem, -LEN] -> "bò"
-N[CAGR=neu, CASE=nom, GEN=fem, +LEN] -> "bhò"
-
-N[CAGR=neu, CASE=dat, GEN=fem, -LEN] -> "bò" | "boin"
-N[CAGR=neu, CASE=dat, GEN=fem, +LEN] -> "bhò" | "bhoin"
-
-#NO +LEN FOR GEN=fem
-N[CAGR=neu, CASE=gen, GEN=fem, -LEN]-> "bà"
-
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "bà"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "bhà"
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "bà"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "bhà"
-
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "bò"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "bhò"
+### POSSESIVE CASE NP AS SUBJECT, CAGR RESOLVED IN 
+Tha bòrd nam bò ann
+Tha bòrd nan bò ann

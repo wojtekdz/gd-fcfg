@@ -7,48 +7,52 @@ NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[
 NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] AP[CASE=?cs, GEN=?g]
 NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] AP[CASE=?cs, GEN=?g] DEMO
 NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] N[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] AP[CASE=?cs, GEN=?g] PP[PREP=aig]
-NP[CASE=gen, +DEF] -> N[LEN=?l, CAGR=?c] NP[CASE=gen] | P[CASE=gen] NP[CASE=gen]
-NP[CASE=dat] -> P[CASE=dat, LEN=?l] NP[CASE=dat, LEN=?l]
-NP[CAGR=?c, CASE=?cs] -> PRON | PROP[CAGR=?c, CASE=?cs]
+NP[CAGR=?c, CASE=?cs, LEN=?l, -DEF] -> APRE N[CAGR=?c, CASE=?cs, GEN=?g, +LEN]
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> ART[CAGR=neu, CASE=rad, GEN=masc, -LEN] APRE N[CAGR=?c, CASE=?cs, GEN=?g, +LEN]
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> ART[CAGR=neu, CASE=rad, GEN=masc, -LEN] APRE N[CAGR=?c, CASE=?cs, GEN=?g, +LEN] DEMO
+NP[CAGR=?c, CASE=?cs, LEN=?l, +DEF] -> ART[CAGR=neu, CASE=rad, GEN=masc, -LEN] APRE N[CAGR=?c, CASE=?cs, GEN=?g, +LEN] PP[PREP=aig]
+NP[CAGR=?c, CASE=rad, LEN=?l, +DEF] -> NP[CASE=rad, LEN=?l, -DEF] NP[CASE=poss]
+NP[CAGR=?c, CASE=?cs] -> PRON | PROP[CAGR=?c, CASE=?cs] | DEMO
 S -> S VOC | VOC S
 VOC -> VOCPART VOC | VOC
 VOCPART -> "a"
 VOC -> "bhalaich" | "ghille" | "chlanna" | "bhalaichibh" | "fhearibh" | "mhnathan" | "dhaoine-uaisle"
 NP[GEN=fem] -> "eilidh"
-NP[CASE=nom, GEN=fem] -> "eilidh"
-NP[CASE=nom, GEN=masc] -> "mìcheal"
-NP[CASE=gen, GEN=fem] -> "eilidh"
-NP[CASE=gen, GEN=masc] -> "mìcheal"
-NP[CASE=nom, GEN=fem] -> "eilidh"
-NP[CASE=nom, GEN=masc] -> "mìcheal"
-DET[CAGR=?c, LEN=?l] -> POSSADJ[CAGR=?c, LEN=?l]
+NP[CASE=rad, GEN=fem] -> "eilidh"
+NP[CASE=rad, GEN=masc] -> "mìcheal"
+NP[CASE=poss, GEN=fem] -> "eilidh"
+NP[CASE=poss, GEN=masc] -> "mìcheal"
+NP[CASE=rad, GEN=fem] -> "eilidh"
+NP[CASE=rad, GEN=masc] -> "mìcheal"
+DET[CAGR=?c, LEN=?l] -> APOSS[CAGR=?c, LEN=?l]
 DET[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l] -> ART[CAGR=?c, CASE=?cs, GEN=?g, LEN=?l]
-ART[CAGR=neu, CASE=nom, GEN=masc, -LEN] -> "an"
-ART[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "am"
-ART[CAGR=v, CASE=nom, GEN=masc, -LEN] -> "an_t-"
-ART[CAGR=neu, CASE=nom, GEN=fem, +LEN] -> "a'"
-ART[CAGR=dent, CASE=nom, GEN=fem, -LEN] -> "an"
-ART[CAGR=vf, CASE=nom, GEN=fem, -LEN] -> "an"
-ART[CAGR=neu, CASE=dat, GEN=fem, +LEN] -> "a'"
-ART[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "a'"
-ART[CAGR=s, CASE=dat, GEN=fem] -> "an_t-"
-ART[CAGR=s, CASE=dat, GEN=masc] -> "an_t-"
-ART[CAGR=neu, CASE=gen, GEN=masc] -> "a'"
-ART[CAGR=vf, CASE=nom, GEN=fem] -> "a'"
-ART[CAGR=vf, CASE=dat, GEN=?g] -> "a'"
-ART[CAGR=vf, CASE=gen, GEN=masc] -> "a'"
-ART[CASE=gen, GEN=masc] -> "na"
-ART[CAGR=neu,CASE=nom, GEN=?g] -> "na"
-ART[CAGR=neu,CASE=dat, GEN=?g] -> "na"
-ART[CAGR=v,CASE=nom, GEN=?g] -> "na_h-"
-ART[CAGR=v,CASE=dat, GEN=?g] -> "na_h-"
-ART[CAGR=neu, CASE=gen, GEN=pl] -> "nan" 
-ART[CAGR=lab, CASE=gen, GEN=pl] -> "nam"
+ART[CAGR=neu, CASE=rad, GEN=masc, -LEN] -> "an"
+ART[CAGR=lab, CASE=rad, GEN=masc, -LEN] -> "am"
+ART[CAGR=v, CASE=rad, GEN=masc, -LEN] -> "an_t-"
+ART[CAGR=neu, CASE=rad, GEN=fem, +LEN] -> "a'"
+ART[CAGR=dent, CASE=rad, GEN=fem, -LEN] -> "an"
+ART[CAGR=vf, CASE=rad, GEN=fem, -LEN] -> "an"
+ART[CAGR=neu, CASE=prep, GEN=fem, +LEN] -> "a'"
+ART[CAGR=neu, CASE=prep, GEN=masc, +LEN] -> "a'"
+ART[CAGR=s, CASE=prep, GEN=fem] -> "an_t-"
+ART[CAGR=s, CASE=prep, GEN=masc] -> "an_t-"
+ART[CAGR=neu, CASE=poss, GEN=masc] -> "a'"
+ART[CAGR=vf, CASE=rad, GEN=fem] -> "a'"
+ART[CAGR=vf, CASE=prep, GEN=?g] -> "a'"
+ART[CAGR=vf, CASE=poss, GEN=masc] -> "a'"
+ART[CASE=poss, GEN=masc] -> "na"
+ART[CAGR=neu,CASE=rad, GEN=?g] -> "na"
+ART[CAGR=neu,CASE=prep, GEN=?g] -> "na"
+ART[CAGR=v,CASE=rad, GEN=?g] -> "na_h-"
+ART[CAGR=v,CASE=prep, GEN=?g] -> "na_h-"
+ART[CAGR=neu, CASE=poss, GEN=pl] -> "nan" 
+ART[CAGR=lab, CASE=poss, GEN=pl] -> "nam"
 DEMO -> "seo" | "sin" | "siud" | "ud"
-PRON -> "mi" | "mise"
-PRON -> "thu" | "thusa"
-PRON -> "e" | "esan"
-PRON -> "i" | "ise"
-PRON -> "sinn" | "sinne"
-PRON -> "sibh" | "sibhse"
-PRON -> "iad" | "iadsan"
+NP[CASE=rad, TYPE=pron] -> "mi" | "mise"
+NP[CASE=rad, TYPE=pron, +LEN] -> "thu" | "thusa"
+NP[CASE=rad, TYPE=pron] -> "e" | "esan"
+NP[CASE=rad, TYPE=pron] -> "i" | "ise"
+NP[CASE=rad, TYPE=pron] -> "sinn" | "sinne"
+NP[CASE=rad, TYPE=pron] -> "sibh" | "sibhse"
+NP[CASE=rad, TYPE=pron] -> "iad" | "iadsan"
+NP[CASE=rad, TYPE=pron, -LEN] -> "tu" | "tusa"

@@ -2,111 +2,130 @@
 # HANDCODED EXAMPLES OF NOUNS
 # ##########
 
-#NOUNS
-
-
 ### [TODO] CAGR SHOWCASE OF AGREEMENT WITH ARTICLES of DIFFERENT NOUN INITIAL CLASSES
 
+#### MASCULINE
+
 ## CÙ - CAGR=neu, MASC, IRREG 
-N[CAGR=neu, CASE=nom, GEN=masc, -LEN] -> "cù"
-N[CAGR=neu, CASE=nom, GEN=masc, +LEN] -> "chù"
+N[CAGR=neu, CASE=rad, GEN=masc, -LEN] -> "cù"
+N[CAGR=neu, CASE=rad, GEN=masc, +LEN] -> "chù"
 
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "cù"
-N[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "chù"
+N[CAGR=neu, CASE=prep, GEN=masc, -LEN] -> "cù"
+N[CAGR=neu, CASE=prep, GEN=masc, +LEN] -> "chù"
 
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "coin"
-N[CAGR=neu, CASE=gen, GEN=masc, +LEN]-> "choin"
+N[CAGR=neu, CASE=poss, GEN=masc, -LEN]-> "coin"
+N[CAGR=neu, CASE=poss, GEN=masc, +LEN]-> "choin"
 
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "coin"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "choin"
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "coin"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "choin"
 
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "coin"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "choin"
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "coin"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "choin"
 
-N[CAGR=neu, CASE=gen, GEN=pl, -LEN]-> "con"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "con"
+N[CAGR=neu, CASE=poss, GEN=pl, -LEN]-> "con"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "con"
 
 ## BÒRD - CAGR=lab, MASC, VOWEL CHANGE
-N[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "bòrd"
-N[CAGR=neu, CASE=nom, GEN=masc, +LEN] -> "bhòrd"
+N[CAGR=lab, CASE=rad, GEN=masc, -LEN] -> "bòrd"
+N[CAGR=neu, CASE=rad, GEN=masc, +LEN] -> "bhòrd"
 
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "bòrd"
-N[CAGR=neu, CASE=dat, GEN=masc, +LEN] -> "bhòrd"
+N[CAGR=neu, CASE=prep, GEN=masc, -LEN] -> "bòrd"
+N[CAGR=neu, CASE=prep, GEN=masc, +LEN] -> "bhòrd"
 
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "bùird"
-N[CAGR=neu, CASE=gen, GEN=masc, +LEN]-> "bhùird"
+N[CAGR=neu, CASE=poss, GEN=masc, -LEN]-> "bùird"
+N[CAGR=neu, CASE=poss, GEN=masc, +LEN]-> "bhùird"
 
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "bùird"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "bhùird"
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "bùird"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "bhùird"
 
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "bùird"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "bhùird"
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "bùird"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "bhùird"
 
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "bòrd"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "bhòrd"
+N[CAGR=lab, CASE=poss, GEN=pl, -LEN]-> "bòrd"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "bhòrd"
 
 ## FIOS - A MIX OF CAGR: lab/vf/do
 #[TOWRITE] COMP=sent ON NOUNS IS DROPPED FOR NOT BECAUSE OF DISCONTINUOUS DEPENDENCY
-N[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "fios"
-N[CAGR=vf, CASE=nom, GEN=masc, +LEN] -> "fhios"
-N[CAGR=do, CASE=nom, GEN=masc, +LEN] -> "dh'fhios"
+N[CAGR=lab, CASE=rad, GEN=masc, -LEN] -> "fios"
+N[CAGR=vf, CASE=rad, GEN=masc, +LEN] -> "fhios"
+#[TOWRITE] you don't need this because DO and DE will always enforce DAT!
+#N[CAGR=do, CASE=rad, GEN=masc, +LEN] -> "dh'fhios"
 
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "fios"
-N[CAGR=vf, CASE=dat, GEN=masc, +LEN] -> "fhios"
-N[CAGR=do, CASE=dat, GEN=masc, +LEN] -> "dh'fhios"
+N[CAGR=neu, CASE=prep, GEN=masc, -LEN] -> "fios"
+N[CAGR=vf, CASE=prep, GEN=masc, +LEN] -> "fhios"
+N[CAGR=do, CASE=prep, GEN=masc, +LEN] -> "dh'fhios"
 
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "fiosa"
-N[CAGR=vf, CASE=gen, GEN=masc, +LEN]-> "fhiosa"
+N[CAGR=neu, CASE=poss, GEN=masc, -LEN]-> "fiosa"
+N[CAGR=vf, CASE=poss, GEN=masc, +LEN]-> "fhiosa"
 
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "fiosan"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "fhiosan"
-N[CAGR=do, CASE=nom, GEN=pl, +LEN]-> "dh'fhiosan"
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "fiosan"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "fhiosan"
+#[TOWRITE] OR THIS YOU DON'T NEED EITHER!
+N[CAGR=do, CASE=rad, GEN=pl, +LEN]-> "dh'fhiosan"
 
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "fiosan"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "fhiosan"
-N[CAGR=do, CASE=dat, GEN=pl, +LEN]-> "dh'fhiosan"
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "fiosan"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "fhiosan"
+N[CAGR=do, CASE=prep, GEN=pl, +LEN]-> "dh'fhiosan"
 
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "fiosan"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "fhiosan"
+N[CAGR=lab, CASE=poss, GEN=pl, -LEN]-> "fiosan"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "fhiosan"
 
 ## FÌON - A MIX OF CAGR: lab/vf/do
 #[TOWRITE] COMP=sent ON NOUNS IS DROPPED FOR NOT BECAUSE OF DISCONTINUOUS DEPENDENCY
-N[CAGR=lab, CASE=nom, GEN=masc, -LEN] -> "fìon"
-N[CAGR=vf, CASE=nom, GEN=masc, +LEN] -> "fhìon"
-N[CAGR=do, CASE=nom, GEN=masc, +LEN] -> "dh'fhìon"
+N[CAGR=lab, CASE=rad, GEN=masc, -LEN] -> "fìon"
+N[CAGR=vf, CASE=rad, GEN=masc, +LEN] -> "fhìon"
 
-N[CAGR=neu, CASE=dat, GEN=masc, -LEN] -> "fìon"
-N[CAGR=vf, CASE=dat, GEN=masc, +LEN] -> "fhìon"
-N[CAGR=do, CASE=dat, GEN=masc, +LEN] -> "dh'fhìon"
+N[CAGR=neu, CASE=prep, GEN=masc, -LEN] -> "fìon"
+N[CAGR=vf, CASE=prep, GEN=masc, +LEN] -> "fhìon"
+N[CAGR=do, CASE=prep, GEN=masc, +LEN] -> "dh'fhìon"
 
-N[CAGR=neu, CASE=gen, GEN=masc, -LEN]-> "fìona"
-N[CAGR=vf, CASE=gen, GEN=masc, +LEN]-> "fhìona"
+N[CAGR=neu, CASE=poss, GEN=masc, -LEN]-> "fìona"
+N[CAGR=vf, CASE=poss, GEN=masc, +LEN]-> "fhìona"
 
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "fìontan"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "fhìontan"
-N[CAGR=do, CASE=nom, GEN=pl, +LEN]-> "dh'fhìontan"
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "fìontan"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "fhìontan"
 
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "fìontan"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "fhìontan"
-N[CAGR=do, CASE=dat, GEN=pl, +LEN]-> "dh'fhìontan"
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "fìontan"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "fhìontan"
+N[CAGR=do, CASE=prep, GEN=pl, +LEN]-> "dh'fhìontan"
 
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "fìontan"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "fhìontan"
+N[CAGR=lab, CASE=poss, GEN=pl, -LEN]-> "fìontan"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "fhìontan"
+
+## EUN - A MIX OF CAGR: v/do/vf
+
+N[CAGR=v, CASE=rad, GEN=masc] -> "eun"
+N[CAGR=do, CASE=rad, GEN=masc, +LEN] -> "dh'eun"
+
+N[CAGR=vf, CASE=prep, GEN=masc] -> "eun"
+N[CAGR=do, CASE=prep, GEN=masc, +LEN] -> "dh'eun"
+
+N[CAGR=vf, CASE=poss, GEN=masc]-> "eòin"
+
+N[CAGR=v, CASE=rad, GEN=pl, -LEN]-> "eòin"
+
+N[CAGR=v, CASE=prep, GEN=pl]-> "eòin"
+N[CAGR=do, CASE=prep, GEN=pl, +LEN]-> "dh'eòin"
+
+N[CAGR=neu, CASE=poss, GEN=pl, -LEN]-> "eun"
+
+#### FEMININE
 
 ## BÒ - IRREG
-N[CAGR=neu, CASE=nom, GEN=fem, -LEN] -> "bò"
-N[CAGR=neu, CASE=nom, GEN=fem, +LEN] -> "bhò"
+N[CAGR=neu, CASE=rad, GEN=fem, -LEN] -> "bò"
+N[CAGR=neu, CASE=rad, GEN=fem, +LEN] -> "bhò"
 
-N[CAGR=neu, CASE=dat, GEN=fem, -LEN] -> "bò" | "boin"
-N[CAGR=neu, CASE=dat, GEN=fem, +LEN] -> "bhò" | "bhoin"
+N[CAGR=neu, CASE=prep, GEN=fem, -LEN] -> "bò" | "boin"
+N[CAGR=neu, CASE=prep, GEN=fem, +LEN] -> "bhò" | "bhoin"
 
 #NO +LEN FOR GEN=fem
-N[CAGR=neu, CASE=gen, GEN=fem, -LEN]-> "bà"
+N[CAGR=neu, CASE=poss, GEN=fem, -LEN]-> "bà"
 
-N[CAGR=neu, CASE=nom, GEN=pl, -LEN]-> "bà"
-N[CAGR=neu, CASE=nom, GEN=pl, +LEN]-> "bhà"
-N[CAGR=neu, CASE=dat, GEN=pl, -LEN]-> "bà"
-N[CAGR=neu, CASE=dat, GEN=pl, +LEN]-> "bhà"
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "bà"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "bhà"
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "bà"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "bhà"
 
-N[CAGR=lab, CASE=gen, GEN=pl, -LEN]-> "bò"
-N[CAGR=neu, CASE=gen, GEN=pl, +LEN]-> "bhò"
+N[CAGR=lab, CASE=poss, GEN=pl, -LEN]-> "bò"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "bhò"
+

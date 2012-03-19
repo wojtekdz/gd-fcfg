@@ -1,3 +1,7 @@
 ### STATIC ###
-N[GEN=masc] -> "tùs" | "tùis" | "tùsan"
-N[GEN=fem] -> "cailleach" | "caillich" | "cailleachan"
+masc, balach, balaich, balaich, balach
+masc, tùs, tuis, tùsan, tùsan
+fem, cailleach, caillich, cailleachan, cailleachan
+N[GEN=masc] -> "balach" | "balaich" | "balaich" | "bàlach"
+N[GEN=masc] -> "tùs" | "tùis" | "tùsan" | "tusan"
+N[GEN=fem] -> "cailleach" | "caillich" | "cailleachan" | "cailleachan"
