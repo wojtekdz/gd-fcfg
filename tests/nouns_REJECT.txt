@@ -1,0 +1,7 @@
+# ##########
+# REJECT TESTS FOR NOUNS
+# ##########
+
+#POSSESIVE CASE
+Tha bòrd nan bò ann
+Tha am bòrd nam bò ann

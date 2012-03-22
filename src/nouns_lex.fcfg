@@ -23,7 +23,7 @@ N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "coin"
 N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "choin"
 
 N[CAGR=neu, CASE=poss, GEN=pl, -LEN]-> "con"
-N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "con"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "chon"
 
 ## BÒRD - CAGR=lab, MASC, VOWEL CHANGE
 N[CAGR=lab, CASE=rad, GEN=masc, -LEN] -> "bòrd"
@@ -43,6 +43,8 @@ N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "bhùird"
 
 N[CAGR=lab, CASE=poss, GEN=pl, -LEN]-> "bòrd"
 N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "bhòrd"
+
+
 
 ## FIOS - A MIX OF CAGR: lab/vf/do
 #[TOWRITE] COMP=sent ON NOUNS IS DROPPED FOR NOT BECAUSE OF DISCONTINUOUS DEPENDENCY
@@ -95,16 +97,16 @@ N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "fhìontan"
 ## EUN - A MIX OF CAGR: v/do/vf
 
 N[CAGR=v, CASE=rad, GEN=masc] -> "eun"
-N[CAGR=do, CASE=rad, GEN=masc, +LEN] -> "dh'eun"
 
 N[CAGR=vf, CASE=prep, GEN=masc] -> "eun"
 N[CAGR=do, CASE=prep, GEN=masc, +LEN] -> "dh'eun"
 
 N[CAGR=vf, CASE=poss, GEN=masc]-> "eòin"
 
-N[CAGR=v, CASE=rad, GEN=pl, -LEN]-> "eòin"
+#[TOWRITE] THE +LEN ON THE NEXT TWO COULD BE USED TO SYNCHRONISE WITH ADJECTIVE LENTION WITH SLENDER ENDINGS
+N[CAGR=v, CASE=rad, GEN=pl, +LEN]-> "eòin"
 
-N[CAGR=v, CASE=prep, GEN=pl]-> "eòin"
+N[CAGR=v, CASE=prep, GEN=pl], +LEN-> "eòin"
 N[CAGR=do, CASE=prep, GEN=pl, +LEN]-> "dh'eòin"
 
 N[CAGR=neu, CASE=poss, GEN=pl, -LEN]-> "eun"
@@ -129,3 +131,41 @@ N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "bhà"
 N[CAGR=lab, CASE=poss, GEN=pl, -LEN]-> "bò"
 N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "bhò"
 
+## DULLEAG = REG, CAGR=neu?
+
+####################################################### THE S- NOUNS ARE A BIG PROBLEM BECAUSE THEN DON'T USUALLY LENITE IN THE PREPOSITIONAL SINGULAR?
+
+## SAGART - CAGR=s, MASC
+N[CAGR=neu, CASE=rad, GEN=masc, -LEN] -> "sagart"
+N[CAGR=neu, CASE=rad, GEN=masc, +LEN] -> "shagart"
+
+N[CAGR=s, CASE=prep, GEN=masc] -> "sagart"
+N[CAGR=s, CASE=poss, GEN=masc]-> "sagairt"
+
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "sagartean"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "shagartean"
+
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "sagartean"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "shagartean"
+
+N[CAGR=neu, CASE=poss, GEN=pl, -LEN]-> "sagartean"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "shagartean"
+#[TODO] WHAT ABOUT INDEFINITE GENITIVE being lenited - this needs to be phrased in higher order rules
+
+
+## SÙIL - IRREG, CAGR=s
+N[CAGR=s, CASE=rad, GEN=fem, -LEN] -> "sùil"
+N[CAGR=neu, CASE=rad, GEN=fem, +LEN] -> "shùil"
+
+N[CAGR=s, CASE=prep, GEN=fem, -LEN] -> "sùil"
+#NO +LEN FOR GEN=fem
+N[CAGR=neu, CASE=poss, GEN=fem, -LEN]-> "sùla"
+
+N[CAGR=neu, CASE=rad, GEN=pl, -LEN]-> "sùilean"
+N[CAGR=neu, CASE=rad, GEN=pl, +LEN]-> "shùilean"
+
+N[CAGR=neu, CASE=prep, GEN=pl, -LEN]-> "sùilean"
+N[CAGR=neu, CASE=prep, GEN=pl, +LEN]-> "shùilean"
+
+N[CAGR=neu, CASE=poss, GEN=pl, -LEN]-> "sùilean"
+N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "shùilean"

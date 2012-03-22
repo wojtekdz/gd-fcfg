@@ -54,7 +54,7 @@ def parseNow(sentence_file):
 
 
 compileGrammar()
-generateMultiwords()
+#generateMultiwords()
 
 #testParse('tests/irreg_verbs_ACCEPT.txt')
 #testParse('tests/irreg_verbs_REJECT.txt')
@@ -62,4 +62,4 @@ generateMultiwords()
 #testParse('tests/nouns_ACCEPT.txt')
 #testParse('tests/nouns_REJECT.txt')
 
-parseNow('sentences.txt')
+#parseNow('sentences.txt')

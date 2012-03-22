@@ -2,6 +2,29 @@
 # HANDCODED PRODUCTIONS FOR ADJECTIVES
 # ##########
 
+#[TODO] ADD SOME IRREGULARS AND CHECK BEAG
+
+#[TOWRITE] IRREGULAR ONES NEED TO BE FED IN MANUALLY
+#teth, beag, mòr, dona, fada, furasta, làidir, math, mòr, reamhar, trom
+#[towrite] milis, multi - root change? so irregular?
+#goirid, gorm -> guirme
+#liath - lèithe
+#[towrite] these would need a better slenderiser: geal -> gile, mar beag bige, with more subclasses -> for now including as irregulars
+
+#ABASE[+PRED, -LEN] -> dall
+#ACOMP[-LEN] -> daille
+#ABASE[+PRED, -LEN] -> donn
+#ACOMP[+LEN] -> dhoinne
+
+
+#BOCHD DOES NOT SLENDERISE... NOT A REGULAR ONE...
+#ABASE[+PRED, -LEN] -> bochd
+#ABASE[+PRED, +LEN] -> bhochd
+#ACOMP[-LEN] -> boichde
+#ACOMP[+LEN] -> bhoichde
+
+#FLIUCH, FLICHE...
+
 ABASE -> "sgìth"
 ABASE[-LEN] -> "dona"
 ABASE[+LEN] -> "dhona"
@@ -23,11 +46,3 @@ ABASE[CASE=?cs, GEN=pl, +LEN] -> "bheaga" | "ghlice" | "chudromach" | "spòrsail
 ACOMP -> "lugha" | "fhliche" | "àirde" | "sgìthe"
 ACOMP[-LEN] -> "glice" | "cudromaiche" | "teotha" | "motha" | "miosa"
 ACOMP[+LEN] -> "ghlice" | "chudromaiche" |"theotha" | "mhotha" | "mhiosa"
-
-#[[TODO] HOW DOES THIS COMPARE TO REGULAR RELATIVE PHRASES? - REWORK?
-#RELTYPE IS THERE TO ELIMINATE NORMAL RELATIVE PHRASES E.G. THA MI A RINN THU vs THA MI NAS GLICE
-REL[TENSE=present, TYPE=adj] -> NAS ACOMP | AS ACOMP
-REL[TENSE=future, TYPE=adj] -> NAS ACOMP | AS ACOMP
-
-REL[TENSE=past, TYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
-REL[TENSE=conditional, TYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]

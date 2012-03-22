@@ -1,5 +1,0 @@
-### STATIC ###
-AREG[SYL=mono] -> "beag" | "glic" | "òg" | "mòr" | "blàth"
-AREG[SYL=multi] -> "cudromach" | "spòrsail"
-AIRREG[SYL=mono] -> "teth" | "teotha"
-AIRREG[SYL=mono] -> "mòr" | "motha"

@@ -1,0 +1,55 @@
+﻿################ ADJECTIVES
+
+#forms not marked for case
+if unlenitable OR f-:
+    #no change
+    ABASE[+PRED] -> "sgìth"
+    #extra vowel + letite
+    ACOMP -> "fhliche" | "àirde" | "sgìthe"
+else:
+    #no change
+    ABASE[-LEN, +PRED] -> "glic" | "cudromach"
+    #lenite
+    ABASE[+LEN, +PRED] -> "ghlic" | "chudromach"
+
+    #slenderize + vowel
+    ACOMP[-LEN] -> "glice" | "cudromaiche"
+    #slenderize + lenite
+    ACOMP[+LEN] -> "ghlice" | "chudromaiche"
+
+#forms marked for case
+    #no change
+    ABASE[CASE=rad, GEN=masc, -LEN] -> "glic" | "cudromach"
+    #lenite
+    ABASE[CASE=rad, GEN=masc, +LEN] -> "ghlic" | "chudromach"
+
+    #lenite
+    ABASE[CASE=prep, GEN=masc, +LEN] -> "ghlic" | "chudromach"
+    #lenite + slenderize
+    ABASE[CASE=poss, GEN=masc, +LEN] -> "ghlic" | "chudromaich"
+
+    #lenite
+    ABASE[CASE=rad, GEN=fem, +LEN] ->  "ghlic" | "chudromach"
+    #lenite + slenderize
+    ABASE[CASE=prep, GEN=fem, +LEN] -> "ghlic" | "chudromaich"
+    #slenderize, if syl == 'mono' then add vowel
+    ABASE[CASE=poss, GEN=fem, -LEN] -> "glice" | "cudromaich"
+
+    #if syl == "mono" then add vowel
+    ABASE[CASE=?cs, GEN=pl] -> "glice" | "cudromach"
+    #lenite, if syl == "mono" then add vowel
+    ABASE[CASE=?cs, GEN=pl, +LEN] -> "ghlice" | "chudromach"
+
+    #MARK'S PSEUDOCODE
+    #detect the two different list elements:
+    #monosyllabic, multisyllabic (according to SYL variable)
+    #see regular_adjectives.fcfg - certainly move this to compileGrammar(),
+    #and pass mono as T/F, with the argument being a string
+
+    #split the strings into an 'adjectives' list according to " | " - abstract this to a function later on
+    #for adjective in adjectives:
+
+    #if mono -
+        #addFinalVowel(adjective) in productions['a_gen_masc'], productions['a_gen_fem'], productions['a_all_pl']
+    #concatenate lists into strings with the " | " separator - abstract this to a function later on
+    #return the list

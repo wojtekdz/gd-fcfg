@@ -1,0 +1,53 @@
+# ##########
+# BASE FORMS FOR NOUN GENERATION
+# ##########
+
+# EACH NOUN ON A SEPARATE LINE
+# PATTERN: RAD_SG, POSS_SG, RAD_PL, POSS_PL, GENDER
+
+#A
+masc, àite, àite, àiteachan, àiteachan
+fem, aiste, aiste, aistean, aistean
+masc, àm, ama, amannan, amannan
+
+#B
+masc, balach, balaich, balaich, balach
+fem, billeag, billeig, billeagan, billeagan
+masc, baile, baile, bailtean, bailtean
+
+#C
+masc, cat, cait, cait, cat
+fem, coille, coille, coilltean, coilltean
+
+#D
+masc, doras, dorais, dorsan, dorsan
+fem, druim, droma, dromannan, dromannan
+masc, duine, duine, daoine, daoine
+
+#E
+masc, euslainteach, euslaintich, euslaintich, euslainteach
+fem, eaglais, eaglaise, eaglaisean, eaglaisean
+fem, èiginn, èiginne, èiginnean
+
+#F
+masc, facal, facail, faclan faclan
+fem, feachd, feachd, feachdan, feachdan
+fem, fuil, fala, fuiltean, fuiltean
+
+
+
+#P
+masc, piseach, pisich, pisich, piseach
+fem, piseag, piseig, piseagan, piseagan
+
+
+
+#M
+
+
+
+
+
+
+masc, tùs, tuis, tùsan, tùsan
+fem, cailleach, caillich, cailleachan, cailleachan

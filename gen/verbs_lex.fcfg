@@ -1,4 +1,4 @@
-### STATIC ###
+###### VERBS_LEX ######
 VBASE -> "caochail"
 NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "caochladh"
 NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "chaochladh"

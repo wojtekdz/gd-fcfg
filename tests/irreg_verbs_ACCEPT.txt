@@ -1,0 +1,27 @@
+# ##########
+# ACCEPT TESTS FOR IRREGULAR VERBS (verbs_lex_irreg.fcfg)
+# ##########
+
+# BI
+Tha
+Ciamar a tha thu?
+A bheil thu ann?
+Càit a bheil thu?
+A bheil?
+chan eil
+nach eil?
+bhiodh
+cha bhiodh
+
+# RACH
+Tha mi a' dol
+chaidh mi ann
+ciamar a chaidh thu ann?
+an deach thu ann?
+càit an deach thu?
+thèid mi ann
+an tèid mi ann?
+cha tèid i ann
+nach tèid thu ann?
+rachadh tu ann
+dhèidheadh i ann

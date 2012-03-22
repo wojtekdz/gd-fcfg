@@ -1,0 +1,216 @@
+# ##########
+# IRREGULAR VERBS
+# ##########
+
+#[TOWRITE] SHOULD IRREGULAR VERBS OR SUBSTANTIVE TO BE BE DIFFERENT PARTS OF SPEECH AS WELL? - PROBABLY NOT NECESSARY
+
+###### SUBSTANTIVE VERB
+
+## BASIC
+#[TOWRITE] MORE IMPERATIVE FORMS NOT COVERED - JUST 3RD PERS
+VBASE -> "bi"
+#[TOWRITE] SPECIAL - NOT USED WITH AG...
+NP[SUBCAT=vnsubs] -> "a_bhith"
+
+## PRESENT
+VD[CAGR=bheil, TENSE=pres, SUBCAT=subs, +POL, +INTERROG] -> "bheil"
+
+#[TOWRITE] DO VIs need CAGR? do they agree with anything?
+VI[TENSE=pres, SUBCAT=subs, +POL, -INTERROG] -> "tha"
+
+#[TOWRITE???] little glitch here, eil can be both interrog (with nach) and not (with chan) - what passes the feature up? the S is ok!
+VD[CAGR=v, TENSE=pres, SUBCAT=subs, -POL, -INTERROG] -> "eil"
+
+## PAST
+#POLARITY IS UNDERSPECIFIED FOR cha robh AND nach robh AND an robh
+VD[CAGR=neu, TENSE=past, SUBCAT=subs] -> "robh"
+VI[TENSE=past, SUBCAT=subs] -> "bha"
+
+## FUTURE
+VI[TENSE=fut, SUBCAT=subs, +POL, -INTERROG] -> "bidh" | "bithidh"
+VD[CAGR=lab, TENSE=fut, SUBCAT=subs, -LEN] -> "bi"
+VD[TENSE=fut, SUBCAT=subs, +LEN] -> "bhi"
+VR[SUBCAT=subs] -> "bhios" | "bhitheas"
+
+## CONDITIONAL
+#[TOWRITE] NOT SURE WHAT TO DO WITH 
+#VI[TENSE=cond, SUBCAT=subs, +POL, -INTERROG] -> "bhithinn"
+#VD[TENSE=cond, SUBCAT=subs, -LEN] -> "bithinn"
+#VD[TENSE=cond, SUBCAT=subs, +LEN] -> "bhithinn"
+#[TOWRITE] SYNTACTICALLY FCFG-WISE THIS MIGHT BE SIMILAR TO IMPERSONAL VERBS...
+
+VI[TENSE=cond, SUBCAT=subs, +POL, -INTERROG] -> "bhiodh"
+#[TOWRITE] only VD[-LEN] needs to be marked for CAGR?
+VD[CAGR=lab, TENSE=cond, SUBCAT=subs, -LEN] -> "biodh" | "bitheadh"
+VD[TENSE=cond, SUBCAT=subs, +LEN] -> "bhiodh" | "bhitheadh"
+
+###### COPULA
+
+#[Q] SHOULD THE COPULA BE A DIFFERENT PART OF SPEECH?
+VI[TENSE=pres, SUBCAT=cop, +POL, -INTERROG] -> "'s" | "is"
+#[Q] THESE WOULD EITHER HAVE TO BE ZERO-VALUE OR THE COPULAR SENTENCE WOULD HAVE TO HAVE A SEPARATE PARADIGM
+
+#[Q] CONSIDER HOW TO DERIVE PARTICLES AND COPULAS FROM CBASE(?) FORMS
+VI[TENSE=pres, SUBCAT=cop, -POL, -INTERROG] -> "chan"
+VI[TENSE=pres, SUBCAT=cop, +POL, +INTERROG] -> "an"
+VI[TENSE=pres, SUBCAT=cop, -POL, +INTERROG] -> "nach"
+
+VI[TENSE=past, SUBCAT=cop, +POL, -INTERROG] -> "bu" | "b'"
+VI[TENSE=past, SUBCAT=cop, -POL, -INTERROG] -> "cha_bu" | "cha_b'"
+VI[TENSE=past, SUBCAT=cop, +POL, +INTERROG] -> "am_bu" | "am_b'"
+VI[TENSE=past, SUBCAT=cop, -POL, +INTERROG] -> "nach_bu" | "nach_b'"
+
+##### IRREGULAR VERBS
+
+#[TOWRITE] IN TERMS OF FILLING THE FRAME, THE DIFFERENCE BETWEEN IRREGULARS AND REGULARS IS JUST DIFFERENT (SUPLETIVE) FORMS THAT CANNOT BE GENERATED AUTOMATICALLY
+# THE HIGHER LEVELS ARE THE SAME
+# THE MAIN PROBLEM IS THE IRREGULAR PAST WHICH DOES NOT HAVE DO MOST OF THE TIME... HENCE PAST FORMS OF THESE VERBS MUST BE DIFFERENT PoS AND THEN THERE WILL BE A SEPARATE
+# FORMATION AT VD LEVEL FOR PAST
+# LET'S CALL THIS... IRPAST
+
+#[TODO] CHECK [TRANSITIVITY ACCROSS THE BOARD!]
+
+### RACH
+VBASE -> "rach"
+NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "dol" 
+#[TODO] DO YOU USE IT AS A VERBAL NOUN LENITED... WHAT ABOUT "FEUMAIDH MI A DHOL ANN?"
+#NP[CAGR=neu, CASE=rad, GEN=masc, +LEN, SUBCAT=vn] -> "fhalbh"
+VI[TENSE=past, SUBCAT="NP:PP", +POL, -INTERROG] -> "chaidh"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT="NP, PP"] -> "deach"
+VI[TENSE=fut, SUBCAT="NP:PP", +POL, -INTERROG] -> "thèid"
+VD[TENSE=fut, SUBCAT="NP:PP"] -> "tèid"
+VR[SUBCAT=monotr] -> "thèid"
+VI[TENSE=cond, SUBCAT="NP:PP", +POL, -INTERROG] -> "dhèidheadh" | "rachadh"
+VD[TENSE=cond, SUBCAT="NP:PP", -LEN] -> "dèidheadh" | "rachadh"
+VD[TENSE=cond, SUBCAT="NP:PP", +LEN] -> "dhèidheadh"
+
+### FAIC
+VBASE -> "faic"
+NP[CAGR=lab, GEN=masc, -LEN, SUBCAT=vn] -> "faicinn"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "fhaicinn"
+VI[CAGR=?c, TENSE=past, SUBCAT="NP:NP|S", +POL, -INTERROG] -> "chunnaic"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=monotr] -> "faca"
+#[TODO] CHAN FHACA...
+#IRPAST[CAGR=neu, TENSE=past, SUBCAT=monotr] -> "faca" ??? +LEN
+VI[TENSE=fut, SUBCAT=monotr, +POL, -INTERROG] -> "chì"
+VD[TENSE=fut, SUBCAT=monotr] -> "faic"
+#[TODO] CHAN FHAIC
+#VD[TENSE=fut, SUBCAT=monotr] -> "faic" ???
+VR[SUBCAT=intr] -> "chì"
+VI[TENSE=cond, SUBCAT=monotr, +POL, -INTERROG] -> "chiteadh"
+VD[TENSE=cond, SUBCAT=monotr, -LEN] -> "faiceadh"
+VD[TENSE=cond, SUBCAT=monotr, +LEN] -> "fhaiceadh"
+
+### FAIGH
+VBASE -> "faigh"
+NP[CAGR=lab, GEN=masc, -LEN, SUBCAT=vn] -> "faighinn"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "fhaighinn"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "fhuair"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "d'fhuair"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "gheibh"
+VD[TENSE=fut, SUBCAT=ditr, -LEN] -> "faigh"
+VD[TENSE=fut, SUBCAT=ditr, +LEN] -> "fhaigh"
+VR[SUBCAT=intr] -> "gheibh"
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "gheibheadh"
+#CAGR HERE!
+VD[TENSE=cond, SUBCAT=ditr, -LEN] -> "faiceadh"
+VD[TENSE=cond, SUBCAT=ditr, +LEN] -> "fhaiceadh"
+
+### DÈAN
+VBASE -> "dèan"
+NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "dèanamh"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "dhèanamh"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "rinn"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "d'rinn"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "nì"
+#[TODO] d- needs CHA INSTEAD OF CHAN...
+VD[TENSE=fut, SUBCAT=ditr] -> "dèan"
+VR[SUBCAT=intr] -> "nì"
+#[TOWRITE] AS USUAL SKIP SYNTHETIC FORMS BECAUSE THEY ARE COMPLEX...
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "dheanadh"
+VD[TENSE=cond, SUBCAT=ditr] -> "deanadh"
+
+### RUIG
+VBASE -> "ruig"
+NP[CAGR=lab, GEN=masc, SUBCAT=vn] -> "ruigsinn"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "ràinig"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "d'ràinig"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "ruigidh"
+#[TODO] d- needs CHA INSTEAD OF CHAN...
+VD[TENSE=fut, SUBCAT=ditr] -> "ruig"
+VR[SUBCAT=intr] -> "ruigeas"
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "ruigeadh"
+
+### BEIR
+VBASE -> "beir"
+NP[CAGR=lab, GEN=masc, -LEN, SUBCAT=vn] -> "breith"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "bhreith"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "rug"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "d'rug"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "beiridh"
+VD[CAGR=lab, TENSE=fut, SUBCAT=ditr, -LEN] -> "beir"
+VD[TENSE=fut, SUBCAT=ditr, +LEN] -> "bheir"
+VR[SUBCAT=intr] -> "bheireas"
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "bheireadh"
+VD[CAGR=lab, TENSE=cond, SUBCAT=ditr, -LEN] -> "beireadh" 
+VD[CAGR=neu, TENSE=cond, SUBCAT=ditr, +LEN] -> "bheireadh" 
+
+### THIG
+VBASE -> "thig"
+NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "tighinn"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "thighinn"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "thàinig"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "tàinig"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "thig"
+#[TODO] d- needs CHA INSTEAD OF CHAN...
+VD[TENSE=fut, SUBCAT=ditr] -> "tig"
+VR[SUBCAT=intr] -> "thig"
+#[TOWRITE] AS USUAL SKIP SYNTHETIC FORMS BECAUSE THEY ARE COMPLEX...
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "thigeadh"
+VD[TENSE=cond, SUBCAT=ditr] -> "tigeadh"
+
+### THOIR
+VBASE -> "thoir"
+NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "toirt"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "thoirt"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "thug"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "tug"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "bheir"
+#[TODO] d- needs CHA INSTEAD OF CHAN...
+VD[TENSE=fut, SUBCAT=ditr] -> "toir"
+VR[SUBCAT=intr] -> "bheir"
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "bheireadh"
+VD[CAGR=lab, TENSE=cond, SUBCAT=ditr, -LEN] -> "toireadh"
+
+### ABAIR + CAN
+VBASE -> "abair"
+NP[CAGR=neu, GEN=masc, SUBCAT=vn] -> "ràdh"
+NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "cantainn" | "cannail"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "chantainn" | "channail"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "thuirt"
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "tuirt"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "their" | "canaidh"
+VD[CAGR=v, TENSE=fut, SUBCAT=ditr] -> "abair"
+VD[CAGR=v, TENSE=fut, SUBCAT=ditr, -LEN] -> "can"
+VD[CAGR=v, TENSE=fut, SUBCAT=ditr, +LEN] -> "chan"
+VR[SUBCAT=intr] -> "chanas" | "their"
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "theireadh" | "chanadh"
+VD[TENSE=cond, SUBCAT=ditr] -> "abradh" 
+VD[TENSE=cond, SUBCAT=ditr, -LEN] -> "canadh"
+VD[TENSE=cond, SUBCAT=ditr, +LEN] -> "chanadh"
+
+### CLUINN
+VBASE -> "cluinn"
+NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "cluinntinn"
+NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "chluinntinn"
+VI[CAGR=?c, TENSE=past, SUBCAT=ditr, +POL, -INTERROG] -> "chuala"
+#[todo] +LEN here as well - cha chuala
+IRPAST[CAGR=neu, TENSE=past, SUBCAT=ditr] -> "cuala"
+VI[TENSE=fut, SUBCAT=ditr, +POL, -INTERROG] -> "cluinnidh"
+#[TODO] d- needs CHA INSTEAD OF CHAN...
+VD[TENSE=fut, SUBCAT=ditr, -LEN] -> "cluinn"
+VD[TENSE=fut, SUBCAT=ditr, +LEN] -> "chluinn"
+VR[SUBCAT=intr] -> "chluinneas"
+VI[TENSE=cond, SUBCAT=ditr, +POL, -INTERROG] -> "theireadh" | "chanadh"
+VD[CAGR=lab, TENSE=cond, SUBCAT=intr, -LEN] -> "cluinneadh"
+VD[TENSE=cond, SUBCAT=intr, +LEN] -> "chluinneadh"

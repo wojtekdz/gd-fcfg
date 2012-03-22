@@ -1,0 +1,48 @@
+# ##########
+# BASE FORMS FOR ADJECTIVE GENERATION
+# ##########
+
+# EACH ADJECTIVE ON A SEPARATE LINE
+# PATTERN: ABASE, SYLLABLES
+
+àlainn, multi
+àrd, mono
+òg, mono
+bàn, mono
+beothail, multi
+blàth, mono
+blasta, multi
+bodhar, multi
+briste, multi
+buidhe, multi
+càirdeil, multi
+caol, mono
+cas, mono
+cugallach, multi
+daor, mono
+dearg, mono
+doirbh, multi
+dorcha, multi
+dubh, mono
+eagalach, multi
+falamh, multi
+feumail, multi
+fileanta, multi
+fosgailte, multi
+gòrach, multi
+gaothach, multi
+goirt, multi
+grànnda, multi
+grianach, multi
+gruamach, multi
+luath, mono
+modhail, multi
+ruadh, mono
+sàmhach, multi
+salach, multi
+saor, mono
+sgòthach, multi
+sona, mono
+spaideil, multi
+tinn, mono
+toilichte, multi

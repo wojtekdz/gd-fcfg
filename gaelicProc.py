@@ -14,7 +14,7 @@
 import os
 import re
 import codecs
-import gaelicOps
+from gaelicOps import *
 
 prespace_tokens = ["!", ".", "?"] #these strings will be preprocessed to separate them as tokens with a space BEFORE them
 postspace_tokens = ["n-", "h-", "t-"] #and these with a space AFTER them
@@ -27,6 +27,7 @@ def filterOrthography(sent):
     #PREPROCESS SENTENCES TO FILL IN IMPORTANT SYNTACTIC MARKERS OMMITED IN SPEECH AND THUS SPELLING, BUT LIKELY PROBLEMS WITH CONTEXT: WOULD WORK FOR dè -> dè a BUT MORE DIFFICULT WITH a athair vs a h-athair
 
 
+
 def stripList(lst):
     """Remove comments, blank lines etc. from a list of productions read from a file
 
@@ -37,97 +38,269 @@ def stripList(lst):
             lst_stripped = lst_stripped + [item]
     return lst_stripped
 
-def getGenerationSources(filepath):
-    #get data from file
-    f = codecs.open(filepath, 'r', encoding='utf8')
-    raw_data = f.read().splitlines()
-    f.close()
 
-    #prepare element for zipping into a dictionary, assume only one section, without irregular/regular forms for processing
-    productions = [[]]
-    production_names = ['static']
 
-    #find separation markers for production classes
-    try:
-        index_reg = raw_data.index('### REGULAR ###')
-    except ValueError:
-        index_reg = False
+def saveToFile(productions, label, filename):
+    """Save a productions list to a file, one per line, with a suitable comment label at the start
 
-    try:
-        index_irreg = raw_data.index('### IRREGULAR ###')
-    except ValueError:
-        index_irreg = False
-
-    #Establish order of reg/irreg source productions, and prepare dictionary values
-
-    if (index_reg and index_irreg): #there is a division into static items, and regular/irregular generations
-        #redeclare variables for 3-part structure
-        productions = [[],[],[]]
-        production_names = ['static', 'irregular', 'regular']
-        if index_irreg < index_reg: #irreg then reg
-            productions[0] = stripList(raw_data[:index_irreg-1])
-            productions[1] = stripList(raw_data[index_irreg+1:index_reg-1])
-            productions[2] = stripList(raw_data[index_reg+1:])
-        else: #reg then irreg
-            productions[0] = stripList(raw_data[:index_reg-1])
-            productions[2] = stripList(raw_data[index_reg+1:index_irreg-1])
-            productions[1] = stripList(raw_data[index_irreg+1:])
-    else:
-        productions[0] = stripList(raw_data) #everything just goes into the static productions if not reg/irreg tags found
-
-    #build the dictionary out of keys and values
-    productions = dict(zip(production_names, productions))
-
-    return productions
-
-#        raise RootFormsError, "Unable to generate from give roots, please check the CSV pattern in the root file"
-
-def saveGeneratedOutput(productions, file):
-    """Serializes dictionary and writes it to file
-
-        Arguments: productions (dictionary)
+        Arguments:
+            productions (list) - the content
+            label (string) - comment to go into the start of the file
+            filename (string) - destination file
         Returns: none, writes to file
     """
 
-    for value in productions.values():
-        value = stripList(value)
+    label = "###### " + label.upper() + " ######"
+    serialized_productions = [label.encode("utf8")] #put the comment on the first line
+    for line in productions: #flatten list
+        serialized_productions = serialized_productions + [line]
 
-    serialized_productions = [] #make sure the output file will be UTF-8 when read back into Python
-    for section_name, section in productions.iteritems(): #loop through keys and values
-        section_name = '### ' + section_name.upper() + ' ###' #prepare keys as comments
-        serialized_productions = serialized_productions + [section_name] + section #remember to cast section_name as list so it can be concatenated with the list-type values items
-
-    #write full clean output to file ready for parsing
-    fw = codecs.open(file, 'w', encoding='utf8')
+    fw = codecs.open(filename, "w", encoding="utf8")
     for line in serialized_productions:
-        print>>fw, line #each list item on new line
+        #[TODO] WRITE UNICODE VALUES AS UTF8 CHARACTERS TO FILE?
+        print >> fw, line #each list item on new line
     fw.close()
 
-#[TODO] THESE 3 FUNCTIONS WHEN GRAMMAR STRUCTURE IS SETTLED FINALLY
-def buildNouns(productions):
-    return False
 
-def buildVerbs(productions):
-    return False
 
-def buildAdjectives(productions):
+def readFileAsStrippedList(filename, strip):
+    """Read data from file in UTF8 as a list ready for processing
+
+       Argument: filename (string) - file path to read from
+                 strip (Bool) - switch for cleaning list
+       Returns: lst (list)
+
+    """
+    f = codecs.open(filename, 'r', encoding="utf8") #get data from file in UTF8
+    lst = f.read().splitlines() #build a list
+    f.close()
+
+    if strip == True: #perhaps clean up list
+        lst = stripList(lst)
+
+    return lst
+
+
+
+def buildWordlist(properties, filename, prnt):
+    """Read words from CSV file and build them as lexical items in dictionaries
+
+        Arguments:
+            properties (list) - keys for the dictionary of this word type
+            filename (string) - path to CSV file
+            prnt (Boolean) - switch to print the prepared dictionary before returning it
+        Returns: wordlist (dictionary)
+    """
+    roots = readFileAsStrippedList(filename, True)
+    wordlist = []
+
+    for root in roots:
+        info = root.replace(" ","").split(",") #the values
+        word = dict(zip(properties, info)) #a dictionary for one word
+        wordlist.append(word)
+
+    if prnt == True:
+        for word in wordlist:
+            print word['base'] +  " = " + str(word)
+
+    return wordlist
+
+
+
+def generateNouns(lex, roots_file):
+    """Generate noun forms
+
+        Arguments: lex (list) - corresponding lexical productions entered by hand
+                    roots_file - path to file containing roots
+
+        Returns: concatenated lex + gen (original productions + newly generated forms)
+    """
+    print "Generating NOUN forms"
+
+    generated = [] # list ready for generated productions
+    properties = ["gender", "base", "poss", "pl", "pospl"] #the characterstics which the forms will be built from i.e. the keys
+
+    words = buildWordlist(properties, roots_file, True)
+
+    for word in words:
+
+        falen = "nonSure" #set error flag
+        #if word in plural has slender ending, it should lenite, this variable goes into the declension frame
+        quality, last_vowel, last_vowel_index = checkFinalConsonant(word["pl"])
+        if quality == 'slender': falen = "+FALEN" #Following Adjective Lenition...
+        else: falen = "-FALEN"
+
+        #genarate prepositional case forms based on gender to simplify frames below slightly
+        if word["gender"] == 'masc': word["prep"] = word["base"]
+        elif word["gender"] == 'fem': word["prep"] = slenderise(word["base"])
+
+        if (not(lenitable(word["base"]))): #reduced 6-frame for unlenitables, LEN underspecified
+
+            #determine CAGR type
+
+            cagr = ["neu", "neu", "neu"] #masc.rad.sg, fem.poss.sg, rad+prep.pl
+            if (word["gender"] == "masc" and startsWithVowel(word["base"])): cagr[0] = "v" #masc.rad.sg
+            elif (word["gender"] == "fem" and startsWithVowel(word["base"])): cagr[1] = "v" #fem.poss.sg
+
+            if startsWithVowel(word["pl"]): cagr[2] = "v" #pl.rad+prep
+
+            #singular
+            if word["gender"] == "masc":
+                decl_sg = [
+                        'N[CAGR=' + cagr[0] + ', CASE=rad, GEN=' + word["gender"] + '] -> "' + word["base"] + '"',
+                        'N[CAGR=vflnr, CASE=prep, GEN=' + word["gender"] + '] -> "' + word["prep"] + '"',
+                        'N[CAGR=vflnr, CASE=poss, GEN=' + word["gender"] + ']-> "' + word["poss"] + '"'
+                        ]
+
+            elif word["gender"] == "fem": #different CAGR
+                decl_sg = [
+                        'N[CAGR=vflnr, CASE=rad, GEN=' + word["gender"] + '] -> "' + word["base"] + '"',
+                        'N[CAGR=vflnr, CASE=prep, GEN=' + word["gender"] + '] -> "' + word["prep"] + '"',
+                        'N[CAGR=' + cagr[1] + ', CASE=poss, GEN=' + word["gender"] + ']-> "' + word["poss"] + '"'
+                        ]
+
+            #plural - just one pattern
+            decl_pl = [
+                    'N[CAGR=' + cagr[2] + ', CASE=rad, GEN=pl, ' + falen + ']-> "' + word["pl"] + '"',
+                    'N[CAGR=' + cagr[2] + ', CASE=prep, GEN=pl, ' + falen + ']-> "' + word["pl"] + '"',
+                    'N[CAGR=neu, CASE=poss, GEN=]-> "' + word["poss"] + '"' #no +FALEN because poss never slender in plural (ex. daoine)
+                    ]
+
+        else: #standard 12-frame, with explicit LEN
+
+            cagr = ["neu", "neu", "neu"] #masc.rad.sg, (masc.prep+poss.sg|fem.rad+prep.sg), #poss.pl
+
+            if (word["gender"] == "masc" and isLabial(word["base"][0])): cagr[0] = "lab" #masc.rad.sg, vowels caught in 6-frame
+
+            #masc.prep+poss.sg, fem.rad+prep.sg
+            elif ((word["base"][0]) == "s"): cagr[1] = "s"  #sp st sg caught in 6-frame
+
+            #masc.prep+poss.sg, fem.rad+poss.sg
+            elif ((word["base"][0]) == "f"): cagr[1] = "vflnr" #vlnr caught in 6-frame
+
+            #fem.poss.sg Vs caught in 6-frame
+
+            if isLabial(word["pl"][0]):
+                cagr[2] = "lab" #poss.pl
+
+            #singular
+            if word["gender"] == "masc":
+                decl_sg = [
+                    'N[CAGR=' + cagr[0] + ', CASE=rad, GEN=masc, -LEN] -> "' + word["base"] + '"',
+                    'N[CAGR=neu, CASE=rad, GEN=masc, +LEN] -> "' + lenite(word["base"]) + '"',
+                    'N[CAGR=neu, CASE=prep, GEN=masc, -LEN] -> "' + word["prep"] + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=prep, GEN=masc, +LEN] -> "' + lenite(word["prep"]) + '"',
+                    'N[CAGR=neu, CASE=poss, GEN=masc, -LEN]-> "' + word["poss"] + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=poss, GEN=masc, +LEN]-> "' + lenite(word["poss"]) + '"',
+                    ]
+
+            elif word["gender"] == "fem": #no poss[+LEN] for GEN=fem, different CAGR
+                decl_sg = [
+                    'N[CAGR=neu, CASE=rad, GEN=fem, -LEN] -> "' + word["base"] + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=rad, GEN=fem, +LEN] -> "' + lenite(word["base"]) + '"',
+                    'N[CAGR=neu, CASE=prep, GEN=fem, -LEN] -> "' + word["prep"] + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=prep, GEN=fem, +LEN] -> "' + lenite(word["prep"]) + '"',
+                    'N[CAGR=neu, CASE=poss, GEN=fem, -LEN]-> "' + word["poss"] + '"',
+                    ]
+
+            #plural - just one pattern
+            decl_pl = [
+                    'N[CAGR=neu, CASE=rad, GEN=pl, -LEN, ' + falen + '] -> "' + word["pl"] + '"',
+                    'N[CAGR=neu, CASE=rad, GEN=pl, +LEN, ' + falen + '] -> "' + lenite(word["pl"]) + '"',
+                    'N[CAGR=neu, CASE=prep, GEN=pl, -LEN, ' + falen + '] -> "' + word["pl"] + '"',
+                    'N[CAGR=neu, CASE=prep, GEN=pl, +LEN, ' + falen + '] -> "' + lenite(word["pl"]) + '"',
+                    'N[CAGR=' + cagr[2] + ', CASE=poss, GEN=pl, -LEN]-> "' + word["pospl"] + '"', #no +FALEN because poss never slender in plural (ex. daoine)
+                    'N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "' + lenite(word["pospl"]) + '"',
+                    ]
+
+        dh_forms = []
+        if (startsWithVowel(word["base"]) or word["base"][0] == 'f'): #additional dh' items for VLs and Fs
+            dh_forms = [
+                    'N[CAGR=do, CASE=prep, GEN=' + word["gender"] + ', +LEN] -> "' + dh_lenite(word["prep"]) + '"',
+                    'N[CAGR=do, CASE=prep, GEN=pl, +LEN] -> "' + dh_lenite(word["pl"]) + '"'
+                    ]
+
+        for production in (['\n'] + decl_sg + decl_pl + dh_forms):
+            generated.append(production) #add individual productions to list
+
+    return lex + generated
+
+
+
+def generateVerbs(lex, roots_file):
+    print "Generating VERB forms"
+
+    generated = [] # list ready for generated productions
+    properties = ["base", "vn", "subcat"] #the characterstics which the forms will be built from i.e. the keys
+
+    words = buildWordlist(properties, roots_file, True)
+
+    #determine CAGR type
+    cagr = range(4)
+
+    return lex + generated
+
+
+
+def generateAdjectives(lex, roots_file):
     """Generate adjective forms from a list of basic lexical productions
 
         Returns: a larger list of more forms
     """
-    print "Processing adjectives..."
-    #input pattern
+    print "Generating ADJECTIVE forms"
 
-    #[Q] does this pseudocode seem reasonable?
-    #create a 'productions' dictionary with items {a_*}:{productions list}
+    generated = [] # list ready for generated productions
+    properties = ["base", "syl"] #the characterstics which the forms will be built from i.e. the keys
 
-    #detect the two different list elements: monosyllabic, multisyllabic (according to SYL variable) see regular_adjectives.fcfg - certainly move this to compileGrammar(), and pass mono as T/F, with the argument being a string
-    #split the strings into an 'adjectives' list according to " | " - abstract this to a function later on
-    #for adjective in adjectives:
+    words = buildWordlist(properties, roots_file, True)
 
-    #if mono - addFinalVowel(adjective) in productions['a_gen_masc'], productions['a_gen_fem'], productions['a_all_pl']
-    #concatenate lists into strings with the " | " separator - abstract this to a function later on
-    #return the list
+    for word in words:
+        #forms not marked for case
+        if (not(lenitable(word["base"])) or word["base"][0] == 'f'):
+            not_cased = [
+                            'ABASE[+PRED] -> "' + word["base"] + '"',
+                            'ACOMP -> "' + lenite(addFinalVowel(slenderise(word["base"]))) + '"'
+                        ]
+        else:
+            not_cased = [
+                            'ABASE[+PRED, -LEN] -> "' + word["base"] + '"',
+                            'ABASE[+PRED, +LEN] -> "' + lenite(word["base"]) + '"',
+                            'ACOMP[-LEN] -> "' + addFinalVowel(slenderise(word["base"])) + '"',
+                            'ACOMP[+LEN] -> "' + lenite(addFinalVowel(slenderise(word["base"]))) + '"'
+                        ]
+
+        #forms marked for case
+        cased = [
+                    'ABASE[CASE=rad, GEN=masc, -LEN] -> "' + word["base"] + '"',
+                    'ABASE[CASE=rad, GEN=masc, +LEN] -> "' + lenite(word["base"]) + '"',
+                    'ABASE[CASE=prep, GEN=masc, +LEN] -> "' + lenite(word["base"]) + '"',
+                    'ABASE[CASE=poss, GEN=masc, +LEN] -> "' + lenite(slenderise(word["base"])) + '"',
+
+                    'ABASE[CASE=rad, GEN=fem, +LEN] -> "' + lenite(word["base"]) + '"',
+                    'ABASE[CASE=prep, GEN=fem, +LEN] -> "' + lenite(slenderise(word["base"])) + '"'
+                ]
+
+        #forms marked for case, with syllables playing a role
+        if word["syl"] == 'mono':
+            #monosyllabic
+            cased_syl = [
+                            'ABASE[CASE=poss, GEN=fem, -LEN] -> "' + lenite(addFinalVowel(slenderise(word["base"]))) + '"',
+                            'ABASE[CASE=?cs, GEN=pl, -LEN] -> "' + addFinalVowel(slenderise(word["base"])) + '"',
+                            'ABASE[CASE=?cs, GEN=pl, +LEN] -> "' + lenite(addFinalVowel(slenderise(word["base"]))) + '"',
+                        ]
+        else:
+            #non-monosyllabic, hopefully multisyllabic
+            cased_syl = [
+                            'ABASE[CASE=poss, GEN=fem, -LEN] -> "' + lenite(slenderise(word["base"])) + '"',
+                            'ABASE[CASE=?cs, GEN=pl, -LEN] -> "' + slenderise(word["base"]) + '"',
+                            'ABASE[CASE=?cs, GEN=pl, +LEN] -> "' + lenite(slenderise(word["base"])) + '"',
+                        ]
+
+
+        for production in (['\n'] + not_cased + cased + cased_syl):
+            generated.append(production) #add individual productions to list
+
+    return lex + generated
 
 
 def compileGrammar():
@@ -141,50 +314,46 @@ def compileGrammar():
     #get filenames and set up variables
     path_src = os.path.join(os.path.dirname(__file__), 'src/')
     path_gen = os.path.join(os.path.dirname(__file__), 'gen/')
+    path_roots = os.path.join(os.path.dirname(__file__), 'roots/')
 
-    files = os.listdir(path_src)
+    files = os.listdir(path_src) #the files to start with are in the /src directory
 
-    grammar_sections = []
     compiled_grammar = []
 
-    #read in contents of files into grammar_sections
-
-    #prepare keys for dictionary from filenames
-    grammar_section_names = [filename.rstrip('.fcfg') for filename in files]
-
-    #take data from source files (src) generate forms and save individually as generated sections (gen)
+    #detect if files need any generation of lexical productions, and pass them to the appropriate functions if they do
+    #here the detection is based on filenames, but it could also be done manually, or from the syntax with extra work
     for file in files:
-        print filename
-        temp = getGenerationSources(path_src + file)
-        print temp
-        saveGeneratedOutput(temp, path_gen + file)
+        raw_data = readFileAsStrippedList(path_src + file, True) #read and strip comments
 
-    #[TODO] INSERT PROCESSING FUNCTIONS
-        #processX()
-            #process static, irreg and reg according to rules
-            #return lists
+        gen = []
+        #pass these to appropriate generating functinos
+        if file =="adjectives_lex.fcfg":
+            roots_file = path_roots + "adjectives.txt"
+            gen = generateAdjectives(raw_data, roots_file)
+        elif file=="nouns_lex.fcfg":
+            roots_file = path_roots + "nouns.txt"
+            gen = generateNouns(raw_data, roots_file)
+        elif file=="verbs_lex.fcfg":
+            roots_file = path_roots + "verbs.txt"
+            gen = generateVerbs(raw_data, roots_file)
+        else:
+            print
+            #TEMPORARILY SUSPENDED FOR DEVELOPMENT OF THE GENERATING FUNCTIONS
+            #gen = raw_data
 
+        #when they come back with extra lexical productions or not, save these intermediate versions in the /gen directory
+        saveToFile(gen, file.rstrip(".fcfg"), path_gen + file)
+
+    full_grammar = []
     #take data from generated files (gen) and serialize it into the main fcfg
-
     for file in files:
-        f = codecs.open(path_gen + file, 'r', encoding='utf8')
-        raw_data = f.read().splitlines()
-        f.close()
-
-        raw_data = stripList(raw_data)
-
-        grammar_data = []
+        raw_data = readFileAsStrippedList(path_gen + file, False) #read and keep comments
         for line in raw_data:
-                grammar_data.append(line)
-        #append stripped grammar to main 2D array
-        grammar_sections.append(grammar_data)
+                full_grammar.append(line)
 
-    #build and save dictionary of sections
-    grammar = dict(zip(grammar_section_names, grammar_sections))
+    saveToFile(full_grammar, " !!! FULL GRAMMAR", 'gaelic.fcfg')
 
-    #[TODO] Python dictionaries cannot be sorted... think of a different structure for the data maybe? or live with the fact that it is unsorted in the file
 
-    saveGeneratedOutput(grammar, 'gaelic.fcfg')
 
 def generateMultiwords():
     """Go through the full grammar and extract multiword tokens, and write them to the multiwords.txt file, ready for use in preprocessing
@@ -212,14 +381,9 @@ def generateMultiwords():
         print>>fw, word #each list item on new line
     fw.close()
 
-    #just here for a quick check in the interpreter
-    #print 'Extracted multiwords: '
-    #print multiwords
 
 
-#[TODO] REFACTOR THE REWRITING RULES TO BE REVERSIBLE
-#THEY SHOULD TURN PUNCTUTATION AND CLITICS INTO SPACE-DELIMITED TOKENS
-#ABSTRACT THAT INTO A FUNCTION
+#[TODO] REFACTOR THE REWRITING RULES TO BE REVERSIBLE: THEY SHOULD TURN PUNCTUTATION AND CLITICS INTO SPACE-DELIMITED TOKENS, ABSTRACT THAT INTO A FUNCTION
 def preprocessSentences(file_name):
     """Prepare contents of file for parsing
 
@@ -276,7 +440,8 @@ def preprocessSentences(file_name):
     #print sentences
 
     return sentences
-#END preprocessSentences()
+
+
 
 def postprocessSentences(sentence):
     """Format string to conform to orthographic conventions

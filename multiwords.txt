@@ -1,6 +1,3 @@
-gu math
-gu doigheil
-ann an
 a h-
 ar n-
 ur n-
@@ -9,6 +6,14 @@ na bu
 na b'
 a bu
 a b'
+an t-
+an t-
+an t-
+na h-
+na h-
+gu math
+gu doigheil
+ann an
 a bhith
 cha bu
 cha b'
@@ -16,8 +21,3 @@ am bu
 am b'
 nach bu
 nach b'
-an t-
-an t-
-an t-
-na h-
-na h-
