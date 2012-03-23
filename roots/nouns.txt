@@ -3,9 +3,9 @@
 # ##########
 
 # EACH NOUN ON A SEPARATE LINE
-# PATTERN: RAD_SG, POSS_SG, RAD_PL, POSS_PL, GENDER
+# PATTERN: GENDER, RAD_SG, POSS_SG, RAD_PL, POSS_PL
 
-#A
+#A/À
 masc, àite, àite, àiteachan, àiteachan
 fem, aiste, aiste, aistean, aistean
 masc, àm, ama, amannan, amannan
@@ -18,36 +18,74 @@ masc, baile, baile, bailtean, bailtean
 #C
 masc, cat, cait, cait, cat
 fem, coille, coille, coilltean, coilltean
+fem, cailleach, caillich, cailleachan, cailleachan
 
 #D
 masc, doras, dorais, dorsan, dorsan
 fem, druim, droma, dromannan, dromannan
 masc, duine, duine, daoine, daoine
 
-#E
+#E/È
 masc, euslainteach, euslaintich, euslaintich, euslainteach
 fem, eaglais, eaglaise, eaglaisean, eaglaisean
-fem, èiginn, èiginne, èiginnean
+fem, èiginn, èiginne, èiginnean, èiginnean
 
 #F
-masc, facal, facail, faclan faclan
+masc, facal, facail, faclan, faclan
 fem, feachd, feachd, feachdan, feachdan
 fem, fuil, fala, fuiltean, fuiltean
 
+#G
+fem, glùn, glùine, glùintean, glùintean
+masc, gleann, glinne, gleanntan, gleanntan
 
+#I/Ì
+masc, iasgair, iasgair, iasgairean, iasgairean
+fem, iris, irise, irisean, irisean
+fem, ìocshlaint, ìocshlainte, ìocshlaintean, ìocshlaintean
+fem, ìomhaigh, ìomhaigh, ìomhaighean, ìomhaighean
+
+#L
+masc, leabhar, leabhair, leabhraichean, leabhraichean
+fem, làmh, làimh, làmhan, làmhan
+
+#M
+masc, mìlsean, mìlsein, mìlseanan, mìlseanan
+fem, muc, muice, mucan, mucan
+
+#N
+masc, nàmhaid, nàmhad, nàimhdean, nàimhdean
+fem, nathair, nathrach, nathraichean, nathraichean
+
+#O/Ò
+fem, obair, obrach, obraichean, obraichean 
+masc, òran, òrain, òrain, òran
 
 #P
 masc, piseach, pisich, pisich, piseach
 fem, piseag, piseig, piseagan, piseagan
 
+#R
+masc, rathad, rathaid, rathaidean, rathaidean
+fem, ràith, ràithe, ràithean, ràithean
+
+#S/SP/ST/SG
+masc, solas, solais, solasan, solasan
+fem, sràid, sràide, sràidean, sràidean
+masc, sporan, sporain, sporanan, sporanan
+masc, stac, staca, stacan, stacan
+masc, sgoltadh, sgoltaidh, sgoltaidhean, sgoltaidhean
+fem, spàin, spàine, spàinean, spàinean
+fem, stairsneach, stairsnich, stairsnich, stairsnichean
+fem, sgoil, sgoile, sgoiltean, sgoiltean
 
 
-#M
-
-
-
-
-
-
+#T
 masc, tùs, tuis, tùsan, tùsan
-fem, cailleach, caillich, cailleachan, cailleachan
+fem, teirm, teirm, teirmichean, teirmichean
+fem, tràigh, tràghad, tràighean, tràighean
+
+#U/Ù
+fem, uair, uarach, uairean, uairean
+masc, ubhal, ubhail, ubhlan, ubhlan
+masc, ùghdar, ùghdair, ùghdaran, ùghdaran

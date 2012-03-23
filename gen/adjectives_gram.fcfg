@@ -1,1 +1,23 @@
 ###### ADJECTIVES_GRAM ######
+APOSS[CAGR=neu, +LEN] -> "mo" | "do"
+APOSS[CAGR=vf, +LEN] -> "m'" | "d'"
+APOSS[LEN=?l] -> "a"
+APOSS[CAGR=v, -LEN] -> "a_h-"
+APOSS[CAGR=neu] -> "ar" | "ur" | "an"
+APOSS[CAGR=lab] -> "am"
+APOSS[CAGR=v] -> "ar_n-" | "ur_n-" | "an_n-"
+AMOD[-LEN] -> "beagan" | "caran"
+AMOD[+LEN] -> "glè" | "fìor"
+APRE -> "dearbh" | "droch" | "deagh" | "seann"
+AP[CASE=?cs, GEN=?g, LEN=?l] -> ABASE[CASE=?cs, GEN=?g, LEN=?l] | AMOD[LEN=?l] ABASE[CASE=?cs, GEN=?g, LEN=?l]
+AP[+PRED] -> ABASE[LEN=?l, +PRED] AMOD[LEN=?l] ABASE[LEN=?l, +PRED]
+NAS -> "nas"
+AS -> "as"
+NABU[CAGR=neu, +LEN] -> "na_bu"
+NABU[CAGR=vf, +LEN] -> "na_b'"
+ABU[CAGR=neu, +LEN] -> "a_bu"
+ABU[CAGR=vf, +LEN] -> "a_b'"
+REL[TENSE=present, TYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=future, TYPE=adj] -> NAS ACOMP | AS ACOMP
+REL[TENSE=past, TYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]
+REL[TENSE=conditional, TYPE=adj] -> NABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l] | ABU[CAGR=?c, LEN=?l] ACOMP[CAGR=?c, LEN=?l]

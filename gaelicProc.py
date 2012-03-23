@@ -99,6 +99,8 @@ def buildWordlist(properties, filename, prnt):
         word = dict(zip(properties, info)) #a dictionary for one word
         wordlist.append(word)
 
+    #[TODO] PUT ERROR DETECTIONS/CORRECTION HERE IF DESIRED, FOR EXAMPLE CHECKING THAT NUMBER OF ITEMS == NUMBER OF PROPERTIES
+
     if prnt == True:
         for word in wordlist:
             print word['base'] +  " = " + str(word)
@@ -115,12 +117,11 @@ def generateNouns(lex, roots_file):
 
         Returns: concatenated lex + gen (original productions + newly generated forms)
     """
-    print "Generating NOUN forms"
 
     generated = [] # list ready for generated productions
     properties = ["gender", "base", "poss", "pl", "pospl"] #the characterstics which the forms will be built from i.e. the keys
 
-    words = buildWordlist(properties, roots_file, True)
+    words = buildWordlist(properties, roots_file, False)
 
     for word in words:
 
@@ -137,7 +138,6 @@ def generateNouns(lex, roots_file):
         if (not(lenitable(word["base"]))): #reduced 6-frame for unlenitables, LEN underspecified
 
             #determine CAGR type
-
             cagr = ["neu", "neu", "neu"] #masc.rad.sg, fem.poss.sg, rad+prep.pl
             if (word["gender"] == "masc" and startsWithVowel(word["base"])): cagr[0] = "v" #masc.rad.sg
             elif (word["gender"] == "fem" and startsWithVowel(word["base"])): cagr[1] = "v" #fem.poss.sg
@@ -163,7 +163,7 @@ def generateNouns(lex, roots_file):
             decl_pl = [
                     'N[CAGR=' + cagr[2] + ', CASE=rad, GEN=pl, ' + falen + ']-> "' + word["pl"] + '"',
                     'N[CAGR=' + cagr[2] + ', CASE=prep, GEN=pl, ' + falen + ']-> "' + word["pl"] + '"',
-                    'N[CAGR=neu, CASE=poss, GEN=]-> "' + word["poss"] + '"' #no +FALEN because poss never slender in plural (ex. daoine)
+                    'N[CAGR=neu, CASE=poss, GEN=]-> "' + word["pospl"] + '"' #no +FALEN because poss never slender in plural (ex. daoine)
                     ]
 
         else: #standard 12-frame, with explicit LEN
@@ -209,7 +209,7 @@ def generateNouns(lex, roots_file):
                     'N[CAGR=neu, CASE=rad, GEN=pl, +LEN, ' + falen + '] -> "' + lenite(word["pl"]) + '"',
                     'N[CAGR=neu, CASE=prep, GEN=pl, -LEN, ' + falen + '] -> "' + word["pl"] + '"',
                     'N[CAGR=neu, CASE=prep, GEN=pl, +LEN, ' + falen + '] -> "' + lenite(word["pl"]) + '"',
-                    'N[CAGR=' + cagr[2] + ', CASE=poss, GEN=pl, -LEN]-> "' + word["pospl"] + '"', #no +FALEN because poss never slender in plural (ex. daoine)
+                    'N[CAGR=' + cagr[2] + ', CASE=poss, GEN=pl, -LEN]-> "' + word["pospl"] + '"', #skip +FALEN because poss never slender in plural (ex. daoine)
                     'N[CAGR=neu, CASE=poss, GEN=pl, +LEN]-> "' + lenite(word["pospl"]) + '"',
                     ]
 
@@ -223,12 +223,12 @@ def generateNouns(lex, roots_file):
         for production in (['\n'] + decl_sg + decl_pl + dh_forms):
             generated.append(production) #add individual productions to list
 
+    print "Cruthan ainmearan air an gineadh"
     return lex + generated
 
 
 
 def generateVerbs(lex, roots_file):
-    print "Generating VERB forms"
 
     generated = [] # list ready for generated productions
     properties = ["base", "vn", "subcat"] #the characterstics which the forms will be built from i.e. the keys
@@ -238,6 +238,7 @@ def generateVerbs(lex, roots_file):
     #determine CAGR type
     cagr = range(4)
 
+    print "Cruthan ghnìomhairean air an gineadh"
     return lex + generated
 
 
@@ -284,22 +285,22 @@ def generateAdjectives(lex, roots_file):
         if word["syl"] == 'mono':
             #monosyllabic
             cased_syl = [
-                            'ABASE[CASE=poss, GEN=fem, -LEN] -> "' + lenite(addFinalVowel(slenderise(word["base"]))) + '"',
+                            'ABASE[CASE=poss, GEN=fem, -LEN] -> "' + addFinalVowel(slenderise(word["base"])) + '"',
                             'ABASE[CASE=?cs, GEN=pl, -LEN] -> "' + addFinalVowel(slenderise(word["base"])) + '"',
                             'ABASE[CASE=?cs, GEN=pl, +LEN] -> "' + lenite(addFinalVowel(slenderise(word["base"]))) + '"',
                         ]
         else:
             #non-monosyllabic, hopefully multisyllabic
             cased_syl = [
-                            'ABASE[CASE=poss, GEN=fem, -LEN] -> "' + lenite(slenderise(word["base"])) + '"',
+                            'ABASE[CASE=poss, GEN=fem, -LEN] -> "' + slenderise(word["base"]) + '"',
                             'ABASE[CASE=?cs, GEN=pl, -LEN] -> "' + slenderise(word["base"]) + '"',
                             'ABASE[CASE=?cs, GEN=pl, +LEN] -> "' + lenite(slenderise(word["base"])) + '"',
                         ]
 
-
         for production in (['\n'] + not_cased + cased + cased_syl):
             generated.append(production) #add individual productions to list
 
+    print "Cruthan bhuadhairean air an gineadh"
     return lex + generated
 
 
@@ -337,9 +338,8 @@ def compileGrammar():
             roots_file = path_roots + "verbs.txt"
             gen = generateVerbs(raw_data, roots_file)
         else:
-            print
-            #TEMPORARILY SUSPENDED FOR DEVELOPMENT OF THE GENERATING FUNCTIONS
-            #gen = raw_data
+            #no generation, just the data from the fcfg file
+            gen = raw_data
 
         #when they come back with extra lexical productions or not, save these intermediate versions in the /gen directory
         saveToFile(gen, file.rstrip(".fcfg"), path_gen + file)

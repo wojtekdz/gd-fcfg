@@ -15,7 +15,7 @@ import re
 
 
 #define a tuple of letter combinations which do not lenite
-unlenited_initials = (u'l', u'n', u'r',  u'à', u'a', u'ì', u'i', u'e', u'è', u'o', u'ò', u'u', u'ù', u'sp', u'st', u'sg')
+unlenited_initials = (u'l', u'n', u'r',  u'à', u'a', u'ì', u'i', u'e', u'è', u'o', u'ò', u'u', u'ù', u'sp', u'st', u'sg', u'sm') #[Q] does SM lenite or not?
 
 #NOT NEEDED BUT KEPT FOR REFERENCE
 #define a tuple of byte patterns in UTF8 that correspond to initial long vowels in unicode
@@ -95,17 +95,6 @@ def checkFinalConsonant(word):
 
     initial_vowel_pattern = '\w+?(' + vowels +')' #build the pattern, starting with 1+ of word characters with a LAZY operator, DON'T be GREEDY
 
-    """
-        [del]
-        print "\n"
-        print vowels
-        print type(vowels)
-        print initial_vowel_pattern
-        print type(vowels)
-        print word_reversed
-        print type(word_reversed)
-    """
-
     substr_match = re.match(initial_vowel_pattern, word_reversed) #get substring from end of word to last vowel, in reverse
 
     last_vowel = substr_match.group(0)[-1] #get the last character in the match object string, this is the last vowel in the word
@@ -127,8 +116,6 @@ def slenderise(word):
     """
     quality, last_vowel, last_vowel_index = checkFinalConsonant(word) #pass word to the regex function to get properties of the ending
 
-
-    print last_vowel_index
     #[TODO] NOT SURE ABOUT THIS FIX, àrd TRIGGERS THE ERROR
     try:
         pre_vowel = word[last_vowel_index-1]
@@ -155,12 +142,15 @@ def addFinalVowel(word):
 
     quality, last_vowel, last_vowel_index = checkFinalConsonant(word)
 
-    if endsWithVowel(word):
-        print word + ": already ends in a vowel"
-    elif quality == 'slender': #also used for adding slender vowels to genitve forms
+    if (not(endsWithVowel(word)) and quality == 'slender'):
         word = word + 'e'
-    elif quality == 'broad':
+    elif (not(endsWithVowel(word)) and quality == 'broad'):
         word = word + 'a'
+    #suspended error message
+    #elif endsWithVowel(word):
+    #    print word + ": already ends in a vowel"
+
+
     #else:
     #    raise addVowelError, "Something went wrong with adding the vowel"
 

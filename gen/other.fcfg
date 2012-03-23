@@ -1,1 +1,32 @@
 ###### OTHER ######
+ADVGU -> "gu"
+ADV[TYPE=pp] -> ADVGU ABASE[CASE=rad, -LEN]
+ARG[TYPE=ap] -> "gu_math" | "gu_doigheil"
+ADV[TYPE=path] -> "sìos" | "suas" | "a-steach" | "a-mach"
+ADV[TYPE=place] -> "shìos" | "shuas" | "a-staigh" | "a-muigh"
+ADV[TYPE=time] -> "an-uiridh" | "an-diugh" | "an-dè"
+PP -> P[CASE=?cs] NP[CASE=?cs]
+P[CASE=rad] -> "seach" | "eadar"
+P[CASE=prep] -> "aig" | "air" | "às"
+P[CASE=poss] -> "chun" | "thar" | "rè"
+P[CASE=prep, -DEF] -> "ann_an"
+P[CASE=prep, +DEF] -> "anns"
+P[CASE=prep, -DEF, +LEN] -> "ro" 
+P[CASE=prep, +DEF] -> "ron"
+PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
+PP[PREP=air] -> "orm" | "ort" | "air" | "oirre" | "oirnn" | "oirbh" | "orra"
+PP[PREP=do] -> "dhomh" | "dhut" | "dha" | "dhi" | "dhuinn" | "dhuibh" | "dhaibh"
+PP[PREP=le] -> "leam" | "leat" | "leis" | "leatha" | "leinn" | "leibh" | "leotha"
+PP[PREP=ri] -> "rium" | "riut" | "ris" | "rithe" | "ruinn" | "ruibh" | "riutha"
+PP[PREP=ann] -> "annam" | "annad" | "ann" | "innte" | "annainn" | "annaibh" | "annta"
+PP[PREP=bho] -> "bhuam" | "bhuat" | "bhuaidhe" | "bhuaidhpe" | "bhuainn" | "bhuaibh" | "bhuapa"
+PP[PREP=de] -> "dhiom" | "dhiot" | "dheth" | "dhith" | "dhinn" | "dhibh" | "dhiubh"
+PP[PREP=fo] -> "fodham" | "fodhad" | "fodha" | "foidhpe" | "fodhainn" | "fodhaibh" | "fodhpa"
+PP[PREP=ro] -> "romham" | "romhat" | "roimhe" | "roimpe" | "romhainn" | "romhaibh" | "rompa"
+PP[PREP=tro] -> "tromham" | "tromhad" | "troimhe" | "troimpe" | "tromhainn" | "tromhaibh" | "trompa"
+PP[PREP=as] -> "asam" | "asad" | "às" | "aiste" | "asainn" | "asaibh" | "asta"
+PP[PREP=mu] -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
+N[PREP=air] -> "faisg" | "seachad"
+N[PREP=ri] -> "còmhla" | "coltach"
+PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr] 
+PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr]
