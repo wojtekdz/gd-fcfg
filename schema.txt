@@ -1,100 +1,156 @@
-###SHARED FEATURE VALUES
-  CAGR ?c
-    neu			#neutral value
-	vf			#vowels or f-
-	v			#vowels only
-	lab			#labials
-	h			#???
-	dent		#dentals
-	bheil		#special for QAN with "bheil"
-  GEN ?g
-    masc		
-	fem			
-	pl			
-  CASE ?cs
-	rad			#radical
-	prep		#prepositional
-	poss		#possesive
-  TENSE ?t
-	past
-	fut			#future
-	cond		#conditional
-  SUBCAT ?s
-    subs		#the substantive to be
-	-			#avalent: this is where impersonal and synthetic forms could connect
-    NP			#univalent
-	NP, PP		#bivalent
-	[todo]
-	NP, PP|S
-	[todo]		#trivalent
-	
+##### SCHEME 
+### SHARED FEATURE VALUES
+ CAGR ?c
+  neu		#neutral value
+  f		#f- only
+  v		#vowels only
+  lab		#labials
+  bheil	#special for QAN/COMP with "bheil"
+  vflnr	#vowels + f + sonorants
+  s		#sibilant, used for t- prefixing
+  do		#reduplication of do/de
+ GEN ?g
+  masc		
+  fem			
+  pl			
+ CASE ?cs
+  rad		#radical
+  prep	#prepositional
+  poss	#possessive
+ TENSE ?t
+  past
+  fut		#future
+  cond	#conditional
+  pres  	#for substantive verb
+ SUBCAT ?s
+  subs 		#substantive to be: bi
+  0			#avalent: place for impersonal/passive?
+  NP			#univalent: nochd, bsaich
+  NP:NP		#bivalent: faigh
+  NP:PP		#bivalent: thig
+  NP:NP|S 		#bivalent: abair, can, cluinn
+  NP:NP|PP 		#bivalent: beir
+  NP:PP|S 		#bivalent: faighnich
+  NP:NP:PP 		#trivalent: thoir	
 	
 ### HIGH LEVEL PRODUCTIONS
 ROOT			#start of tree
-  TYPE ?tp
-    sent		#sentence, positive or negative
-    polQ		#polar question, i.e. having a positive or negative answer
-    relQ		#constituent question using a relative clause, for example with ciamar, cò or dè
-    nonrelQ		#constituent question not using a relative clause, for example with càit
-FS				#terminal symbol full stop, indicating sentence
-QM				#terminal symbol question mark, indicating question
-S				#clause
-  INTERROG +/-	#interrogative mood
-  POL +/-		#polarity
-REL				#relative clause
-  POL +/-
-  TYPE ?tp
-    adj			#adjectival relative phrases
-  TENSE ?t
+ TYPE ?tp
+  sent		#sentence, positive or negative
+  polQ		#polar question
+  relQ		#constituent question using a relative clause    
+  nonrelQ		#constituent question not using a relative clause
+FS			#terminal symbol full stop, indicating sentence
+QM			#terminal symbol question mark, indicating question
+S			#clause
+ INTERROG +/-	#interrogative mood
+ POL +/-		#polarity
+ DEP +/-		#dependent, can function as a clausal complement
+REL			#relative clause
+ POL +/-
+ TYPE ?tp
+  adj			#adjectival relative phrases
+ TENSE ?t
 AREL			#relative particle
-  POL +/-		
+ POL +/-		
 ARG			#arguments
-  TYPE ?tp			
-	ciamar
-	cait
-	co
-	de
-	ap			#adjective phrase
-	np			#noun phrase
-	pp			#prepositional phrase
-	clause
+ TYPE ?tp			
+  ciamar
+  cait
+  co
+  de
+  ap			#adjective phrase
+  np			#noun phrase
+  pp			#prepositional phrase
+  clause
 	
 ### VERBS
 VI 
-  INTERROG +/- 
-  POL +/-
-  TENSE ?t
-  SUBCAT ?s
-  DEP +/-		#heads a dependent clause
-
+ INTERROG +/- 
+ POL +/-
+ TENSE ?t
+ SUBCAT ?s
+ DEP +/-		#heads a dependent clause
 VD 
-  LEN +/-
-  TENSE ?t
-  SUBCAT ?s
+ CAGR ?c
+ LEN +/-
+ TENSE ?t
+ SUBCAT ?s
+IRPAST
+ CAGR ?c
+ TENSE past
+ SUBCAT ?s
+DO
+QAN
+ CAGR ?c
+COMP
+ CAGR ?c
+NACH
+CHA
+ CAGR ?c
 
 ### NOUNS
-VNP				#verbal noun
+NP
+ CAGR ?c
+ CASE ?cs
+ LEN +/-
+ DEF +/-
+N
+ CAGR ?c
+ CASE ?cs
+ GEN ?g
+ LEN +/-
+VNP			#verbal noun phrase
+ SUBCAT ?s
+VN
+ CAGR ?c		#verbal noun
+ GEN ?g
+ LEN +/-
+ SUBCAT ?s
+AG, GA
+ CAGR ?c
+ LEN -/+
+AIR
+DEMO
+DET, ART
+  CAGR ?c
+  LEN +/-
+  GEN ?g
+  CASE ?cs
 
 ### ADJECTIVES
-APOSS			#possesive adjectives
-  CAGR
-  LEN +/-
+AP			#adjective phrase
+ PRED +			#predicative adjective
+APOSS			#possessive adjectives
+ CAGR ?c
+ LEN +/-
 APRE			#preposed adjectives
 AMOD			#adjectival modifiers e.g. intensifiers
-  LEN +/-
+ LEN +/-
 ABASE			#basic adjective from i.e. positive degree
-  CASE ?cs
-  GEN ?g
-  LEN +/- 
+ CASE ?cs
+ GEN ?g
+ LEN +/- 
 ACOMP
-  LEN +/- 		#comparative/superlative degree of adjective
+ LEN +/- 		#comparative/superlative degree of adjective
 NAS, AS 		#adjectival relative phrase "particles" - present/future tense
 NABU, ABU 		#adjectival relative phrase "particles" - past/conditional tense
 	CAGR ?c
 	LEN +/-
 
-
-### OTHER PRODUCTIONS
-ADV
-
-
+### ADVERBS
+ADV			
+  TYPE ?tp
+   time
+   path
+   place
+   pp
+  TENSE ?t
+ADVGU
+			#preposition gu as used with ADV
+### PREPOSITIONS
+P			#preposition
+  CASE ?cs
+  PREP ?pp		#aig, air, a, do, le, ri, ann, bho, fo, ro, tro, mu
+PP			#prepositional phrase
+  PREP ?pp		#as above 

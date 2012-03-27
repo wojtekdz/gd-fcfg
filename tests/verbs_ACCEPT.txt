@@ -1,0 +1,58 @@
+# ##########
+# ACCEPT TESTS FOR IRREGULAR VERBS (verbs_lex_irreg.fcfg)
+# ##########
+
+# BI
+Tha
+Ciamar a tha thu?
+A bheil thu ann?
+Càit a bheil thu?
+A bheil thu gu math?
+A bheil thu sgìth?
+A bheil?
+chan eil
+nach eil?
+bhiodh
+cha bhiodh
+
+# RACH
+Tha mi a' dol
+chaidh mi ann
+ciamar a chaidh thu ann?
+an deach thu ann?
+càit an deach thu?
+thèid mi ann
+an tèid mi ann?
+cha tèid i ann
+nach tèid thu ann?
+rachadh tu ann
+dhèidheadh i ann
+
+Am biodh e gam dhùsgadh?
+Am biodh e gam mholadh?
+Am biodh e gam moladh?
+
+
+Bhiodh na h-oileanaich a' seinn
+Am biodh iad ga sheinn?
+
+Am biodh e a' seinn?
+Am biodh i ga seinn?
+
+#REGULAR
+An do choisich thu air an tràigh?
+
+Nochd bhana nan reòiteagan
+Fhuair thu reòiteag
+Nach toireadh tu an reòiteag sin dhomh?
+An do ghabh thu i?
+
+Tha mi anns a' ghleann mhòr
+Tha mi faisg air a' ghleann mhòr
+Tha mi ri taobh a' ghlinne mhòir
+
+#NOT RESOLVED ADDING EXTRA COMPLEMENTS WHEN SLASH CATEGORIES IN ACTION
+An do choisich thu air an tràigh?
+
+Ciamar a chaidh thu ann?
+Càit an deach thu?

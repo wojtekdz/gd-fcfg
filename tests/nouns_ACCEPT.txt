@@ -4,3 +4,19 @@
 
 #POSSESIVE CASE
 Tha bòrd nam bò ann
+An do choisich thu chun na tràghad?
+Tha an tràigh air
+Tha tràigh air
+
+Tha rathad na tràghad ann
+Tha nàmhaid na piseige anns an sgoil
+Tha nàmhaid na piseige ann an sgoil
+Tha piseag ann an sgoil
+Tha a' phiseag ann an sgoil
+
+Tha nàmhaid na piseige anns an sgoil
+Tha nàmhaid na piseige ann an sgoil
+Tha an t-sràid ron an sgoil
+
+Tha an cù glè mhòr anns a' choille
+	

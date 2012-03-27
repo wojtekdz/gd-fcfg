@@ -2,99 +2,75 @@
 # HANDCODED EXAMPLES OF REGULAR VERBS
 # ##########
 
-#[TOWRITE] STARTED WITH A LENITABLE-INITIAL, V-INITIAL, F-INITIAL, NON-LENITABLE INITIAL TO FORM FRAME
 
-### CAOCHAIL - LENITABLES
-
-## BASIC FORMS, NON-TENSED
 VBASE -> "caochail"
-
-#[TOWRITE] VERBAL NOUNS ARE NOUNS (CASE, GENDER) OR VERBS (...) - SO PROBABLY NOUNS USED IN CERTAIN SPECIAL CONSTRUCTIONS TO COMPLEMENT THE VERBAL SENSE
-#[TOWRITE] OMMIT THE NOMINAL INFLECTION PARADIGM - THAT IS DONE THROUGH THE NOUN GENERATION FUNCTION...
-#[TOWRITE] AS ANY OTHER NOUN A VN NEEDS TO HAVE THE 4 NOUN FEATURES SPECIFIED
-#[TODO] REMEMBER AN EXTRA B/P SWITCH HERE, and S-... BECAUSE OF THE ARTICLES, OTHERWISE THIS WILL BE HANDLED IN THE NOUN GENERATOR
-#[TOWRITE] NO CASE ON VNs AS THEY OCCUR AS VNs ONLY IN THIS CONSTRUCTION, OTHERWISE THEY ARE NPs...
-NP[CAGR=neu, GEN=masc, -LEN, SUBCAT=vn] -> "caochladh"
+#[TOWRITE] GEN omitted 
+NP[CAGR=neu, -LEN, SUBCAT=vn] -> "caochladh"
 #[TOWRITE] THIS IS THERE FOR GAM- GAD- TYPE CONSTRUCTIONS...
-NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "chaochladh"
+NP[CAGR=neu, +LEN, SUBCAT=vn] -> "chaochladh"
 
-#[TODO] DO VERBS NEED CAGR IN THE SAME WAY THAT NOUNS DO?
 
-## PAST INDEP
-VI[CAGR=?c, TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "chaochail"
-## PAST DEP AT HIGHER LEVEL
+## PAST INDEP, PAST DEP AT HIGHER LEVEL
+VI[TENSE=past, SUBCAT="NP", +POL, -INTERROG] -> "chaochail"
 
 #FUTURE INDEPENDENT
-#[TOWRITE] REMEMBER ABOUT SUNCOPATING WORDS -il- -in(n)- -ir- AS WELL AS ORDINARY IRREGULARS, 
-#[TOWRITE] MAYBE WRITE A SYNCOPATING FUNCTION TO GET THESE ROOTS? IF NOT - ACKNOWLEDGE IN THESIS AND MOVE ON
-VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "caochlaidh"
+VI[TENSE=fut, SUBCAT="NP", +POL, -INTERROG] -> "caochlaidh"
 
 #FUTURE DEPENDENT
-VD[TENSE=fut, SUBCAT=intr, -LEN] -> "caochail"
-VD[TENSE=fut, SUBCAT=intr, +LEN] -> "chaochail"
+VD[TENSE=fut, SUBCAT="NP", -LEN] -> "caochail"
+VD[TENSE=fut, SUBCAT="NP", +LEN] -> "chaochail"
 
 #FUTURE RELATIVE 
-#[TOWRITE] THIS DOES NOT NEED +LEN
-#[TOWRITE] BUT NEEDS CAGR TO SYNC WITH BLOCKED LENITION ON SOME PRONOUNS
-VR[CAGR=delen, SUBCAT=intr] -> "chaochlas"
-
-
-#PAST INDEPENDENT
-#[LEN] UNDERSPECIFIED INTENTIONALLY
-#[TOWRITE] [POL] AND [INTERROG] NEED TO BE OVERTLY SPECIFIED BECAUSE THEY PASS THESE PROPERTIES UP THE TREE
+VR[SUBCAT="NP"] -> "chaochlas"
 
 #CONDITIONAL INDEPENDENT
-#[TOWRITE] HARDCODE THE LENITION AND DH'
-#[TOWRITE] ONLY IMPORTANT FOR SEMANTICS? HIS FORM NEEDS TO BE MARKED FOR PERSON: CHAOCHAILINN ETC + ALTERNATIVE FOR -MID VS SIBH FOR 1PL
-#VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "chaochlainn"
-VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "chaochladh"
+VI[TENSE=cond, SUBCAT="NP", +POL, -INTERROG] -> "chaochladh"
 
-#THIS IS GETTING COMPLEX
-#[TODO] V-INITIALS UNDERSPECIFIED HERE
-#VD[TENSE=cond, SUBCAT=intr, -LEN] -> "caochlainn"
-VD[TENSE=cond, SUBCAT=intr, -LEN] -> "caochladh"
-#[Q] VD[+LEN] = VI... MIGHT BE PROBLEMATIC?
-#VD[TENSE=cond, SUBCAT=intr, +LEN] -> "chaochlainn"
-VD[TENSE=cond, SUBCAT=intr, +LEN] -> "chaochladh"
-
-#[TOWRITE] INCLUDE THIS IN THESIS - NOTE ON NON-ORTHOGRAPHIC LENITION, FOR THE PURPOSES OF SPEACH SYNTESIS AND A CARRY OVER FROM SYNTAX INTO PHONOLOGY, YOU WOULD HAVE TO LENITE ALL LENITABLE CONSONANST, ORTHOGRAPHY OR NOT
+VD[TENSE=cond, SUBCAT="NP", -LEN] -> "caochladh"
+VD[TENSE=cond, SUBCAT="NP", +LEN] -> "chaochladh"
 
 ### AT - V-INITIALS
 VBASE -> "at"
-NP[CAGR=v, GEN=masc, SUBCAT=vn] -> "at" | "atadh"
-VI[TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "dh'at"
-VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "ataidh"
-#THIS IS FOR CHAN vs CHA AGREEMENT
-VD[CAGR=v, TENSE=fut, SUBCAT=intr] -> "at"
+VN[CAGR=v, GEN=masc] -> "at" | "atadh"
+VI[TENSE=past, SUBCAT="NP", +POL, -INTERROG] -> "dh'at"
+VI[TENSE=fut, SUBCAT="NP", +POL, -INTERROG] -> "ataidh"
+VD[CAGR=v, TENSE=fut, SUBCAT="NP"] -> "at"
 #THIS IS FOR BLOCKING ON SOME PRONOUNS
-VR[CAGR=delen, SUBCAT=intr] -> "dh'atas"
-VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "dh'atadh" 
-VD[TENSE=cond, SUBCAT=intr] -> "atadh"
+VR[SUBCAT="NP"] -> "dh'atas"
+VI[TENSE=cond, SUBCAT="NP", +POL, -INTERROG] -> "dh'atadh" 
+VD[TENSE=cond, SUBCAT="NP"] -> "atadh"
 
 ### NOCHD, SGREUCH - NON-LENITABLES IN ORTHOGRAPHY AND IN REALITY
 VBASE -> "nochd" | "sgreuch"
-NP[CAGR=v, GEN=masc, SUBCAT=vn] -> "nochdadh" | "sgreuchail"
-VI[TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "nochd" | "sgreuch"
-VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "nochdaidh" | "sgreuchaidh"
+VN[CAGR=v, GEN=masc] -> "nochdadh" | "sgreuchail"
+VI[TENSE=past, SUBCAT="NP", +POL, -INTERROG] -> "nochd" | "sgreuch"
+VI[TENSE=fut, SUBCAT="NP", +POL, -INTERROG] -> "nochdaidh" | "sgreuchaidh"
 #THIS IS FOR CHAN vs CHA AGREEMENT
-VD[CAGR=neu, TENSE=fut, SUBCAT=intr] -> "nochd" | "sgreuch"
+VD[CAGR=neu, TENSE=fut, SUBCAT="NP"] -> "nochd" | "sgreuch"
 #THIS IS FOR BLOCKING ON SOME PRONOUNS
-VR[CAGR=delen, SUBCAT=intr] -> "nochdas" | "sgreuchas"
-VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "nochdadh" | "sgreuchadh"
-VD[TENSE=cond, SUBCAT=intr] -> "nochdadh" | "sgreuchadh"
+VR[SUBCAT="NP"] -> "nochdas" | "sgreuchas"
+VI[TENSE=cond, SUBCAT="NP", +POL, -INTERROG] -> "nochdadh" | "sgreuchadh"
+VD[TENSE=cond, SUBCAT="NP"] -> "nochdadh" | "sgreuchadh"
 
 ### FALBH - F-INITIALS
 VBASE -> "falbh"
-NP[CAGR=lab, GEN=masc, -LEN, SUBCAT=vn] -> "falbh"
-NP[CAGR=neu, GEN=masc, +LEN, SUBCAT=vn] -> "fhalbh"
-VI[CAGR=?c, TENSE=past, SUBCAT=intr, +POL, -INTERROG] -> "dh'fhalbh"
-VI[TENSE=fut, SUBCAT=intr, +POL, -INTERROG] -> "falbhaidh"
-VD[TENSE=fut, SUBCAT=intr, -LEN] -> "falbh"
-VD[TENSE=fut, SUBCAT=intr, +LEN] -> "fhalbh"
-VR[CAGR=delen, SUBCAT=intr] -> "dh'fhalbhas"
-VI[TENSE=cond, SUBCAT=intr, +POL, -INTERROG] -> "dh'fhalbhadh"
+VN[CAGR=lab, GEN=masc, -LEN] -> "falbh"
+VN[CAGR=neu, GEN=masc, +LEN] -> "fhalbh"
+VI[TENSE=past, SUBCAT="NP", +POL, -INTERROG] -> "dh'fhalbh"
+VI[TENSE=fut, SUBCAT="NP", +POL, -INTERROG] -> "falbhaidh"
+VD[TENSE=fut, SUBCAT="NP", -LEN] -> "falbh"
+VD[TENSE=fut, SUBCAT="NP", +LEN] -> "fhalbh"
+VR[SUBCAT="NP"] -> "dh'fhalbhas"
+VI[TENSE=cond, SUBCAT="NP", +POL, -INTERROG] -> "dh'fhalbhadh"
 #[TODO] THIS NEEDS CAGR=lab
-VD[CAGR=lab, TENSE=cond, SUBCAT=intr, -LEN] -> "falbhadh"
-VD[TENSE=cond, SUBCAT=intr, +LEN] -> "fhalbhadh"
+VD[CAGR=lab, TENSE=cond, SUBCAT="NP", -LEN] -> "falbhadh"
+VD[TENSE=cond, SUBCAT="NP", +LEN] -> "fhalbhadh"
 
-###### REMAINING SUBCATs OF REGULAR NOUNS SHOULD FIT INTO THIS PATTERN!
+### EXPERIMENTAL PREPOSITION AGREEMENT WITH PP COMPLEMENTS OF VERBS
+VN[CAGR=v, SUBCAT="NP:PP", PREP="ri"] -> "èisteachd"
+VI[TENSE=past, SUBCAT="NP:PP", +POL, -INTERROG, PREP="ri"] ->"dh'èist"
+VI[TENSE=fut, SUBCAT="NP:PP", +POL, -INTERROG, PREP="ri"] -> "èistidh"
+VD[CAGR=v, TENSE=fut, SUBCAT="NP:PP", PREP="ri"] -> "èist"
+VR[SUBCAT="NP:PP", PREP="ri"] -> "dh'èisteas"
+VI[TENSE=cond, SUBCAT="NP:PP", +POL, -INTERROG, PREP="ri"] -> "dh'èisteadh"
+VD[CAGR=v, TENSE=cond, SUBCAT="NP:PP", PREP="ri"] -> "èisteadh"

@@ -6,12 +6,12 @@
 APOSS[CAGR=neu, +LEN] -> "mo" | "do"
 APOSS[CAGR=vf, +LEN] -> "m'" | "d'"
 APOSS[LEN=?l] -> "a"
-#[TODO] HOW WOULD THIS LICENCE a h-athair? 
+#[Q] HOW WOULD THIS LICENCE a h-athair? 
 APOSS[CAGR=v, -LEN] -> "a_h-"
 
-APOSS[CAGR=neu] -> "ar" | "ur" | "an"
-APOSS[CAGR=lab] -> "am"
-APOSS[CAGR=v] -> "ar_n-" | "ur_n-" | "an_n-"
+APOSS[CAGR=neu, -LEN] -> "ar" | "ur" | "an"
+APOSS[CAGR=lab, -LEN] -> "am"
+APOSS[CAGR=v, -LEN] -> "ar_n-" | "ur_n-" | "an_n-"
 
 AMOD[-LEN] -> "beagan" | "caran"
 AMOD[+LEN] -> "glè" | "fìor"
@@ -22,9 +22,8 @@ APRE -> "dearbh" | "droch" | "deagh" | "seann"
 AP[CASE=?cs, GEN=?g, LEN=?l] -> ABASE[CASE=?cs, GEN=?g, LEN=?l] | AMOD[LEN=?l] ABASE[CASE=?cs, GEN=?g, LEN=?l]
 
 #PREDICATIVE ADJECTIVE, WITH OPTIONAL MODIFIER
-AP[+PRED] -> ABASE[LEN=?l, +PRED] AMOD[LEN=?l] ABASE[LEN=?l, +PRED]
+AP[+PRED] -> ABASE[LEN=?l, +PRED] | AMOD[LEN=?l] ABASE[LEN=?l, +PRED]
 
-#[TODO] F- INITIALS WILL ALWAYS BE LENITED, BOTH IN ABASE AND ACOMP FORMS! REMEMBER THIS IN THE BUILD FUNCTION!
 NAS -> "nas"
 AS -> "as"
 
@@ -34,8 +33,7 @@ NABU[CAGR=vf, +LEN] -> "na_b'"
 ABU[CAGR=neu, +LEN] -> "a_bu"
 ABU[CAGR=vf, +LEN] -> "a_b'"
 
-#[[TODO] HOW DOES THIS COMPARE TO REGULAR RELATIVE PHRASES? - REWORK?
-#RELTYPE IS THERE TO ELIMINATE NORMAL RELATIVE PHRASES E.G. THA MI A RINN THU vs THA MI NAS GLICE
+#TYPE IS THERE TO ELIMINATE NORMAL RELATIVE PHRASES E.G. THA MI A RINN THU vs THA MI NAS GLICE
 REL[TENSE=present, TYPE=adj] -> NAS ACOMP | AS ACOMP
 REL[TENSE=future, TYPE=adj] -> NAS ACOMP | AS ACOMP
 

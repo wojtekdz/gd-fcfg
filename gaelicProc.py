@@ -19,14 +19,13 @@ from gaelicOps import *
 prespace_tokens = ["!", ".", "?"] #these strings will be preprocessed to separate them as tokens with a space BEFORE them
 postspace_tokens = ["n-", "h-", "t-"] #and these with a space AFTER them
 def filterOrthography(sent):
-    print "filtering..."
-    return False
-    #[TODO] WRITE FUNCTIONS FOR THE LENIENT TOLERATION OF EMPTY AREL, DELENITED BUT INCLUDE DELENITED VERSION DIRECTLY IN THE PRODUCTIONS
-    #TWO SOLUTIONS
-    #REL -> S[+POL] BUT NOT GOOD BECAUSE WILL LICENCE NON-QUESTION RELATIVE PHRASES WITHOUT AREL
-    #PREPROCESS SENTENCES TO FILL IN IMPORTANT SYNTACTIC MARKERS OMMITED IN SPEECH AND THUS SPELLING, BUT LIKELY PROBLEMS WITH CONTEXT: WOULD WORK FOR dè -> dè a BUT MORE DIFFICULT WITH a athair vs a h-athair
+    print "Filter orthography not implemented"
+    """
+        THIS FUNCTION WOULD CHECK "LINEAR CORRECTNESS" OF A SENTENCE TO THE DESIRED LEVEL OF STRICTNES, FOR EXAMPLE IT COULD:
+            - INSERT FILL IN ELEMENT OMITTED IN WRITING E.G. WHEN A IS ELIDED BECAUSE OF ADJACENT VOWELS
+            - DETECT HOMORGANIC BLOCKING AND FILTER ON IT - THAT WOULD NEED A TRANSCRIPTION MODULE TO GET UNDERLYING SOUNDS
 
-
+    """
 
 def stripList(lst):
     """Remove comments, blank lines etc. from a list of productions read from a file
@@ -163,14 +162,16 @@ def generateNouns(lex, roots_file):
             decl_pl = [
                     'N[CAGR=' + cagr[2] + ', CASE=rad, GEN=pl, ' + falen + ']-> "' + word["pl"] + '"',
                     'N[CAGR=' + cagr[2] + ', CASE=prep, GEN=pl, ' + falen + ']-> "' + word["pl"] + '"',
-                    'N[CAGR=neu, CASE=poss, GEN=]-> "' + word["pospl"] + '"' #no +FALEN because poss never slender in plural (ex. daoine)
+                    'N[CAGR=neu, CASE=poss, GEN=pl]-> "' + word["pospl"] + '"' #no +FALEN because poss never slender in plural (ex. daoine)
                     ]
 
         else: #standard 12-frame, with explicit LEN
 
             cagr = ["neu", "neu", "neu"] #masc.rad.sg, (masc.prep+poss.sg|fem.rad+prep.sg), #poss.pl
 
-            if (word["gender"] == "masc" and isLabial(word["base"][0])): cagr[0] = "lab" #masc.rad.sg, vowels caught in 6-frame
+            if (word["gender"] == "masc" and isLabial(word["base"][0])):
+                cagr[0] = "lab" #masc.rad.sg, vowels caught in 6-frame
+                if ((word["base"][0]) == "f"): cagr[1] = "vflnr" # an f- is also a labial, apart from "am fear", it needs "dhan an fhear" through vflnr
 
             #masc.prep+poss.sg, fem.rad+prep.sg
             elif ((word["base"][0]) == "s"): cagr[1] = "s"  #sp st sg caught in 6-frame
@@ -178,7 +179,7 @@ def generateNouns(lex, roots_file):
             #masc.prep+poss.sg, fem.rad+poss.sg
             elif ((word["base"][0]) == "f"): cagr[1] = "vflnr" #vlnr caught in 6-frame
 
-            #fem.poss.sg Vs caught in 6-frame
+            #fem.poss.sg VLs caught in 6-frame
 
             if isLabial(word["pl"][0]):
                 cagr[2] = "lab" #poss.pl
@@ -189,17 +190,17 @@ def generateNouns(lex, roots_file):
                     'N[CAGR=' + cagr[0] + ', CASE=rad, GEN=masc, -LEN] -> "' + word["base"] + '"',
                     'N[CAGR=neu, CASE=rad, GEN=masc, +LEN] -> "' + lenite(word["base"]) + '"',
                     'N[CAGR=neu, CASE=prep, GEN=masc, -LEN] -> "' + word["prep"] + '"',
-                    'N[CAGR=' + cagr[1] + ', CASE=prep, GEN=masc, +LEN] -> "' + lenite(word["prep"]) + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=prep, GEN=masc, +LEN] -> "' + lenite(word["prep"], sblock=True) + '"',
                     'N[CAGR=neu, CASE=poss, GEN=masc, -LEN]-> "' + word["poss"] + '"',
-                    'N[CAGR=' + cagr[1] + ', CASE=poss, GEN=masc, +LEN]-> "' + lenite(word["poss"]) + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=poss, GEN=masc, +LEN]-> "' + lenite(word["poss"], sblock=True) + '"',
                     ]
 
             elif word["gender"] == "fem": #no poss[+LEN] for GEN=fem, different CAGR
                 decl_sg = [
                     'N[CAGR=neu, CASE=rad, GEN=fem, -LEN] -> "' + word["base"] + '"',
-                    'N[CAGR=' + cagr[1] + ', CASE=rad, GEN=fem, +LEN] -> "' + lenite(word["base"]) + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=rad, GEN=fem, +LEN] -> "' + lenite(word["base"], sblock=True) + '"',
                     'N[CAGR=neu, CASE=prep, GEN=fem, -LEN] -> "' + word["prep"] + '"',
-                    'N[CAGR=' + cagr[1] + ', CASE=prep, GEN=fem, +LEN] -> "' + lenite(word["prep"]) + '"',
+                    'N[CAGR=' + cagr[1] + ', CASE=prep, GEN=fem, +LEN] -> "' + lenite(word["prep"], sblock=True) + '"',
                     'N[CAGR=neu, CASE=poss, GEN=fem, -LEN]-> "' + word["poss"] + '"',
                     ]
 
@@ -223,7 +224,7 @@ def generateNouns(lex, roots_file):
         for production in (['\n'] + decl_sg + decl_pl + dh_forms):
             generated.append(production) #add individual productions to list
 
-    print "Cruthan ainmearan air an gineadh"
+    print "Tha cruthan AINMEARAN air an gineadh: %d tùsan, %d cinneasachaidhean." % (len(words), len(generated)-len(words)) # the subtraction is the empty lines added to separate generations from different roots
     return lex + generated
 
 
@@ -233,13 +234,84 @@ def generateVerbs(lex, roots_file):
     generated = [] # list ready for generated productions
     properties = ["base", "vn", "subcat"] #the characterstics which the forms will be built from i.e. the keys
 
-    words = buildWordlist(properties, roots_file, True)
+    words = buildWordlist(properties, roots_file, False)
 
-    #determine CAGR type
-    cagr = range(4)
+    for word in words:
 
-    print "Cruthan ghnìomhairean air an gineadh"
+        #determine CAGR to go into the frame
+        cagr = "neu" #default
+        if (word["base"][0] == "f"): cagr="f"
+        elif (isLabial(word["base"][0])): cagr="lab"
+        elif (startsWithVowel(word["base"])): cagr="v"
+
+
+        if not(lenitable(word["vn"])): #vowels get cagr=v, other unlenitables get the default cagr=neu
+            vn_frame = ['VN[CAGR=' + cagr + ', SUBCAT="' + word["subcat"] + '",] -> "' + word['vn'] + '"']
+        elif isLabial(word["vn"][0]): #labial needs to be split from f- for the verbs themselves (because of CHA vs CHAN) but here f- is part of labial, the cagr setup code above is geared towards the main v_frame though
+            vn_frame = ['VN[CAGR=lab, SUBCAT="' + word["subcat"] + '", -LEN] -> "' + word['vn'] + '"',
+                        'VN[CAGR=neu, SUBCAT="' + word["subcat"] + '", +LEN] -> "' + lenite(word['vn']) + '"']
+        else: #cagr=neu, all other cases
+            vn_frame = ['VN[CAGR=neu, SUBCAT="' + word["subcat"] + '", -LEN] -> "' + word['vn'] + '"',
+                        'VN[CAGR=neu, SUBCAT="' + word["subcat"] + '", +LEN] -> "' + lenite(word['vn']) + '"']
+
+
+        if not(lenitable(word["base"])):
+            v_frame = ['VI[TENSE=past, SUBCAT="' + word["subcat"] + '", +POL, -INTERROG] ->"' + dh_lenite(word["base"]) + '"',
+                        'VI[TENSE=fut, SUBCAT="' + word["subcat"] + '", +POL, -INTERROG] -> "' + addVerbEnding(word["base"], "futVI") + '"',
+                        'VD[CAGR=' + cagr + ', TENSE=fut, SUBCAT="' + word["subcat"] + '"] -> "' + word["base"] + '"', #underspecified for LEN
+                        'VR[SUBCAT="' + word["subcat"] + '"] -> "' + dh_lenite(addVerbEnding(word["base"], "VR")) + '"',
+                        'VI[TENSE=cond, SUBCAT="' + word["subcat"] + '", +POL, -INTERROG] -> "' + dh_lenite(addVerbEnding(word["base"], "condVD")) + '"',
+                        'VD[CAGR=' + cagr + ', TENSE=cond, SUBCAT="' + word["subcat"] + '"] -> "' + addVerbEnding(word["base"], "condVD") + '"'#underspecified for LEN
+                    ]
+        else:
+            v_frame = ['VI[TENSE=past, SUBCAT="' + word["subcat"] + '", +POL, -INTERROG] ->"' + lenite(word["base"]) + '"',
+                            'VI[TENSE=fut, SUBCAT="' + word["subcat"] + '", +POL, -INTERROG] -> "' + addVerbEnding(word["base"], "futVI") + '"',
+                            'VD[CAGR=' + cagr + ', TENSE=fut, SUBCAT="' + word["subcat"] + ', -LEN"] -> "' + word["base"] + '"', #specified for -LEN
+                            'VD[CAGR=' + cagr + ', TENSE=fut, SUBCAT="' + word["subcat"] + ', +LEN"] -> "' + lenite(word["base"]) + '"', #specified for +LEN
+                            'VR[SUBCAT="' + word["subcat"] + '"] -> "' + dh_lenite(addVerbEnding(word["base"], "VR")) + '"',
+                            'VI[TENSE=cond, SUBCAT="' + word["subcat"] + '", +POL, -INTERROG] -> "' + dh_lenite(addVerbEnding(word["base"], "condVD")) + '"',
+                            'VD[CAGR=' + cagr + ', TENSE=cond, SUBCAT="' + word["subcat"] + '", -LEN] -> "' + addVerbEnding(word["base"], "condVD") + '"',
+                            'VD[CAGR=' + cagr + ', TENSE=cond, SUBCAT="' + word["subcat"] + '", +LEN] -> "' + lenite(addVerbEnding(word["base"], "condVD")) + '"'
+                        ]
+
+
+        for production in (['\n'] + vn_frame + v_frame):
+            generated.append(production) #add individual productions to list
+
+    print "Tha cruthan GHNÌMHAIREAN air an gineadh: %d tùsan, %d cinneasachaidhean." % (len(words), len(generated)-len(words)) # the subtraction is the empty lines added to separate generations from different roots
     return lex + generated
+
+
+def addVerbEnding(verb, form):
+    """Generate requested verb form
+
+        Arguments:
+            verb (string) - preferably a valid Gaelic verb root
+            form (string) - switch to get futVI, VR, or condVD
+
+        Returns:
+            verb (string)
+
+    """
+
+    #this quick function just adds the endings
+    #the appropriate initial changes are in the main generation function because they are depend on the original initial sound - not good for style, but effective in this case
+
+    quality, last_vowel, last_vowel_index = checkFinalConsonant(verb)
+
+    if (form == "futVI"):
+        if (quality == "slender"):  verb += "idh"
+        else:                       verb += "aidh"
+    elif (form == "VR"):
+        if (quality == "slender"):  verb += "eas"
+        else:                       verb += "as"
+    elif (form == "condVD"):
+        if (quality == "slender"):  verb += "eadh"
+        else:                       verb += "adh"
+    else:
+        raise verbFormEnding, form + ": unrecognized parameter for ading an ending"
+
+    return verb
 
 
 
@@ -248,12 +320,11 @@ def generateAdjectives(lex, roots_file):
 
         Returns: a larger list of more forms
     """
-    print "Generating ADJECTIVE forms"
 
     generated = [] # list ready for generated productions
     properties = ["base", "syl"] #the characterstics which the forms will be built from i.e. the keys
 
-    words = buildWordlist(properties, roots_file, True)
+    words = buildWordlist(properties, roots_file, False)
 
     for word in words:
         #forms not marked for case
@@ -300,7 +371,7 @@ def generateAdjectives(lex, roots_file):
         for production in (['\n'] + not_cased + cased + cased_syl):
             generated.append(production) #add individual productions to list
 
-    print "Cruthan bhuadhairean air an gineadh"
+    print "Tha cruthan BHUADHAIREAN air an gineadh: %d tùsan, %d cinneasachaidhean." % (len(words), len(generated)-len(words)) # the subtraction is the empty lines added to separate generations from different roots
     return lex + generated
 
 

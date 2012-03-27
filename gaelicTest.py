@@ -17,7 +17,8 @@ import nltk.parse
 import nltk.grammar
 import nltk.data
 
-words = ["toilichte", "spòrsail", "cudromach", "beag", "àrd"]
+#words = ["toilichte", "spòrsail", "cudromach", "beag", "àrd"] #first round of testing
+words = ["piseag", "geal", "beag"] #slenderisation with vowel deletion
 
 def testOps(words):
     """Test individual words for lenition and slenderization results

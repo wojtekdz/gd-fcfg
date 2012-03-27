@@ -5,9 +5,9 @@ ROOT[TYPE=ynQ] -> S[+INTERROG, POL=?p] QM
 ROOT[TYPE=relQ] -> ARG[TYPE=ciamar] REL/ARG QM
 ROOT[TYPE=relQ] -> ARG[TYPE=co] REL/ARG QM
 ROOT[TYPE=relQ] -> ARG[TYPE=de] REL/ARG QM
-ROOT[TYPE=nonrelQ] -> ARG[TYPE=cait] S[+INTERROG, POL=?p]/ARG[TYPE=where] QM
+ROOT[TYPE=nonrelQ] -> ARG[TYPE=cait] S[+INTERROG, POL=?p]/ARG[TYPE=cait] QM
 REL[POL=?p]/?x -> AREL[POL=?p] S[INTERROG=?i, POL=?p]/?x
-S[INTERROG=?i, POL=?p]/?x -> VI[INTERROG=?i, POL=?p, SUBCAT=subs] NP[CASE=rad] ARG/ARG
+S[INTERROG=?i, POL=?p]/?x -> VI[INTERROG=?i, POL=?p, SUBCAT=?s] NP[CASE=rad] ARG/ARG
 ARG/ARG ->
 FS -> "." | "!"
 QM -> "?"
@@ -18,13 +18,16 @@ ARG[TYPE=de] -> 'dè'
 AREL[+POL] -> "a"
 AREL[-POL] -> "nach"
 S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=?s]
-S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs] NP[CASE=rad] VNP
-S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP"] NP[CASE=rad]
-S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs, DEP=?d] NP[CASE=rad] AP | VI[INTERROG=?i, POL=?p, SUBCAT=subs, DEP=?d] NP[CASE=rad] PP
-S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:PP"] NP[CASE=rad] ARG[TYPE=pp]
-S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:NP|S"] NP[CASE=rad] ARG[TYPE=np] | VI[INTERROG=?i, POL=?p, SUBCAT="NP:NP|S"] NP[CASE=rad] ARG[TYPE=clause]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs, DEP=?d] NP[CASE=rad] VNP
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP", DEP=?d] NP[CASE=rad]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs, DEP=?d] NP[CASE=rad] ARG[TYPE=ap]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT=subs, DEP=?d] NP[CASE=rad] ARG[TYPE=pp]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:PP", PREP=?pp, DEP=?d] NP[CASE=rad] ARG[TYPE=pp, PREP=?pp]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:NP", DEP=?d] NP[CASE=rad] ARG[TYPE=np]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:PP|S", DEP=?d] NP[CASE=rad] ARG[TYPE=pp] | VI[INTERROG=?i, POL=?p, SUBCAT="NP:PP|S", DEP=?d] NP[CASE=rad] ARG[TYPE=clause]
+S[INTERROG=?i, POL=?p, DEP=?d] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:NP|S", DEP=?d] NP[CASE=rad] ARG[TYPE=np] | VI[INTERROG=?i, POL=?p, SUBCAT="NP:NP|S", DEP=?d] NP[CASE=rad] ARG[TYPE=clause]
 S[INTERROG=?i, POL=?p] -> VI[INTERROG=?i, POL=?p, SUBCAT="NP:NP:PP"] NP[CASE=rad] ARG[TYPE=np] ARG[TYPE=pp]
-ARG[TYPE=ap] -> AP
-ARG[TYPE=pp] -> PP
+ARG[TYPE=ap] -> AP | REL[TYPE=adj]
+ARG[TYPE=pp, PREP=?pp] -> PP[PREP=?pp]
 ARG[TYPE=np] -> NP[CASE=rad]
 ARG[TYPE=clause] -> S[+DEP]

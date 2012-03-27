@@ -41,7 +41,7 @@ def parseNow(sentence_file):
     sentences = gaelicProc.preprocessSentences(sentence_file)
 
     for sentence in sentences:
-        print filterOrthography(sentence)
+        #this is where the first-pass correction could be applied i.e. sentence = filterOrthography(sentence)
         rev = '\n' + gaelicProc.postprocessSentences(sentence) #or add .decode('utf8') if that's desired, the trees print in ASCII on a PC anyway
         print rev #print out reverted orthographic form of the sentence
         trees = cp.nbest_parse(sentence.split())
@@ -52,14 +52,49 @@ def parseNow(sentence_file):
                     # DRAW A GRAPHICAL TREE USING TKINTER
                     #print tree.draw()
 
+def toyparse(type):
+    if type == "CFG":
+
+        grammar = nltk.parse_cfg("""
+                % start S
+                S -> V NP A
+                NP -> DET N
+                V -> "tha"
+                DET -> "an" | "a'"
+                N -> "cù" | "chù"
+                A -> "sgìth"
+                """)
+        cp = nltk.ChartParser(grammar)
+
+    elif type == "FCFG":
+        grammar = nltk.parse_fcfg("""
+                % start S
+                S[TYPE=statement]-> V[TYPE=sub, TENSE=pres] NP[CASE=rad] A[TYPE=pred]
+                NP[CASE=?x] -> DET[CASE=?x, GEN=?y] N[CASE=?x, GEN=?y]
+                V[TYPE=sub, TENSE=pres] -> "tha"
+                DET[GEN=masc, CASE=rad] -> "an"
+                DET[GEN=masc, CASE=prep] -> "a'"
+                N[GEN=masc, CASE=prep] -> "chù"
+                N[GEN=masc, CASE=rad] -> "cù"
+                A[TYPE=pred] -> "sgìth"
+        """)
+        cp = nltk.FeatureChartParser(grammar)
+
+    trees = cp.nbest_parse("tha an cù sgìth".split())
+    if not trees: print 'CHA GHABH AN ROSGRANN PARSADH.'
+    else:
+        for tree in trees: print tree
 
 compileGrammar()
-#generateMultiwords()
+generateMultiwords()
 
-#testParse('tests/irreg_verbs_ACCEPT.txt')
-#testParse('tests/irreg_verbs_REJECT.txt')
+#testParse('tests/verbs_ACCEPT.txt')
+#testParse('tests/verbs_REJECT.txt')
 
 #testParse('tests/nouns_ACCEPT.txt')
 #testParse('tests/nouns_REJECT.txt')
 
-#parseNow('sentences.txt')
+parseNow('sentences.txt')
+#toyparse("CFG")
+#toyparse("FCFG")
+

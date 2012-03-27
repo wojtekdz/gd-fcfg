@@ -1,0 +1,47 @@
+# ##########
+# REJECT TESTS FOR IRREGULAR VERBS (verbs_lex_irreg.fcfg)
+# ##########
+
+#BI
+tha mi
+Am bheil?
+An bheil?
+A bheil thu?
+tha mi a bhith
+tha mi ag a bhith
+an biodh
+chan biodh
+cha biodh
+càit a tha thu?
+ciamar nach tha thu?
+nach eil
+am biodh
+
+# RACH
+chaidh mi
+càit an deach thu?
+tèid mi ann
+cha tèid i ann?
+an dèidheadh e?
+am dèidheadh tu?
+an dèidheadh thu?
+chan dèidheadh tu?
+cha dhèidheadh tu?
+
+Chuala mi gum do chaochail e
+Chuala mi gu eil thu gu math
+
+#[TOWRITE] THIS ONE IS FINE BECAUSE OF LENIENCY
+rachadh thu ann
+
+#[TOWRITE] THESE ONES ARE OUT FOR NOW, BECAUSE THEY REDUCE THE CANONICAL VALENCY OF "RACH"
+cha dèidheadh tu.
+an dèidheadh e?
+an dèidheadh tu?
+
+#OTHER
+An do choisich thu chun an tràigh?
+Tha an baile ron an sgoil.
+
+Am biodh e gan moladh?
+Am biodh e gan mholadh?

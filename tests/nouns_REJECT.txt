@@ -5,3 +5,16 @@
 #POSSESIVE CASE
 Tha bòrd nan bò ann
 Tha am bòrd nam bò ann
+
+#CASE FROM PREPOSITIONS
+An do choisich thu chun an tràigh?
+
+#ARTICLE AGREEMENT
+Tha a' tràigh ann
+Tha rathad an tràigh ann
+Tha an phiseag ann an sgoil
+#THE ONE BELOW PARSES AS "THEIR KITTEN IS IN A SCHOOL"
+Tha an piseag ann an sgoil
+Tha am phiseag ann an sgoil
+Tha nàmhaid a' phiseig anns an sgoil
+Tha an nàmhaid na piseige anns an sgoil

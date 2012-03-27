@@ -55,6 +55,19 @@ ABASE[CASE=?cs, GEN=pl, -LEN] -> "òige"
 ABASE[CASE=?cs, GEN=pl, +LEN] -> "òige"
 
 
+ABASE[+PRED] -> "ul"
+ACOMP -> "uile"
+ABASE[CASE=rad, GEN=masc, -LEN] -> "ul"
+ABASE[CASE=rad, GEN=masc, +LEN] -> "ul"
+ABASE[CASE=prep, GEN=masc, +LEN] -> "ul"
+ABASE[CASE=poss, GEN=masc, +LEN] -> "uil"
+ABASE[CASE=rad, GEN=fem, +LEN] -> "ul"
+ABASE[CASE=prep, GEN=fem, +LEN] -> "uil"
+ABASE[CASE=poss, GEN=fem, -LEN] -> "uile"
+ABASE[CASE=?cs, GEN=pl, -LEN] -> "uile"
+ABASE[CASE=?cs, GEN=pl, +LEN] -> "uile"
+
+
 ABASE[+PRED, -LEN] -> "bàn"
 ABASE[+PRED, +LEN] -> "bhàn"
 ACOMP[-LEN] -> "bàine"

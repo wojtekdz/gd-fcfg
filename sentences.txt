@@ -1,25 +1,31 @@
-Chaidh thu ann
-Ciamar a chaidh thu ann?
-An deach thu ann?
-Càit an deach thu?
 
-#unbounded dependency example!
-#thùirt thu gun tùirt thu gum faca e gun deach i ann.
+
+Tha an dearbh fhear agam!
+Tha an dearbh fear agam!
+
+#Chuala mi a' bhò
+### THIS ALL WORKS - ADD TO THESIS - BUT ALLOWING NON +DEF SENTENCES
+#An cuala mi gu bheil thu gu math?
+#Chuala mi gu bheil thu gu math
+#Chuala mi tha thu gu math
+
+#An cuala mi nach eil thu gu math?
+#Chuala mi nach eil thu gu math
+
+#[TOWRITE] BOTH ADMITTED - NOT GOOD BUT NO EASY SOLUTION
+#Chuala mi gun do chaochail e
+#Chuala mi chaochail e
+
+#Chuala mi nach do chaochail e
+#An cuala mi nach do chaochail e?
+#An cuala mi gun do chaochail e?
 
 #Tha cù mòr ann anns a' choille
-#[TOWRITE] A PREPROCESSOR WOULD NEED TO CONVERT SA TO ANNS A' SO THAT EVERYTHING MATCHES!
+#[TOWRITE] A PREPROCESSOR WOULD NEED TO CONVERT SA TO ANNS A' SO THAT EVERYTHING MATCHES
 #Tha cù mòr ann sa choille
-
-#THIS IS THE NEXT CHALLENGE
-#[TOWRITE] A DISCONTINUOUS DEPENDENCY, GAELIC HAS LOTS OF THESE, BUU THEY ARE VERY DIFFICULT TO DEAL IN A FCFG
-#Tha fios agam gu bheil fios agad
-#I.E. THA FIOS GU BHEIL FHIOS AGAD AGAM... - another example, 'S toil leam snàmh -> 'S [NP toil snàmh] leam...
 
 #[TODO] I WOULD NEED ADVERB CLASSES AND A WAY OF COMBINING THEM WITH APPROPRIATE WORDS AT S-LEVEL
 #Tha mi a' dol dhachaigh
-
-#[Q] THE PROBLEM PROBLEM WITH THE PP RECURSION HERE!
-#Tha cù ann
 
 #TEST DATIVE
 #Tha cù air a' bhòrd.

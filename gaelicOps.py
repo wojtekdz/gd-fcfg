@@ -13,11 +13,10 @@
 
 import re
 
-
 #define a tuple of letter combinations which do not lenite
 unlenited_initials = (u'l', u'n', u'r',  u'à', u'a', u'ì', u'i', u'e', u'è', u'o', u'ò', u'u', u'ù', u'sp', u'st', u'sg', u'sm') #[Q] does SM lenite or not?
 
-#NOT NEEDED BUT KEPT FOR REFERENCE
+#[DEL] KEPT TEMPORARILY FOR REFERENCE
 #define a tuple of byte patterns in UTF8 that correspond to initial long vowels in unicode
 #unlenited_unicode_sigs = ('\xc0','\xe0', '\xd2','\xf2', '\xcc', '\xec', '\xc8','\xe8', '\xd9', '\xf9')
 
@@ -27,11 +26,6 @@ unlenited_initials = unlenited_initials + tuple([inital[0].upper() for inital in
 broad_vowels = unicode('à|À|a|A|o|O|ò|Ò|u|U|ù|Ù', 'utf8')
 slender_vowels = unicode('ì|Ì|i|I|e|E|è|È','utf8')
 vowels = broad_vowels + "|" + slender_vowels
-
-#[TODO] it might be very difficult to account for homorganic blocking...
-#this would just take an unlenited token but would need a [+HOMORG] to fit in the productions... but how to detect these combinations in the parser?
-#Rare, acknowledge in thesis and move on?
-
 
 
 def lenitable(word):
@@ -60,16 +54,25 @@ def dh_lenite(word):
     return word
 
 
-def lenite(word):
+def lenite(word, sblock=False):
     """Lenite a word
+
+        Arguments:  word (string) - non-lenited version
+                    sblock (Bool) - switch for blocking the lenition of s- when the context requires it
 
         Returns:    word_lenited (string) - a lenited version
                     word (string) - if word is already lenited, or starts with an unlenitable sound
 
     """
-    if not(word[1] == 'h' or word.startswith(unlenited_initials) == True ): #if unlenitable or already lenited
-        word_lenited = word[0] + 'h' + word[1:]
-        return word_lenited
+
+
+
+    if not(word[1] == 'h' or word.startswith(unlenited_initials)): #if unlenitable or already lenited
+            if (sblock==True and word[0] == "s"):
+                return word
+            else:
+                word_lenited = word[0] + 'h' + word[1:]
+                return word_lenited
     else:
         return word
 
@@ -88,7 +91,7 @@ def checkFinalConsonant(word):
     found = False
     quality = ""
 
-    #NOT NEEDED, LEFT FOR REFERENCE
+    #[DEL] LEFT FOR REFERENCE
     #word = word.encode('ascii') #make sure the word is in utf8 so it matches the utf8 regex string
 
     word_reversed = word[::-1] #flip the word back to front
@@ -116,13 +119,14 @@ def slenderise(word):
     """
     quality, last_vowel, last_vowel_index = checkFinalConsonant(word) #pass word to the regex function to get properties of the ending
 
-    #[TODO] NOT SURE ABOUT THIS FIX, àrd TRIGGERS THE ERROR
+    #THIS IS WHERE SPECIAL CONDITIONS FOR SEGMENTS SURROUNDING THE FINAL VOWEL COULD BE IMPLEMENTED
+    pre_vowel = ""
     try:
         pre_vowel = word[last_vowel_index-1]
     except IndexError:
-        print "pre-final vowel error during slenderisation"
-        pre_vowel = ""
+        pass #most likely this means that the word starts with a vowel, hence it cannot have a character preceeding that
 
+    #TWO CONTEXTS FOR SLENDERISATION
     if (endsWithVowel(word) or quality == 'slender'):
         return word
     elif (quality == 'broad'):
@@ -130,9 +134,11 @@ def slenderise(word):
             word_slenderised = word[:last_vowel_index-1] + 'ei' + word[last_vowel_index+1:]
         else: #just insert "i"
             word_slenderised = word[:last_vowel_index+1] + 'i' + word[last_vowel_index+1:]
-        return word_slenderised
-    #else:
-    #    raise SlenderizationError, "Something went wrong with slenderizing the word"
+    #catch errors? raising exceptions on else does not work?
+
+    return word_slenderised
+
+
 
 def addFinalVowel(word):
     """Concatenate an appropriate broad or slender final vowel to adjectives, and to nouns in the genitive
@@ -146,13 +152,7 @@ def addFinalVowel(word):
         word = word + 'e'
     elif (not(endsWithVowel(word)) and quality == 'broad'):
         word = word + 'a'
-    #suspended error message
-    #elif endsWithVowel(word):
-    #    print word + ": already ends in a vowel"
-
-
-    #else:
-    #    raise addVowelError, "Something went wrong with adding the vowel"
+    #catch errors? raising exceptions on else does not work?
 
     return word
 

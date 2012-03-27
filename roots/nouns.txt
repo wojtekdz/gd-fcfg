@@ -14,11 +14,16 @@ masc, àm, ama, amannan, amannan
 masc, balach, balaich, balaich, balach
 fem, billeag, billeig, billeagan, billeagan
 masc, baile, baile, bailtean, bailtean
+fem, bùth, bùtha, bùithean, bùithean
+masc, bhana, bhana, bhanaichean, bhanaichean
+masc, boireannach, boireannaich, boireannaich, boireannach
 
 #C
 masc, cat, cait, cait, cat
 fem, coille, coille, coilltean, coilltean
 fem, cailleach, caillich, cailleachan, cailleachan
+#NOT SURE ABOUT "MUSICS" :) BUTH THE SOURCE HAS TO HAVE 4 FORMS
+masc, ceòl, ciùil, ceòlan, ceòlan
 
 #D
 masc, doras, dorais, dorsan, dorsan
@@ -34,6 +39,7 @@ fem, èiginn, èiginne, èiginnean, èiginnean
 masc, facal, facail, faclan, faclan
 fem, feachd, feachd, feachdan, feachdan
 fem, fuil, fala, fuiltean, fuiltean
+masc, fear, fir, fir, fear
 
 #G
 fem, glùn, glùine, glùintean, glùintean
@@ -60,17 +66,20 @@ fem, nathair, nathrach, nathraichean, nathraichean
 #O/Ò
 fem, obair, obrach, obraichean, obraichean 
 masc, òran, òrain, òrain, òran
+masc, oileanach, oileanaich, oileanaich, oileanach
 
 #P
 masc, piseach, pisich, pisich, piseach
-fem, piseag, piseig, piseagan, piseagan
+fem, piseag, piseige, piseagan, piseagan
 
 #R
 masc, rathad, rathaid, rathaidean, rathaidean
 fem, ràith, ràithe, ràithean, ràithean
+fem, reòiteag, reòiteige, reòiteagan, reòiteagan
 
 #S/SP/ST/SG
 masc, solas, solais, solasan, solasan
+masc, sagart, sagairt, sagartan, sagartan
 fem, sràid, sràide, sràidean, sràidean
 masc, sporan, sporain, sporanan, sporanan
 masc, stac, staca, stacan, stacan

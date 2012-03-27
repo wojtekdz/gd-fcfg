@@ -2,28 +2,10 @@
 # HANDCODED PRODUCTIONS FOR ADJECTIVES
 # ##########
 
-#[TODO] ADD SOME IRREGULARS AND CHECK BEAG
-
-#[TOWRITE] IRREGULAR ONES NEED TO BE FED IN MANUALLY
-#teth, beag, mòr, dona, fada, furasta, làidir, math, mòr, reamhar, trom
-#[towrite] milis, multi - root change? so irregular?
-#goirid, gorm -> guirme
-#liath - lèithe
-#[towrite] these would need a better slenderiser: geal -> gile, mar beag bige, with more subclasses -> for now including as irregulars
-
-#ABASE[+PRED, -LEN] -> dall
-#ACOMP[-LEN] -> daille
-#ABASE[+PRED, -LEN] -> donn
-#ACOMP[+LEN] -> dhoinne
-
-
-#BOCHD DOES NOT SLENDERISE... NOT A REGULAR ONE...
-#ABASE[+PRED, -LEN] -> bochd
-#ABASE[+PRED, +LEN] -> bhochd
-#ACOMP[-LEN] -> boichde
-#ACOMP[+LEN] -> bhoichde
-
-#FLIUCH, FLICHE...
+# [TODO] "NON-CONFORMING" ADJECTIVES NEED TO BE ENTERED MANUALLY, ISSUES:
+# IRREGULAR: teth, beag, mòr, dona, fada, furasta, làidir, math, mòr, reamhar, trom, liath
+# STEM VOWEL CHANGES: gorm, milis, dall, donn, fliuch
+# SLENDERISATION FUNCTION IMPROVEMENTS NEEDED: geal, bochd
 
 ABASE -> "sgìth"
 ABASE[-LEN] -> "dona"

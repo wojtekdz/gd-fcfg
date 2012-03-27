@@ -6,19 +6,23 @@ QAN[CAGR=bheil] -> "a"
 CHA[CAGR=neu] -> "cha"
 CHA[CAGR=v] -> "chan"
 NACH -> "nach"
-VI[TENSE=?t, SUBCAT=?s, +POL, +INTERROG] -> QAN[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s]
-VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG] -> CHA[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s]
-VI[TENSE=?t, SUBCAT=?s, -POL, +INTERROG, +COMP] -> NACH VD[-LEN, TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, +POL, +INTERROG] -> QAN[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s] | QAN[CAGR=?c] IRPAST[CAGR=?c, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG] -> CHA[CAGR=?c] VD[CAGR=?c, TENSE=?t, SUBCAT=?s] | CHA[CAGR=?c] IRPAST[CAGR=?c, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, -POL, +DEP] -> NACH VD[-LEN, TENSE=?t, SUBCAT=?s]
+VI[TENSE=?t, SUBCAT=?s, +POL, -INTERROG, +DEP] -> COMP[CAGR=?c] VD[CAGR=?c, -LEN, TENSE=?t, SUBCAT=?s]
 COMP[CAGR=lab] -> "gum"
 COMP[CAGR=cop] -> "gur"
 COMP[CAGR=neu] -> "gun"
 COMP[CAGR=bheil] -> "gu"
-VI[TENSE=?t, SUBCAT=?s, -POL, -INTERROG, +DEP] -> COMP[CAGR=?c] VD[CAGR=?c, -LEN, TENSE=?t, SUBCAT=?s]
-AG[CAGR=v] -> "ag" 
-AG[CAGR=neu] -> "a'"
-AG[CAGR=lab] -> "a'"
-AG[CAGR=f] -> "a'"
-VNP -> AG[CAGR=?c] NP[CAGR=?c, SUBCAT=vn]
-VD[TENSE=past, SUBCAT=intr] -> DO[CAGR=?c] VI[CAGR=?c, TENSE=past, SUBCAT=intr] | IRPAST[SUBCAT=intr]
-VD[TENSE=past, SUBCAT=monotr] -> DO[CAGR=?c] VI[CAGR=?c, TENSE=past, SUBCAT=monotr] | IRPAST[SUBCAT=monotr]
-VD[TENSE=past, SUBCAT=ditr] -> DO[CAGR=?c] VI[CAGR=?c, TENSE=past, SUBCAT=ditr] | IRPAST[SUBCAT=ditr]
+AG[CAGR=v, -LEN] -> "ag" 
+AG[CAGR=neu, -LEN] -> "a'"
+AG[CAGR=lab, -LEN] -> "a'"
+GA[CAGR=neu, +LEN] -> "gam" | "gad" | "ga"
+GA[CAGR=neu, -LEN] -> "ga" | "gan" | "gar" | "gur"
+GA[CAGR=lab, -LEN] -> "gam"
+GA[CAGR=v, -LEN] -> "ga_h-" | "gar_n-" | "gur_n-"
+AIR -> "air"
+VNP[SUBCAT=?s] -> AG[CAGR=?c, LEN=?l] VN[CAGR=?c, SUBCAT=?s, LEN=?l]
+VNP[SUBCAT=?s] -> GA[CAGR=?c, LEN=?l] VN[CAGR=?c, SUBCAT=?s, LEN=?l]
+VNP[SUBCAT=?s] -> AIR VN[CAGR=?c, SUBCAT=?s]
+VD[CAGR=neu, TENSE=past, SUBCAT=?s] -> DO[] VI[TENSE=past, SUBCAT=?s] | IRPAST[SUBCAT=?s]

@@ -5,7 +5,6 @@
 ### ADVERBS
 
 #[TODO] HOW TO INTERGRATE ADV INTO PHRASE STRUCTURE?
-
 ADVGU -> "gu"
 ADV[TYPE=pp] -> ADVGU ABASE[CASE=rad, -LEN]
 
@@ -18,33 +17,56 @@ ADV[TYPE=path] -> "sìos" | "suas" | "a-steach" | "a-mach"
 ADV[TYPE=place] -> "shìos" | "shuas" | "a-staigh" | "a-muigh"
 
 #[TODO] how to resolve tense on adverbs?
-ADV[TYPE=time] -> "an-uiridh" | "an-diugh" | "an-dè"
+ADV[TYPE=time, TENSE=past] -> "an-uiridh" | "an-diugh" | "an-dè"
+ADV[TYPE=time, TENSE=fut] -> "a-màireach" | "an-earar" | "an-diugh" | "a-nis" | "an-dràsta"
+ADV[TYPE=time, TENSE=pres] -> "a-nis" | "an-dràsta" | "an-diugh"
 
 ### PREPOSITIONS
 #[TODO] TEST THIS, AND add DEF=?d
-PP -> P[CASE=?cs] NP[CASE=?cs]
+PP[PREP=?pr] -> P[CASE=?cs, DEF=?d, PREP=?pr] NP[CASE=?cs, DEF=?d]
 
 ## SIMPLE ACCUSATIVE
 P[CASE=rad] -> "seach" | "eadar"
 
 ## SIMPLE DATIVE
-#[TOWRITE] PREPOSITIONS NEED TO ENFORCE CASE
 #DO NOT LENITE OR CHANGE FORM WHEN DEFINITE
-#[TODO] EVERY PREPOSITION NEEDS TO HAVE A PFORM FEATURE (INCLUDING THE SIMPLE ONES) THAT WILL TRANSFER ONTO PPs
-P[CASE=prep] -> "aig" | "air" | "às"
+P[CASE=prep, PREP=aig] -> "aig"
+P[CASE=prep, PREP=air] -> "air"
+P[CASE=prep, PREP=a, -DEF] -> "à"
+P[CASE=prep, PREP=a, +DEF] -> "às"
+#[TODO] how to link CAGR=do to NPs? - short of specifying every P for almost every CAGR?
+P[CASE=prep, CARG=do, PREP=do, -DEF, +LEN] -> "do"
+P[CASE=prep, CARG=do, PREP=do, +DEF, +LEN] -> "don" | "dhan"
+P[CASE=prep, PREP=le, -DEF] -> "le"
+P[CASE=prep, PREP=le, +DEF] -> "leis"
+P[CASE=prep, PREP=ri, -DEF] -> "ri"
+P[CASE=prep, PREP=ri, +DEF] -> "ris"
+P[CASE=prep, PREP=ann, -DEF] -> "ann_an"
+P[CASE=prep, PREP=ann, +DEF] -> "anns"
+P[CASE=prep, PREP=bho, -DEF, +LEN] -> "bho"
+P[CASE=prep, PREP=bho, +DEF] -> "bhon"
+P[CASE=prep, CARG=do, PREP=do, -DEF, +LEN] -> "de"
+P[CASE=prep, CARG=do, PREP=do, +DEF, +LEN] -> "den" | "dhen"
+P[CASE=prep, PREP=fo, -DEF, +LEN] -> "fo"
+P[CASE=prep, PREP=fo, +DEF, +LEN] -> "fon"
+P[CASE=prep, PREP=ro, -DEF, +LEN] -> "ro"
+P[CASE=prep, PREP=ro, +DEF, +LEN] -> "ron"
+P[CASE=prep, PREP=tro, -DEF, +LEN] -> "tro"
+P[CASE=prep, PREP=tro, +DEF, +LEN] -> "tron"
+P[CASE=prep, PREP=mu, -DEF, +LEN] -> "mu"
+P[CASE=prep, PREP=mu, +DEF, +LEN] -> "mun"
 
 ## SIMPLE GENITIVE
 P[CASE=poss] -> "chun" | "thar" | "rè"
 
-P[CASE=prep, -DEF] -> "ann_an"
-P[CASE=prep, +DEF] -> "anns"
+## COMPOUND PREPOSITIONS
+# P-final TAKE PREPOSITIONAL CASE
+P[CASE=prep, PREP=air] -> "faisg_air" | "seachad_air"
+P[CASE=prep, PREP=ri] -> "còmhla_ri" | "coltach_ri"
 
-#NEEDS THE FOLLOWING WORD LENITED! SO N[CASE=prep, LEN+]
-P[CASE=prep, -DEF, +LEN] -> "ro" 
+#N-final TAKE POSSESIVE CASE
+P[CASE=poss] -> "os_cionn" | "ri_taobh" | "mu_choinneamh" | "airson" | "air_beulaibh" | "air_cùl" | "mu_dheidhinn" | "as_aonais" | "an_aghaidh" | "an_dèidh" | "a_dh'ionnsaigh"
 
-#NEEDS THE FOLLOWING WORD LENITED UNLESS IT'S A D- (OR S- BUT THAT'S ANOTHER ISSUE)... 
-#JUST SAYING N[CASE=prep] WILL NOT LENITE THE LEN
-P[CASE=prep, +DEF] -> "ron"
 
 ### PREPOSITIONAL PRONOUNS
 PP[PREP=aig] -> "agam" | "agad" | "aige" | "aice" | "againn" | "agaibh" | "aca"
@@ -64,23 +86,19 @@ PP[PREP=mu] -> "umam" | "umad" | "uime" | "uimpe" | "umainn" | "umaibh" | "umpa"
 ### COMPOUND PREPOSITIONS
 ## P-FINAL
 #[TOWRITE] CANNOT USE PREP=?p AS THIS WOULD ALLOW NOUNS
-N[PREP=air] -> "faisg" | "seachad"
-N[PREP=ri] -> "còmhla" | "coltach"
+#N[PREP=air] -> "faisg" | "seachad"
+#N[PREP=ri] -> "còmhla" | "coltach"
 
-#e.g còmhla rium
-#[TODO] GET RID OF THIS N - SOMETIMES A
-PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr] 
-PP[CASE=prep] -> N[PREP=?pr] PP[PREP=?pr]
+# e.g còmhla rium
+# [TODO] GET RID OF THIS N - SOMETIMES A
+
+#N[PREP=ri] -> "coltach"
+#PP[PREP=ri] -> "rium"
+#PP[CASE=prep] -> A[PREP=?pr] PP[PREP=?pr]
 
 ## N-FINAL
-#[TODO] implement automatic extraction of multiwords first - to many spaces
-#[TOWRITE] describe multiword process in thesis
-#[Q] how to analyze these 4 cases?
+#[TOWRITE] complex issue, leave this - implemented basic forms with noun objects in genitive
 #POSSESIVE ADJECTIVES IN CLEAR FORM air beulaibh, air cùl, air son, mu choinneamh, ri taobh, os cionn, mu dheidhinn
 #VOWEL TWIST, GOOD POSSESIVE ADJECTIVES SHOULD RESOLVE THIS: as aonais
 #NA: an aghaidh, an dèidh
 #GA: a dh'ionnsaigh 
-
-#WHAT TO DO WITH THESE? NEEDED FOR DIRECT OBJECT PRONOUNS WITH VNs, SOME COMPOUND Ps, AND IN tha mi nam thidsear
-#[TODO] aig + mo = gam+L
-#[TODO] ann am + mo = nam+L

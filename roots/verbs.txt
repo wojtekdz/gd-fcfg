@@ -5,4 +5,69 @@
 # EACH VERB ON A SEPARATE LINE
 # PATTERN: ROOT, VERBAL NOUN, VALENCY STRING
 
-tòisich, tòiseachadh, NP:NP
+#A/À
+atharraich, atharrachadh, NP:NP
+aithnich, aithneachadh, NP:NP
+
+#B
+bàsaich, bàsachadh, NP
+bris, briseadh, NP:NP
+
+#C
+coisich, coiseachd, NP:PP
+ceannaich, ceannachd, NP:NP
+casadaich, casadaich, NP
+
+#D
+dèilig, dèiligeadh, NP:PP
+dùisg, dùsgadh, NP
+
+#E/È
+èirich, èirigh, NP
+
+#F
+fàg, fàgail, NP
+faighnich, faighneachd, NP:PP|S
+
+#G
+gabh, gabhail, NP:NP
+gearain, gearan, NP:S
+glan, glanadh, NP:NP
+
+#I/Ì
+iasgaich, iasgadh, NP
+innis, innse, NP:PP
+ith, ithe, NP:NP
+
+#L
+leugh, leughadh, NP:NP
+lorg, lorg, NP:NP
+
+#M
+marbhaich, marbhadh, NP:NP
+mol, moladh, NP:NP
+
+#N
+nigh, nighe, NP:NP
+
+#O/Ò
+obraich, obair, NP
+
+#P
+pòg, pògadh, NP:NP
+
+#R
+rannsaich, rannsachadh, NP:NP
+
+#S/SP/ST/SG
+sgoilt, sgoltadh, NP:NP
+seinn, seinn, NP
+siubhail, siubhal, NP
+sgrìobh, sgrìobhadh, NP:NP
+
+
+#T
+tòisich, tòiseachadh, NP:NP|PP
+
+#U/Ù
+ullaich, ullachadh, NP:NP

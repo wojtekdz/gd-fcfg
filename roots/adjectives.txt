@@ -8,6 +8,7 @@
 àlainn, multi
 àrd, mono
 òg, mono
+ul, mono
 bàn, mono
 beothail, multi
 blàth, mono
